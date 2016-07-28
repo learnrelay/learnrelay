@@ -1,6 +1,7 @@
 * [Learn Relay](learn-relay.md)
 * [Introduction](introduction.md)
 * [GraphQL in 5 Minutes](graphql-in-5-minutes.md)
+* [Local Setup](local-setup.md)
 * [Hello World in Relay](hello-world-in-relay.md)
 * [Nested Components](nested-components.md)
 * [Connections, Edges & Nodes](connections-edges-nodes.md)
