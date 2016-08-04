@@ -1,3 +1,6 @@
+Learn Relay 
+=============
+
 * [Learn Relay](learn-relay.md)
 * [Introduction](introduction.md)
 * [GraphQL in 5 Minutes](graphql-in-5-minutes.md)

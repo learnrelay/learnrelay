@@ -1,10 +1,9 @@
 {
-  "github": "graphcool/learnrelay",
+  "github": "https://github.com/schickling/learnrelay",
   "css": [
     "docs/assets/custom.css"
   ],
   "markdown": {
-    "typographer": true,
     "plugins": {
       "decorate": {}
     }
@@ -15,7 +14,7 @@
     "docpress-base": {}
   },
   "googleAnalytics": {
-    "id": "UA-70057942-1",
-    "domain": "docpress.github.io"
+    "id": "",
+    "domain": ""
   }
 }

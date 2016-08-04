@@ -1,0 +1,20 @@
+{
+  "name": "learnrelay",
+  "version": "0.0.1",
+  "description": "Learn Relay",
+  "scripts": {
+    "start": "docpress serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schickling/learnrelay.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schickling/learnrelay/issues"
+  },
+  "homepage": "https://github.com/schickling/learnrelay#readme",
+  "dependencies": {
+    "docpress": "^0.6.13"
+  }
+}
