@@ -1,17 +1,28 @@
 Learn Relay 
 =============
 
-* [Learn Relay](learn-relay.md)
-* [Introduction](introduction.md)
-* [GraphQL in 5 Minutes](graphql-in-5-minutes.md)
-* [Local Setup](local-setup.md)
-* [Hello World in Relay](hello-world-in-relay.md)
-* [Nested Components](nested-components.md)
-* [Connections, Edges & Nodes](connections-edges-nodes.md)
-* [Variables](variables.md)
-* [Mutations](mutations.md)
-* [Mutations: Adding Items](mutations-adding-items.md)
-* [Mutations: Updating Items](mutations-updating-items.md)
-* [Mutations: Deleting Items](mutations-deleting-items.md)
-* [Connecting to a GraphQL Backend](connecting-to-a-graphql-server.md)
-* [Routing](routing.md)
+* [Learn Relay](overview/cover.md)
+* Overview
+  * [Briefly introduction](overview/intro.md)
+  * [Prerequisites](overview/prerequisites.md)
+  * [Local Setup](overview/local-setup.md)
+* Introduction to Relay
+  * [What is Relay?](introduction/what-is-relay.md)
+* Get started
+  * [Hello World](get-started/hello-world.md)
+* Queries
+  * [Queries & Fragments](queries/queries-fragments.md)
+  * [Containers](queries/containers.md)
+  * [Variables](queries/variables.md)
+  * [Data masking](queries/data-masking.md)
+* Connections
+  * [Edges & Nodes](connections/edges-nodes.md)
+* Mutations
+  * [Adding](mutations/mutations-adding.md)
+  * [Updating](mutations/mutations-updating.md)
+  * [Deleting](mutations/mutations-deleting.md)
+* Routes
+  * [Route in Relay](routes/route-in-relay.md)
+  * [React router relay](routes/react-router-relay.md)
+* Go further
+  * [Wrapup](go-further/wrapup.md)

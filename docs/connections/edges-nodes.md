@@ -74,7 +74,7 @@ Okay, let's see what's going on here. The `actors` connection now has a more com
 
 Don't worry. In order to use Relay, you don't have to understand the reasons why the structure is designed this way but rest assured that [it makes a lot of sense](https://facebook.github.io/relay/graphql/connections.htm).
 
-<div style="text-align: center; padding: 20px 0;"><img src="img/edges.png" /></div>
+<div style="text-align: center; padding: 20px 0;"><img src="../assets/images/edges.png" /></div>
 
 Lastly, we also notice the `first: 10` parameter on the `actors` field. This gives us a way to [paginate](https://en.wikipedia.org/wiki/Pagination) over the entire list of related actors. In this case we're taking the first 10 actors (nodes). In the same way we could additionally specify the `after` parameter which allows us to skip a certain amount of nodes.
 
