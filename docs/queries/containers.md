@@ -1,3 +1,3 @@
-# Nested Components
+# Containers
 
-> Goal: Understand nesting - Fragments + Containers
+> Understand Containers.

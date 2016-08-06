@@ -5,11 +5,11 @@ Learn Relay
 * Overview
   * [Briefly introduction](overview/intro.md)
   * [Prerequisites](overview/prerequisites.md)
-  * [Local Setup](overview/local-setup.md)
+  * [Environment Setup](overview/environment-setup.md)
 * Introduction to Relay
   * [What is Relay?](introduction/what-is-relay.md)
 * Get started
-  * [Hello World](get-started/hello-world.md)
+  * [Pokemon App](get-started/pokemon.md)
 * Queries
   * [Queries & Fragments](queries/queries-fragments.md)
   * [Containers](queries/containers.md)
@@ -18,9 +18,10 @@ Learn Relay
 * Connections
   * [Edges & Nodes](connections/edges-nodes.md)
 * Mutations
-  * [Adding](mutations/mutations-adding.md)
-  * [Updating](mutations/mutations-updating.md)
-  * [Deleting](mutations/mutations-deleting.md)
+  * [What is Mutation?](mutations/what-is-mutation.md)
+  * [Adding a new Pokemons](mutations/adding.md)
+  * [Updating a Pokemon](mutations/updating.md)
+  * [Deleting a Pokemon](mutations/deleting.md)
 * Routes
   * [Route in Relay](routes/route-in-relay.md)
   * [React router relay](routes/react-router-relay.md)
