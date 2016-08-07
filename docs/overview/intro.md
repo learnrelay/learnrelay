@@ -13,7 +13,7 @@ So let’s get started.
 > List of our goals and what they should be able to do after finishing our tutorials, rely on [Goals and directions](https://github.com/schickling/learnrelay/issues/2).
 
 
-## Pokomon app
+## Pokemon app
 
 <p style="text-align: center">
   <img src='http://i.giphy.com/RS0F0v1S0fhhm.gif' id='selector' />
