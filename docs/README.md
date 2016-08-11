@@ -5,10 +5,9 @@ Learn Relay
 * Overview
   * [Briefly introduction](overview/intro.md)
   * [Prerequisites](overview/prerequisites.md)
-  * [Environment Setup](overview/environment-setup.md)
-  * [Get started](overview/get-started.md)
 * Introduction to Relay
   * [What is Relay?](introduction/what-is-relay.md)
+  * [Get started](introduction/get-started.md)
 * Queries
   * [Queries & Fragments](queries/queries-fragments.md)
   * [Containers](queries/containers.md)
