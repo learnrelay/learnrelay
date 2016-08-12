@@ -2,6 +2,8 @@
 
 > Goal: Iterate a connection
 > 
+> TODO: cover the cursor concept
+> 
 > Why do I need this? are list not enough?
 
 The terminology of Relay can be quite overwhelming in the beginning. Relay introduces a handful of new concepts on top of GraphQL, mainly in order to manage relationships between models.
