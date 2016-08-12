@@ -16,7 +16,7 @@ Learn Relay
 * Connections
   * [Edges & Nodes](connections/edges-nodes.md)
 * Mutations
-  * [What is Mutation?](mutations/what-is-mutation.md)
+  * [What is a Mutation?](mutations/what-is-a-mutation.md)
   * [Relay Store](mutations/relay-store.md)
   * [Mutation Types](mutations/mutation-types.md)
   * [Optimistic Updates](mutations/optimistic-updates.md)
