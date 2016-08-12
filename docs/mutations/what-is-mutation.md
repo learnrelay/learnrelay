@@ -2,5 +2,19 @@
 
 > Explain what's mutations in Relay.
 
-## Mutation types
-> Goal: Overview over different mutation types.
+## Methods
+
+> Explain minimum methods 
+
+#### getMutation()
+
+#### getVariables()
+
+#### getFatQuery()
+
+#### getConfigs()
+
+
+## Add a Pokemon
+
+> Create a mutation for adding a pokemon
