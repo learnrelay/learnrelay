@@ -9,19 +9,19 @@ Learn Relay
   * [What is Relay?](introduction/what-is-relay.md)
   * [Get Started](introduction/get-started.md)
 * Queries
-  * [Queries & Fragments](queries/queries-fragments.md)
   * [Containers](queries/containers.md)
+  * [Queries & Fragments](queries/queries-fragments.md)
   * [Variables](queries/variables.md)
   * [Data Masking](queries/data-masking.md)
 * Connections
   * [Edges & Nodes](connections/edges-nodes.md)
+* Routes
+  * [Route in Relay](routes/route-in-relay.md)
+  * [React Router Relay](routes/react-router-relay.md)
 * Mutations
   * [What is a Mutation?](mutations/what-is-a-mutation.md)
   * [Relay Store](mutations/relay-store.md)
   * [Mutation Types](mutations/mutation-types.md)
   * [Optimistic Updates](mutations/optimistic-updates.md)
-* Routes
-  * [Route in Relay](routes/route-in-relay.md)
-  * [React Router Relay](routes/react-router-relay.md)
 * Go further
   * [Wrapup](go-further/wrapup.md)
