@@ -1,4 +1,4 @@
-Learn Relay 
+Learn Relay
 =============
 
 * [Learn Relay](overview/cover.md)
@@ -9,8 +9,9 @@ Learn Relay
   * [What is Relay?](introduction/what-is-relay.md)
   * [Get Started](introduction/get-started.md)
 * Queries
+  * [What is a Query?](queries/what-is-a-query.md)
   * [Containers](queries/containers.md)
-  * [Queries & Fragments](queries/queries-fragments.md)
+  * [Fragments](queries/fragments.md)
   * [Variables](queries/variables.md)
   * [Data Masking](queries/data-masking.md)
 * Connections

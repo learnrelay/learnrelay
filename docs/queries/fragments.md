@@ -1,3 +1,3 @@
-# Queries vs Fragments
+# Fragments
 
 > Explain how different between both of them.
