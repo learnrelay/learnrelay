@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Learn Relay",
   "scripts": {
-    "start": "docpress serve"
+    "start": "docpress serve",
+    "deploy": "docpress build && surge _docpress -d learnrelay.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "homepage": "https://github.com/schickling/learnrelay#readme",
   "dependencies": {
     "docpress": "^0.6.13"
+  },
+  "devDependencies": {
+    "surge": "^0.18.0"
   }
 }
