@@ -1,9 +1,10 @@
-# Containers
+# Containers & Fragments
 
 > Understand Containers.
 
-To use queries in one of your React components, you use the higher-order component `Container` provided by Relay.
-Using containers comes with two guarantees by Relay:
+To use queries in one of your React components, you have to wrap them using the higher-order component `Container` provided by Relay.
+
+Containers come with two guarantees by Relay:
 
 * The required data is available before the component is rendered.
 * The component will be updated whenever some of the required data has been updated elsewhere.
@@ -11,6 +12,7 @@ Using containers comes with two guarantees by Relay:
 ## Creating a Relay Container
 
 To expose data to your React component we can use the method `Relay.createContainer`, which looks like this:
+
 ```javascript
 export default Relay.createContainer(
   withRouter(PokemonPreview),

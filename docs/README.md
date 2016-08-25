@@ -10,8 +10,7 @@ Learn Relay
   * [Get Started](introduction/get-started.md)
 * Queries
   * [What is a Query?](queries/what-is-a-query.md)
-  * [Containers](queries/containers.md)
-  * [Fragments](queries/fragments.md)
+  * [Containers & Fragments](queries/containers-fragments.md)
   * [Variables](queries/variables.md)
   * [Data Masking](queries/data-masking.md)
 * Connections
