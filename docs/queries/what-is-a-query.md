@@ -17,15 +17,19 @@ All "real" queries are exposed through the `viewer` object. Usually, we are inte
 
 ```graphql
 query {
-  viewer {
-    allPokemons {
-      id
-      name
-      url
+  allPokemons (first: 100000) {
+    edges {
+      node {
+        id
+        name
+        url
+      }
     }
   }
 }
 ```
+
+This query consists of several different parts. In this chapter, we will learn a lot on the different parts of a query, and how to put it all together.
 
 ## Chapter overview
 
