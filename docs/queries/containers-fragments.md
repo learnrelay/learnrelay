@@ -35,4 +35,4 @@ This injects the prop `pokemon` to the inner component `PokemonPreview`. The way
 ## Composing Queries in Containers
 
 One of the big strengths of React is the ability to compose components in an efficient and hassle-free way. Relay applies this concept to queries as well:
-they are composed by combining so called [Fragments](fragments.md).
+they are composed by combining so called [Fragments](containers-fragments.md).
