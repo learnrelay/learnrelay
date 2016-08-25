@@ -12,4 +12,3 @@
 
 > Run static React app
 
-![](https://cloud.githubusercontent.com/assets/4731916/17520054/8f417e08-5e4e-11e6-8828-2f3c52cf138d.png)
