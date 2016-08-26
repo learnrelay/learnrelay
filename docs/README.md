@@ -10,11 +10,14 @@ Learn Relay
   * [Get Started](introduction/get-started.md)
 * Queries
   * [What is a Query?](queries/what-is-a-query.md)
-  * [Containers & Fragments](queries/containers-fragments.md)
+  * [Containers and Fragments](queries/containers-fragments.md)
+  * [Working with Fragments](queries/working-with-fragments.md)
   * [Variables](queries/variables.md)
   * [Data Masking](queries/data-masking.md)
-* Connections
-  * [Edges & Nodes](connections/edges-nodes.md)
+* Nested Queries
+  * [Terminology](nested-queries/terminology.md)
+  * [Putting it all together](nested-queries/putting-it-all-together.md)
+  * [Cursors and Pagination](nested-queries/cursors-pagination.md)
 * Routes
   * [Route in Relay](routes/route-in-relay.md)
   * [React Router Relay](routes/react-router-relay.md)

@@ -1,32 +1,8 @@
-# Connections, Edges & Nodes
+# Putting it all together
 
-> Goal: Iterate a connection
->
-> TODO: cover the cursor concept
->
-> Why do I need this? are list not enough?
+Put it together chap!
 
-The terminology of Relay can be quite overwhelming in the beginning. Relay introduces a handful of new concepts on top of GraphQL, mainly in order to manage relationships between models.
-
-## Connections
-
-In Relay, relations between models are called *connections*. We use models and relations to think of our data structure. However that doesn't help us a lot for when we want to investigate the context of a specific data item. That's why Relay works with *nodes* and *edges*.
-
-## Nodes
-
-We call a specific data item a *node*. Each node belongs to a specific model. In our case, we will work with nodes of type Pokemon.
-
-The `viewer` object of Relay can actually be seen as a node as well. Every node that exists on our server should be reachable indirectly via the `viewer` , otherwise there's no way to query it.
-
-## Edges
-
-Whenever there is a relation between two specific nodes, we say that they are connected with an *edge*.
-
-In Relay, we can traverse the data graph from one node to the other by using the `edges` non-scalar field.
-
-The edges field contains one field `node`, that finally exposes all the fields of the real data item.
-
-## Putting it all together
+## Traverse the data graph in a query
 
 A query to fetch all Pokemons could look like this:
 
@@ -55,7 +31,7 @@ Remember that in a Relay container, the fragments are exposed as props inside th
 
 Also note the `first: 100000` part. Having the `first` argument in a query like this is a requirement by Relay. For now, we are just using a huge number to be certain that we query all the Pokemons in our pokedex.
 
-## Practice: Step 3
+## Step 3: Show existing Pokemons in ListPage
 
 Back to the Pokemon app.
 
