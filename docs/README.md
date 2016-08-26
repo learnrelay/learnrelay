@@ -14,7 +14,7 @@ Learn Relay
   * [Working with Fragments](queries/working-with-fragments.md)
   * [Variables](queries/variables.md)
   * [Data Masking](queries/data-masking.md)
-* [Nested Queries](nested-queries/overview.md)
+* [Connections, Edges and Nodes](nested-queries/overview.md)
   * [Terminology](nested-queries/terminology.md)
   * [Putting it all together](nested-queries/putting-it-all-together.md)
   * [Cursors and Pagination](nested-queries/cursors-pagination.md)
