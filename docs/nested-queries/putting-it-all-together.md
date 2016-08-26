@@ -2,7 +2,7 @@
 
 Put it together chap!
 
-## Traverse the data graph in a query
+## Traverse the data graph
 
 A query to fetch all Pokemons could look like this:
 
@@ -61,9 +61,6 @@ export default Relay.createContainer(
 
 As you can see, a fragment `pokemon` is defined that contains all the fields of the `Pokemon` model that the `PokemonPreview` depends on.
 
-Remember that we can use this fragment in another component by calling `PokemonPreview.getFragment('pokemon')` or `${PokemonPreview.getFragment('pokemon')}` inside a query.
-
-
 
 For step 3, you should
 
@@ -73,8 +70,8 @@ For step 3, you should
 allPokemons (first: 100000) {
   edges {
     node {
-      id
       ${PokemonPreview.getFragment('pokemon')}
+      id
     }
   }
 }
@@ -82,9 +79,6 @@ allPokemons (first: 100000) {
 
 * Currently in `ListPage` we show `There are 28 Pokemons in your pokedex`. You should display the correct amount here.
 
+> Remember that inside the `ListPage` component, we will have access to `viewer` that contains the `allPokemons` object which in turn contains the `edges` array.
+
 * Actually display all the Pokemons by mapping over `this.props.viewer.allPokemons.edges` and fill the props `key` and `pokemon` with the `node` field of each edge.
-
-## Further reading
-
-* [Relay docs on connections](https://facebook.github.io/relay/docs/graphql-connections.html)
-* [Relay Cursor Connections Specification](https://facebook.github.io/relay/graphql/connections.htm).
