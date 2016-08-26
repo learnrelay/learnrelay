@@ -4,9 +4,8 @@
 | Get Started  | 1 | explain workflow for step-x/solution-step-x, provide one-click download to be ready to continue with step 02 |
 | What is a Query? | - | introduce concept of queries |
 | Containers and Fragments | 2 | introduce containers. user: create container and use fragment viewer/id in queries in ListPage |
-| Working with Fragments | - | explain two uses of fragments: define and compose data requirements |
+| Working with Fragments | - | explain two uses of fragments: define and compose data requirements; data masking |
 | Variables | - | introduce concept of variables |
-| Data Masking | - | talk about data masking |
 | Terminology | - | explain edges and nodes |
 | Putting it all together | 3 | user: uses edges/nodes and variables in ListPage and PokemonPreview, use Variables |
 | Cursors and Pagination | - | explain cursors and pagination|

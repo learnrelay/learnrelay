@@ -13,7 +13,6 @@ Learn Relay
   * [Containers and Fragments](queries/containers-fragments.md)
   * [Working with Fragments](queries/working-with-fragments.md)
   * [Variables](queries/variables.md)
-  * [Data Masking](queries/data-masking.md)
 * [Connections](nested-queries/overview.md)
   * [Terminology](nested-queries/terminology.md)
   * [Putting it all together](nested-queries/putting-it-all-together.md)

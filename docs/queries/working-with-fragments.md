@@ -2,7 +2,12 @@
 
 We use fragments in two different ways:
 
-* A container defines **its own data requirements** by creating a list of fragments. To define a different fragment `pokemon`, you can use this code:
+* A container defines **its own data requirements** by creating a list of fragments.
+* A container can use fragments **defined elsewhere by other containers** when creating its own fragments. This is typically used to set the props of a child without exactly knowing all the selected fields the child defined in the fragment.
+
+## Declare data requirements
+
+If your component depends on a `pokemon` node, you can define a fragment `pokemon` with this code:
 
 ```javascript
 export default Relay.createContainer(
@@ -25,7 +30,7 @@ The `Pokemon` in `fragment on Pokemon` is the model name defined by the GraphQL 
 
 The name `pokemon` of the fragment is a choice of the container. `pokemon` will be exposed as a prop to the inner `Component`. It contains the subfields `id`, `name` and `url`.
 
-* A container can use fragments **defined elsewhere by other container** when creating its own fragments. This is typically used to set the props of a child without exactly knowing all the selected fields the child defined in the fragment.
+## Use other containers' fragments
 
 To use the fragment `pokemon` in another container, you can use this code:
 
@@ -56,4 +61,10 @@ export default Relay.createContainer(
 By using `${PokemonPreview.getFragment('pokemon')}` we refer to the fragment `pokemon` of the `PokemonPreview` container.
 Then we define a subselection on this fragment. In this case we select the fields `id`, `name` and `url`.
 
-The concept of encapsulating the data requirements inside the individual containers is called data masking. You can explore the reasons why Relay chooses to use [data masking](data-masking.md) but it is not a requirement for the Pokemon app.
+## Data masking
+
+The concept of encapsulating the data requirements inside the individual containers is called data masking: a powerful concept that leads to better encapsulation and reduces the appearance of subtle errors.
+
+> Data is only exposed to containers that explicitely stated a dependency on that data. If a child depends on certain data, its parent does not know about it and vice versa.
+
+This helps to prevent satisfying data requirements *by luck*, for example when a parent container forgot to state his own data requirement but it is luckily satisfied by a child. If at some point in time the child does not depend on this data any more and the data requirement is removed, we would encounter subtle errors.
