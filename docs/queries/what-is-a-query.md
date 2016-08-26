@@ -36,11 +36,3 @@ query {
 This query contains several parts that are yet unknown to us.
 
 In this chapter, we will learn a lot on the different parts and how to put them all together to build flexible, composable queries.
-
-## Chapter overview
-
-Whenever we want to send a query to our server in one of our React components, we have to wrap it with a [Container](containers-fragments.md).
-
-Usually you never write complete queries as above. Instead you are building them by combining [Fragments](containers-fragments.md). You can add additional flexibility using [Query Variables](variables.md).
-
-Relay supports us by using the concept of [Data Masking](data-masking.md) that ensures that every component states exactly the data requirements it needs, no more, no less.
