@@ -99,6 +99,24 @@ Note that this mutation type is not required for our Pokedex app.
 
 ## REQUIRED_CHILDREN
 
-Required children.
+To query fields on a newly created that are not reachable by an edge you can use `REQUIRED_CHILDREN`:
+
+```javascript
+getConfigs() {
+  return [{
+    type: 'REQUIRED_CHILDREN',
+    children: [Relay.QL`
+      fragment on AddThingPayload {
+        someField
+      }
+    `],
+  }];
+}
+```
+
+This will make the object `addThing` available in the `onSuccess` callback of the mutation, but will **not** write the changes to the store.
+This type can be used to redirect to a view that depends on a newly created node once it's created.
+
+Note that this type is rarely used and only applicable in very specific use cases.
 
 ## Step 6: Delete a Pokemon
