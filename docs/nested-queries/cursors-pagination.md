@@ -1,9 +1,9 @@
 # Cursors and Pagination
 
-> Goal: Iterate a connection
->
-> TODO: cover the cursor concept
->
-> Why do I need this? are list not enough?
+> Coming soon.
 
-Be cursed!
+## Iterate a connection
+
+## The cursor concept
+
+## Why do I need this, are lists not enough?
