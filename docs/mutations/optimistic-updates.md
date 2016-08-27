@@ -6,10 +6,9 @@
 
 Sometimes we know what the server response *should* look like, if everyhing works well. Then we can pass a fake response to the Relay.Store right after we fired the mutation, instead of waiting for the actual server response, giving the impression of an instantaneous response.
 
-This is what we mean when we talk about optimistic updates. When the actual server response does come in and has some different results or even resulted in an error, then Relay will roll-back the optimistic response and apply the actual server response to the cache. However we expect these cases to only happen rarely - that's why optimistic updates are so powerful as they can increase user experience in a majority of the cases.
+This is what we mean when we talk about optimistic updates. When the actual server response does come in and has some different results or even resulted in an error, then Relay will roll-back the optimistic response and apply the actual server response to the cache. However we expect these cases to only happen rarely - that's why optimistic updates are so powerful as they can increase user experience in a majority of the cases. You might have heard of the expression "Optimstistic UI", which is based on this idea.
 
-The optimistic response acts as a mock payload and should only contain fields that you also included in your fat query or `viewer`.
-
+The optimistic response acts as a mock payload and should only contain fields that you also included in your fat query, or `viewer`.
 
 * Remember the fat query from `AddPokemonMutation`?
 

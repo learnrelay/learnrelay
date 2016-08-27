@@ -1,7 +1,7 @@
 # Putting it all together
 
-We are now ready to fully understand a complete GraphQL with Relay!
-Queries in Relay are *hierarchical*, and once we understood the concept of nodes and edges, we also have a better understanding of the structure a query has.
+We are now ready to fully understand GraphQL queries with Relay!
+Queries in Relay are *hierarchical*: Relay uses the concept of nodes and edges for the structure of a query.
 
 ## Traverse the data graph
 
