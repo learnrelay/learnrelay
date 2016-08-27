@@ -12,8 +12,6 @@ In order to code along with the examples in this tutorial, here is the list of t
     - [js-graphql-intellij-plugin](https://github.com/jimkyndemeyer/js-graphql-intellij-plugin) - GraphQL language support for IntelliJ IDEA and WebStorm, including Relay.QL tagged templates in JavaScript and TypeScript
     - [language-graphql](https://github.com/rmosolgo/language-graphql) - GraphQL support for Atom text editor
 
-> Normally, Relay requires you to set up a GraphQL server on your own, however, in this tutorial, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about GraphQL server.
-
 ## How to follow along with this tutorial?
 
 Each chapter is divided into two main parts - **Learning concepts and Practicing in real world application**. The first part will walk you through the concepts of Relay along with examples. The other will then let you apply your theory knowledge with our Pokedex application! 
@@ -22,14 +20,12 @@ Each chapter is divided into two main parts - **Learning concepts and Practicing
 
 ## Step 1: Warm up
 
-The first step you need to do is to get a token which allows you to work with a separate dataset without mixing around with other people data. You will be working with this token throughout the tutorial.
+Normally, Relay requires you to set up a GraphQL server on your own, however, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about GraphQL server.
 
-// TODO Write a token setup process after we got the conclusion about the token
-
-It's time to get started! We will download our scaffolding project from GitHub and make it up and running. 
+It's time to get started! We will download our scaffolding project and make it up and running. 
 
 ```sh
-$ git clone https://github.com/learnrelay/pokedex     // Clone the Pokedex project from Github
+$ curl -LOk https://our/path/to/pokedex               // Download the Pokedex project
 $ cd pokedex                                          // Change directory to the downloaded folder
 $ npm install                                         // Install all dependencies
 $ npm start                                           // Start our server
