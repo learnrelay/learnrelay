@@ -3,7 +3,7 @@ Learn Relay
 
 * [Learn Relay](overview/cover.md)
 * Overview
-  * [Briefly Introduction](overview/intro.md)
+  * [Brief Introduction](overview/intro.md)
   * [Prerequisites](overview/prerequisites.md)
 * Introduction to Relay
   * [What is Relay?](introduction/what-is-relay.md)
