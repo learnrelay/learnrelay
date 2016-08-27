@@ -20,7 +20,23 @@ Each chapter is divided into two main parts - **Learning concepts and Practicing
 
 > The Practicing part will be always named as **Step x**, where `x` is an integer started from 1-7. While following along with the tutorial, if you got struck with any chapter, you could check out at any point of the tutorial using **git checkout -f step-x**. In addition, you could also use **git checkout -f step-x-solutions** to see the end result of that step.
 
-## Warm up
+## Step 1: Warm up
 
-> Run static React app
+The first step you need to do is to get a token which allows you to work with a separate dataset without mixing around with other people data. You will be working with this token throughout the tutorial.
 
+// TODO Write a token setup process after we got the conclusion about the token
+
+It's time to get started! We will download our scaffolding project from GitHub and make it up and running. 
+
+```sh
+$ git clone https://github.com/learnrelay/pokedex     // Clone the Pokedex project from Github
+$ cd pokedex                                          // Change directory to the downloaded folder
+$ npm install                                         // Install all dependencies
+$ npm start                                           // Start our server
+```
+
+Now, you should be able to visit http://localhost:3000 to see your beautiful Pokedex application, which looks like the following image:
+
+// TODO Insert the image of the first page
+
+Awesome! Let's move on!
