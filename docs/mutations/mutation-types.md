@@ -120,3 +120,14 @@ This type can be used to redirect to a view that depends on a newly created node
 Note that this type is rarely used and only applicable in very specific use cases.
 
 ## Step 6: Delete a Pokemon
+
+In every Pokemon's life, there comes a point where it has to go into its well deserved retirement. That's why we should add a delete feature to the `PokemonPage`!
+
+We now have the required knowledge to do so. In the branch `step-6`, we already prepared the foundation of a new `DeletePokemonMutation`. Check the list above and choose the correct mutation type to delete a single Pokemon from your Pokedex once and for all! No return back from retirement...
+
+Once you finished creating the mutation, make sure to fire it properly when the delete button is clicked on the `PokemonPage`!
+
+In summary you should
+
+* fill the new mutation `DeletePokemonMutation` with life
+* fire the `DeletePokemonMutation` when the delete button on the `PokemonPage` is clicked
