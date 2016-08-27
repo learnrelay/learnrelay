@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--color-gray-4);
@@ -11,3 +11,6 @@ a {
     text-decoration: none;
 }
 
+.vertical-line {
+  border-right: solid rgba(0,0,0,0.1) 1px; /* F26B00 */
+}

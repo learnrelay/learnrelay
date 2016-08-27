@@ -37,7 +37,8 @@
 }
 
 .content {
-    max-width: 600px;
+    max-width: 1200px;
+    overflow: hidden;
 }
 
 .content h2 {

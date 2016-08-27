@@ -58,10 +58,13 @@ export default class Markdown extends React.PureComponent<Props, {}> {
           key: props.nodeKey,
           id: slug(childrenToString(props.children), {lower: true}),
           style: {
+            fontWeight: 300,
+            color: '#F26B00',
             paddingTop: 100,
-            paddingBottom: `${padding * 0.7}rem`,
+            paddingBottom: `${padding * 0.4}rem`,
             marginTop: `calc(${padding}rem - 100px)`,
-            marginBottom: 0,
+            marginBottom: '1.6rem',
+            borderBottom: 'solid rgba(0,0,0,0.1) 1px'
           },
         }
         return React.createElement('h' + props.level, elProps, props.children)
@@ -112,7 +115,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
     })
 
     return (
-      <div className={`relative ${styles.content}`}>
+      <div className={`relative pa6 ${styles.content}`}>
         <div className='absolute right-0 gray-2 f6 tr' style={{ top: '2.3rem' }}>
           Last updated<br />
           {__LAST_UPDATE__}
