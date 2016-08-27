@@ -22,3 +22,18 @@ const pokemonRoute = {
 In this example, the route is named as PokemonRoute. It has the queries which contain the viewer fragment that has the limit parameter equal to 100000.
 
 > In the future, Relay might rename **RelayRoute** to **RelayQueryRoots** or even **RelayQueryConfig** in order to alleviate this confusion.
+
+
+## Relay.Renderer
+
+Relay.Renderer is a component that aggregates a route with a fragment, defined in a container, to perform data fetching. Consider the following example:
+
+```javascript
+<Relay.Renderer
+  Container={ListPage}                 // Relay Container
+  queryConfig={pokemonRoute}           // Our route that we defined previously
+  environment={Relay.Store}            // Default Relay store 
+/>
+````
+
+Relay.Renderer will extract the fragment from the `ListPage` container and combine it with the `pokemonRoute`. Relay now knows where the starting node  is and which data it needs to fetch. It will then send a request to a remote server and put the returned data in the specified store.
