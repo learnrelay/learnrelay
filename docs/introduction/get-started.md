@@ -14,13 +14,17 @@ In order to code along with the examples in this tutorial, here is the list of t
 
 ## How to follow along with this tutorial?
 
-Each chapter is divided into two main parts - **Learning concepts and Practicing in real world application**. The first part will walk you through the concepts of Relay along with examples. The other will then let you apply your theory knowledge with our Pokedex application! 
+Each chapter is divided into two main parts - **Learning concepts and Practicing in real world application**. The former part will walk you through the concepts of Relay along with examples. The other will then let you apply your theory knowledge with our Pokedex application! 
 
-> The Practicing part will be always named as **Step x**, where `x` is an integer started from 1-7. While following along with the tutorial, if you got struck with any chapter, you could check out at any point of the tutorial using **git checkout -f step-x**. In addition, you could also use **git checkout -f step-x-solutions** to see the end result of that step.
+> This guide is sprinkled with practice parts to let you get your hands dirty:
+
+* Whenever a section is called **Step x**, get yourself ready for some coding action! At the start of each step you should checkout the matching git branch using **git checkout -f step-x** and then you can start working on the tasks described in the step!
+* You can always use **git checkout -f step-x-solutions** to get a hint or two on how a solution could look like.
+* Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you! 
 
 ## Step 1: Warm up
 
-Normally, Relay requires you to set up a GraphQL server on your own, however, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about the GraphQL server.
+Normally, Relay requires you to set up a GraphQL server on your own. However, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about the GraphQL server.
 
 It's time to get started! We will download our scaffolding project and make it up and running. 
 
@@ -28,6 +32,7 @@ It's time to get started! We will download our scaffolding project and make it u
 $ curl -LOk https://our/path/to/pokedex.zip           // Download the Pokedex project
 $ tar -zxvf pokedex.zip                               // Unzip the downloaded file
 $ cd pokedex                                          // Change directory to the downloaded folder
+$ git checkout -f step-1
 $ npm install                                         // Install all dependencies
 $ npm start                                           // Start our server
 ```
