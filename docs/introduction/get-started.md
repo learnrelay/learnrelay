@@ -20,12 +20,13 @@ Each chapter is divided into two main parts - **Learning concepts and Practicing
 
 ## Step 1: Warm up
 
-Normally, Relay requires you to set up a GraphQL server on your own, however, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about GraphQL server.
+Normally, Relay requires you to set up a GraphQL server on your own, however, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about the GraphQL server.
 
 It's time to get started! We will download our scaffolding project and make it up and running. 
 
 ```sh
-$ curl -LOk https://our/path/to/pokedex               // Download the Pokedex project
+$ curl -LOk https://our/path/to/pokedex.zip           // Download the Pokedex project
+$ tar -zxvf pokedex.zip                               // Unzip the downloaded file
 $ cd pokedex                                          // Change directory to the downloaded folder
 $ npm install                                         // Install all dependencies
 $ npm start                                           // Start our server
