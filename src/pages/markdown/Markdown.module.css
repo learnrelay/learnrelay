@@ -1,0 +1,69 @@
+.active {
+    border-left: 6px solid var(--color-accent);
+    color: var(--color-accent) !important;
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.lvl0 {
+    padding-left: 30px;
+}
+
+.lvl1 {
+    padding-left: 40px;
+}
+
+.lvl2 {
+    padding-left: 50px;
+}
+
+.lvl3 {
+    padding-left: 60px;
+}
+
+.lvl0.active {
+    padding-left: 24px;
+}
+
+.lvl1.active {
+    padding-left: 34px;
+}
+
+.lvl2.active {
+    padding-left: 44px;
+}
+
+.lvl3.active {
+    padding-left: 54px;
+}
+
+.chat {
+    width: 335px;
+    height: 75px;
+    background: #E8E8E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat > div {
+    margin-left: 20px;
+    line-height: 1.3rem;
+}
+
+.chat > * {
+    opacity: 0.7;
+}
+
+.chat:hover > * {
+    opacity: 1;
+}
+
+.chat span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: #7ED321;
+
+}

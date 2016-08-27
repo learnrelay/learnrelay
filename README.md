@@ -1,21 +1,9 @@
-# Learn Relay
+# docs
+:notebook: Documentation for graph.cool
 
-> An interactive Relay course that walks you step by step through the concepts of Relay by creating real world application.
+## Development
 
-## Usage
-
-Clone the repository to your local directory
-
-```bash
-$ git clone https://github.com/schickling/learnrelay
-$ cd learnrelay
+```sh
+npm install
+npm start
 ```
-
-Install all dependencies & Start writing
-
-```bash
-$ npm install
-$ npm start
-```
-
-Launch your favorite web browser and go to `http://localhost:3000`. 

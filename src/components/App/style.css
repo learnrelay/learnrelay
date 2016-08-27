@@ -1,0 +1,13 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--color-gray-4);
+}
+
+a {
+    text-decoration: none;
+}
+

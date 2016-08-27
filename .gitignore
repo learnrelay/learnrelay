@@ -1,3 +1,6 @@
 .DS_Store
-_docpress
-node_modules
+*.log
+node_modules/
+.idea
+dist/
+lib/
