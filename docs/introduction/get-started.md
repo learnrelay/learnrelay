@@ -32,7 +32,7 @@ It's time to get started! We will download our scaffolding project and make it u
 $ curl -LOk https://our/path/to/pokedex.zip           // Download the Pokedex project
 $ tar -zxvf pokedex.zip                               // Unzip the downloaded file
 $ cd pokedex                                          // Change directory to the downloaded folder
-$ git checkout -f step-1
+$ git checkout -f step-1                              // Check out the first step
 $ npm install                                         // Install all dependencies
 $ npm start                                           // Start our server
 ```
