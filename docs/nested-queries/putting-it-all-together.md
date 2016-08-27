@@ -1,10 +1,16 @@
 # Putting it all together
 
-Put it together chap!
+We are now ready to fully understand a complete GraphQL with Relay!
+Queries in Relay are *hierarchical*, and once we understood the concept of nodes and edges, we also have a better understanding of the structure a query has.
 
 ## Traverse the data graph
 
-A query to fetch all Pokemons could look like this:
+We can actually think of the `viewer` as a node in our data graph that is connected with all the different data nodes.
+That's why we have different connections like `allPokemons` as fields on the `viewer` object - these connections consist of several edges, which we can query by selecting the `edges` field on the connection `allPokemons`. Then we can finally select fields on the individual `node`.
+
+Like this, we can traverse our data graph by starting at the viewer, and just follow edges that we are interested in.
+
+Putting it all together like this, we can fetch all pokemons with this query:
 
 ```graphql
 query {
