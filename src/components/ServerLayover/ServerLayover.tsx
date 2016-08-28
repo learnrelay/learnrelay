@@ -29,7 +29,7 @@ export default class ServerLayover extends React.Component<Props, State> {
     }
 
     return (
-      <div className='fixed bottom-0 w-100 bg-gray-2' style={{ height: 350 }}>
+      <div className='fixed bottom-0 w-100 bg-gray-2' style={{ height: this.state.showData ? 350 : 550 }}>
         <div className='flex justify-between bg-accent' style={{ height: 70 }}>
           <div className='flex pt2'>
             <div
