@@ -20,7 +20,7 @@ interface State {
 export default class App extends React.Component<Props, State> {
 
   state = {
-    showLayover: false,
+    showLayover: true,
     endpoint: 'https://api.graph.cool/relay/v1/cis4fgtjc0edy0143nj3dfuj9',
   }
 

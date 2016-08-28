@@ -1,10 +1,13 @@
 declare module 'react-prism'
 declare module 'react-router'
+declare module 'react-relay'
+declare module 'react-router-relay'
 declare module 'react-router-scroll'
 declare module 'commonmark-react-renderer'
 declare module 'slug'
 declare module 'smooch'
 declare module 'graphiql'
+declare module 'react-copy-to-clipboard'
 
 declare function require(name: string): any
 

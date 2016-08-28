@@ -1,6 +1,11 @@
 {
   "name": "learnrelay",
   "private": true,
+  "graphql": {
+    "request": {
+      "url": "https://api.graph.cool/simple/v1/cisegq36a0qxy0118mae69n36"
+    }
+  },
   "dependencies": {
     "@types/commonmark": "^0.22.28",
     "@types/lodash": "^4.14.31",
@@ -11,11 +16,14 @@
     "graphiql": "^0.7.5",
     "graphql": "^0.7.0",
     "lodash": "^4.15.0",
-    "react": "^15.3.0",
+    "react": "^15.3.1",
     "react-addons-pure-render-mixin": "^15.3.1",
+    "react-copy-to-clipboard": "^4.2.3",
     "react-dom": "^15.3.0",
     "react-prism": "^3.2.1",
+    "react-relay": "^0.9.2",
     "react-router": "^2.6.1",
+    "react-router-relay": "^0.13.4",
     "react-router-scroll": "^0.3.1",
     "slug": "^0.9.1",
     "whatwg-fetch": "^1.0.0"

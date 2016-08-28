@@ -7,6 +7,7 @@ interface Props {
   height?: number
   className?: string
   rotate?: number
+  style?: any
   [key: string]: any
 }
 
@@ -32,11 +33,11 @@ export default class Icon extends React.Component<Props, {}> {
       <i
         {...restProps}
         className={this.props.className}
-        style={{
+        style={Object.assign({},{
           transform: `rotate(${rotate}deg)`,
           WebkitTransform: `rotate(${rotate}deg)`,
           display: 'flex',
-        }}
+        }, this.props.style)}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     )

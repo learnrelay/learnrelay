@@ -1,5 +1,8 @@
 import * as React from 'react'
 import * as GraphiQL from 'graphiql'
+import * as CopyToClipboard from 'react-copy-to-clipboard'
+import * as Relay from 'react-relay'
+import Icon from '../Icon/Icon'
 
 require('graphiql/graphiql.css')
 
@@ -12,13 +15,14 @@ interface State {
   showData: boolean
 }
 
-export default class ServerLayover extends React.Component<Props, State> {
+class ServerLayover extends React.Component<Props, State> {
 
   state = {
     showData: false,
   }
 
   render() {
+    console.log(this.props)
     const graphQLFetcher = (graphQLParams) => {
       return fetch(this.props.endpoint, {
         method: 'post',
@@ -45,9 +49,21 @@ export default class ServerLayover extends React.Component<Props, State> {
               GraphiQL
             </div>
           </div>
-          <div className='flex p3'>
-            API Endpoint
-            <strong>{this.props.endpoint}</strong>
+          <div className='flex items-center p3'>
+            <div className='o-30' style={{marginRight: 12}}>API Endpoint</div>
+            <div className='flex items-center'>
+              <CopyToClipboard text={this.props.endpoint}>
+                <Icon src={require('../../assets/icons/copy.svg')}
+                  className='dim'
+                  style={{
+                    padding: '6px',
+                    background: 'rgba(0,0,0,0.1)',
+                    cursor: 'pointer',
+                  }}
+                />
+              </CopyToClipboard>
+              <div className='o-50' style={{background: 'rgba(0,0,0,0.05)', padding: '6px 12px'}}>{this.props.endpoint}</div>
+            </div>
             <div
               className='white f2 pointer'
               onClick={this.props.close}
@@ -60,9 +76,48 @@ export default class ServerLayover extends React.Component<Props, State> {
           <div>Aaaaaall the data.</div>
         }
         {!this.state.showData &&
-          <GraphiQL fetcher={graphQLFetcher} />
+          <div style={{height: 480}}>
+            <GraphiQL fetcher={graphQLFetcher} />
+          </div>
         }
       </div>
+    )
+  }
+}
+
+let LayoverContainer = Relay.createContainer(ServerLayover, {
+  fragments: {
+    viewer: () => Relay.QL`
+      fragment on Viewer {
+        id
+      }
+    `,
+  }
+})
+
+export default class LayoverRenderer extends React.Component<Props, {}> {
+
+  constructor(props) {
+    super(props)
+
+    Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer(this.props.endpoint))
+  }
+
+  render() {
+    return (
+      <Relay.Renderer
+        {...this.props}
+        Container={LayoverContainer}
+        environment={Relay.Store}
+        queryConfig={{
+          name: '',
+          queries: {viewer: () => Relay.QL`query { viewer }`},
+          params: {},
+        }}
+        render={({done, error, props, retry, stale}) => {
+          return <LayoverContainer {...this.props} />
+        }}
+      />
     )
   }
 }
