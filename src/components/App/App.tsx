@@ -2,6 +2,7 @@ import * as React from 'react'
 import {Link} from 'react-router'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
+import {chapters} from '../../utils/content'
 
 require('./style.css')
 
@@ -34,29 +35,18 @@ export default class App extends React.Component<Props, State> {
             /></span>
             Learn Relay
           </h2>
-          <span className='fw6 pb3 black'>
-            <span className='mr3 o-20 bold'>1</span> Overview
-          </span>
-          <Link className='pb3 fw3 black' to='/overview/intro'>
-            <span className='mr3 fw5 o-20 bold'>✓</span> Intro
-          </Link>
-          <Link className='pb3 fw3 black' to='/overview/prerequisites'>
-            <span className='mr3 fw5 o-20 bold'>✓</span> Prerequisites
-          </Link>
-
-          {
-            // Introduction to relay
-            // <Link to='/introduction/what-is-relay'>What is Relay?</Link>
-            // <Link to='/introduction/get-started'>Get Started</Link>
-            // Queries
-            // <Link to='/introduction/get-started'>What is a query</Link>
-            // <Link to='/introduction/get-started'>Containers</Link>
-            //
-            // Connections
-            // Routes
-            // Mutations
-            // Go Furthrer
-          }
+          {chapters.map((chapter, index) => (
+            <div className='flex flex-column'>
+              <span className='fw6 pb3 black'>
+                <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
+              </span>
+              {chapter.subchapters.map((subchapter) => (
+                <Link className='pb3 fw3 black' to={`/${chapter.alias}/${subchapter.alias}`}>
+                  <span className='mr3 fw5 o-20 bold'>✓</span> {subchapter.title}
+                </Link>
+              ))}
+            </div>
+          ))}
         </div>
         <div className='w-80'>
           {this.props.children}
