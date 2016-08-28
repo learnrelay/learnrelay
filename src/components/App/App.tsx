@@ -187,7 +187,7 @@ class App extends React.Component<Props, State> {
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
     window.localStorage.setItem('graphcool_endpoint', endpoint)
     this.setState({endpoint} as State)
-    // this.props.router.replace(window.location.pathname)
+    this.props.router.replace(window.location.pathname)
   }
 }
 
