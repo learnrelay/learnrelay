@@ -71,13 +71,13 @@ export default class App extends React.Component<Props, State> {
                   to={`/${chapter.alias}/${subchapter.alias}`}
                   key={subchapter.alias}
                 >
-                  <span className='mr3 fw5 o-20 bold'>✓</span> {subchapter.title}
+                  <span className='mr3 fw5 green'>✓</span> {subchapter.title}
                   {chapter.alias === this.props.params.chapter &&
                   subchapter.alias === this.props.params.subchapter &&
                   headingsTree.map((h) => (
-                    <div key={h.title!}>
-                      <span className='ml4 mr2 fw5 bold o-20 black rotate-180 dib'>¬</span>
-                      {h.title}
+                    <div className='flex flex-row pt2 flex-start' key={h.title!}>
+                      <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
+                      <div>{h.title}</div>
                     </div>
                   ))}
 
@@ -92,7 +92,7 @@ export default class App extends React.Component<Props, State> {
             </div>
           ))}
         </div>
-        <div className='w-80'>
+        <div className='w-80 self-start'>
           {this.props.children}
         </div>
         {this.state.showLayover &&

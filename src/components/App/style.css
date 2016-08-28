@@ -47,3 +47,8 @@ a {
 .font-small {
    font-size: 0.9rem;
 }
+
+.indent-char-dimensions {
+  min-width: 8px;
+  max-height: 1rem;
+}
