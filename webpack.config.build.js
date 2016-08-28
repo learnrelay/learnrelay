@@ -18,10 +18,6 @@ module.exports = {
       exclude: /node_modules/,
     }],
     loaders: [{
-      test: /\.ts(x?)$/,
-      exclude: /node_modules/,
-      loader: 'ts',
-    }, {
       test: /module\.css/,
       loader: 'style!css?modules',
     }, {

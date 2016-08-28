@@ -45,9 +45,9 @@ export default class Markdown extends React.PureComponent<Props, {}> {
           style: {
             fontWeight: 300,
             color: '#F26B00',
-            paddingTop: 100,
+            paddingTop: 30,
             paddingBottom: `${padding * 0.4}rem`,
-            marginTop: `calc(${padding}rem - 100px)`,
+            marginTop: `calc(${padding}rem - 30px)`,
             marginBottom: '1.6rem',
             borderBottom: 'solid rgba(0,0,0,0.1) 1px',
           },

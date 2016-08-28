@@ -4,6 +4,8 @@ import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
+import {slug} from '../../utils/string'
+import {hasRead} from '../../utils/viewtracker'
 
 require('./style.css')
 
@@ -19,13 +21,17 @@ interface State {
 
 export default class App extends React.Component<Props, State> {
 
-  static childContextTypes = {
-    endpoint: React.PropTypes.string,
+  constructor(props: Props) {
+    super(props)
+
+    this.state = {
+      showLayover: false,
+      endpoint: window.localStorage.getItem('graphcool_endpoint'),
+    }
   }
 
-  state = {
-    showLayover: true,
-    endpoint: 'https://api.graph.cool/relay/v1/cis4fgtjc0edy0143nj3dfuj9',
+  static childContextTypes = {
+    endpoint: React.PropTypes.string,
   }
 
   getChildContext() {
@@ -36,7 +42,7 @@ export default class App extends React.Component<Props, State> {
 
   render() {
     const currentSubchapterAlias = this.props.params.subchapter
-    const ast = subchapters.find((s) => s.alias === currentSubchapterAlias).ast()
+    const ast = subchapters.find((s) => s.alias === currentSubchapterAlias)!.ast()
     const headings = collectHeadings(ast)
     const headingsTree = buildHeadingsTree(headings)
 
@@ -70,27 +76,36 @@ export default class App extends React.Component<Props, State> {
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
                 {chapter.subchapters.map((subchapter) => (
-                  <Link
-                    className='pb3 fw3 black'
-                    to={`/${chapter.alias}/${subchapter.alias}`}
+                  <div
+                    className='pb3'
                     key={subchapter.alias}
                   >
-                    <span className='mr3 fw5 green'>✓</span> {subchapter.title}
+                    <span className='mr3 fw5 green'>{hasRead(subchapter.alias) ? '✓' : ''}</span>
+                    <Link
+                      to={`/${chapter.alias}/${subchapter.alias}`}
+                      className='black fw3'
+                    >
+                      {subchapter.title}
+                    </Link>
                     {chapter.alias === this.props.params.chapter &&
                     subchapter.alias === this.props.params.subchapter &&
                     headingsTree.map((h) => (
-                      <div className='flex flex-row pt2 flex-start' key={h.title!}>
+                      <a
+                        key={h.title!}
+                        className='flex flex-row pt2 flex-start black'
+                        href={`#${slug(h.title!)}`}
+                      >
                         <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
                         <div>{h.title}</div>
-                      </div>
+                      </a>
                     ))}
-                  </Link>
+                  </div>
                 ))}
               </div>
             ))}
           </div>
           <div
-            className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-white pointer'
+            className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer'
             style={{ width: 269, height: 90 }}
             onClick={() => this.setState({ showLayover: true } as State)}
           >
@@ -99,28 +114,29 @@ export default class App extends React.Component<Props, State> {
               width={22}
               height={24}
               className='pt1'
+              color='#fff'
             />
-            <span className='accent f3 pl2'>GraphQL Server</span>
+            <span className='white f3 pl2'>GraphQL Server</span>
           </div>
         </div>
         <div className='w-80'>
           {this.props.children}
           {previousSubchapter &&
-          <div className='fixed bottom-0 left-0 bg-gray'>
-            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+          <div className='fixed bottom-2 pa3 bg-gray'>
+            <Link className='white' to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               {previousSubchapter.title}
             </Link>
           </div>
           }
           {nextSubchapter &&
-          <div className='fixed bottom-0 right-0 bg-accent'>
-            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+          <div className='fixed bottom-2 right-2 pa3 bg-accent'>
+            <Link className='white' to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
               {nextSubchapter.title}
             </Link>
           </div>
           }
         </div>
-        {this.state.showLayover &&
+        {this.state.showLayover && this.state.endpoint &&
         <ServerLayover
           endpoint={this.state.endpoint}
           close={() => this.setState({ showLayover: false } as State)}

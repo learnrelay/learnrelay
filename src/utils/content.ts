@@ -57,9 +57,6 @@ export const chapters: Chapter[] = [
     title: 'Containers and Fragments',
     alias: 'containers-fragments',
   }, {
-    title: 'Creating a Relay Containers',
-    alias: 'creating-a-relay-containers',
-  }, {
     title: 'Working with Fragments',
     alias: 'working-with-fragments',
   }, {
@@ -70,10 +67,10 @@ export const chapters: Chapter[] = [
     title: 'Terminology',
     alias: 'terminology',
   }, {
-    title: 'Putting it all togethers',
-    alias: 'putting-it-all-togethers',
+    title: 'Putting it all together',
+    alias: 'putting-it-all-together',
   }, {
-    title: 'Cursors and Paginations',
+    title: 'Cursors and Pagination',
     alias: 'cursors-pagination',
   }]),
   new Chapter('Routes', 'routes', [{
@@ -94,7 +91,7 @@ export const chapters: Chapter[] = [
     alias: 'mutation-types',
   }, {
     title: 'Optimistic Updates',
-    alias: 'optimistic-update',
+    alias: 'optimistic-updates',
   }]),
   new Chapter('Go further', 'go-further', [{
     title: 'Wrapup',

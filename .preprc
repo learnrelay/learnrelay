@@ -1,11 +1,5 @@
 {
   "routes": [
-    "/",
-    "/guides",
-    "/reference",
-    "/reference/platform",
-    "/reference/simple-api",
-    "/reference/relay-api",
-    "/examples"
+    "/"
   ]
 }

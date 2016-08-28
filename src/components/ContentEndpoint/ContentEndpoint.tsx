@@ -29,7 +29,9 @@ export default class ContentEndpoint extends React.Component<Props, State> {
         }
         {!this.context.endpoint &&
         <div>
-          Get GraphQL Endpoint
+          <a href='https://github.com/login/oauth/authorize?client_id=dcf24b1838da72f6259e&scope=user:email'>
+            Get GraphQL Endpoint
+          </a>
         </div>
         }
       </div>
