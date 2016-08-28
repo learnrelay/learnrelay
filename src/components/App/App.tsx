@@ -45,7 +45,10 @@ export default class App extends React.Component<Props, State> {
 
     return (
       <div className='flex row-reverse'>
-        <div className='pa4 flex flex-column vertical-line width-270 font-small height-100 fixed left-0 h-100 overflow-y-scroll'>
+        <div
+          className='pa4 pb6 flex flex-column vertical-line font-small fixed left-0 h-100 overflow-y-scroll'
+          style={{ width: 270 }}
+        >
           <div>
             <h2 className='fw3 pb4'>
               <span className='dib mr3 mrl-1'><Icon
@@ -86,23 +89,28 @@ export default class App extends React.Component<Props, State> {
               </div>
             ))}
           </div>
-          <div className="absolute bottom-0 flex flex-row mh1 mb4 fw3 item-center">
+          <div
+            className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-white pointer'
+            style={{ width: 269, height: 90 }}
+            onClick={() => this.setState({ showLayover: true } as State)}
+          >
             <Icon
               src={require('../../assets/icons/graph-logo.svg')}
               width={22}
               height={24}
               className='pt1'
-            /><span className='accent mh2 f3 pl2'>GraphQL Server</span>
+            />
+            <span className='accent f3 pl2'>GraphQL Server</span>
           </div>
         </div>
         <div className='w-80'>
           {this.props.children}
           {previousSubchapter &&
-            <div className='fixed bottom-0 left-0 bg-gray'>
-              <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
-                {previousSubchapter.title}
-              </Link>
-            </div>
+          <div className='fixed bottom-0 left-0 bg-gray'>
+            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+              {previousSubchapter.title}
+            </Link>
+          </div>
           }
           {nextSubchapter &&
           <div className='fixed bottom-0 right-0 bg-accent'>
