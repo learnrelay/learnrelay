@@ -1,13 +1,14 @@
 import * as React from 'react' // tslint:disable-line
-import {Route, Redirect} from 'react-router'
-import MarkdownPage from './pages/markdown/Markdown'
+import {Route} from 'react-router'
+import MarkdownPage from './pages/markdown/MarkdownPage'
+import LandingPage from './pages/landing/LandingPage'
 import App from './components/App/App'
 import {subchapters} from './utils/content'
 import {markAsRead} from './utils/viewtracker'
 
 export default (
   <Route component={App}>
-    <Redirect path='/' to='/overview/intro'/>
+    <Route path='/' component={LandingPage}/>
     <Route
       path='/:chapter/:subchapter'
       component={({ params }) => (

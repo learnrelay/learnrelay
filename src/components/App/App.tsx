@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Link} from 'react-router'
+import {Link, withRouter} from 'react-router'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
@@ -9,8 +9,22 @@ import {hasRead} from '../../utils/viewtracker'
 
 require('./style.css')
 
+function getParameterByName(name: string): string | null {
+  name = name.replace(/[\[\]]/g, '\\$&')
+  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
+  const results = regex.exec(window.location.href)
+  if (!results) {
+    return null
+  }
+  if (!results[2]) {
+    return ''
+  }
+  return decodeURIComponent(results[2].replace(/\+/g, ' '))
+}
+
 interface Props {
   children: React.ReactElement<any>
+  router: any
   params: any
 }
 
@@ -19,19 +33,24 @@ interface State {
   endpoint: string | null
 }
 
-export default class App extends React.Component<Props, State> {
+class App extends React.Component<Props, State> {
+
+  static childContextTypes = {
+    endpoint: React.PropTypes.string,
+  }
 
   constructor(props: Props) {
     super(props)
+
+    const code = getParameterByName('code')
+    if (code) {
+      this.fetchEndpoint(code)
+    }
 
     this.state = {
       showLayover: false,
       endpoint: window.localStorage.getItem('graphcool_endpoint'),
     }
-  }
-
-  static childContextTypes = {
-    endpoint: React.PropTypes.string,
   }
 
   getChildContext() {
@@ -42,9 +61,9 @@ export default class App extends React.Component<Props, State> {
 
   render() {
     const currentSubchapterAlias = this.props.params.subchapter
-    const ast = subchapters.find((s) => s.alias === currentSubchapterAlias)!.ast()
-    const headings = collectHeadings(ast)
-    const headingsTree = buildHeadingsTree(headings)
+    const currentSubchapter = subchapters.find((s) => s.alias === currentSubchapterAlias)
+
+    const headingsTree = currentSubchapter ? buildHeadingsTree(collectHeadings(currentSubchapter!.ast())) : []
 
     const nextSubchapter = neighboorSubchapter(currentSubchapterAlias, true)
     const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
@@ -145,4 +164,31 @@ export default class App extends React.Component<Props, State> {
       </div>
     )
   }
+
+  private async fetchEndpoint(code: string) {
+    const response = await fetch('https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({code}),
+    })
+
+    if (!response.ok) {
+      throw Error(response.statusText)
+    }
+    const body = await response.json()
+
+    if (body.errorMessage) {
+      throw Error(response.statusText)
+    }
+
+    const {projectId} = body
+    const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
+    window.localStorage.setItem('graphcool_endpoint', endpoint)
+    this.setState({endpoint} as State)
+    // this.props.router.replace(window.location.pathname)
+  }
 }
+
+export default withRouter(App)

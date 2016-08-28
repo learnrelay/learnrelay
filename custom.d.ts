@@ -25,10 +25,6 @@ declare var __SEGMENT_TOKEN__: string
 
 declare module 'react-relay' {
 
-  interface Renderer {
-
-  }
-
   // fragments are a hash of functions
   interface Fragments {
     [query: string]: ((variables?: RelayVariables) => string)
@@ -75,7 +71,7 @@ declare module 'react-relay' {
   }
 
   class DefaultNetworkLayer implements RelayNetworkLayer {
-    constructor(host: string, options: any)
+    constructor(host: string, options?: any)
     supports(...options: string[]): boolean
   }
   interface RelayQuery {
@@ -118,6 +114,7 @@ declare module 'react-relay' {
   }
 
   var Store: Store
+  var Renderer: any
 
   class RootContainer extends React.Component<RootContainerProps,any> {}
 

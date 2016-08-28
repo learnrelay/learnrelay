@@ -22,6 +22,8 @@ Each chapter is divided into two main parts - **Learning concepts and Practicing
 * You can always use **git checkout -f step-x-solutions** to get a hint or two on how a solution could look like.
 * Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you! 
 
+<!-- __INJECT_GRAPHQL_ENDPOINT__ -->
+
 ## Step 1: Warm up
 
 Normally, Relay requires you to set up a GraphQL server on your own. However, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about the GraphQL server.
