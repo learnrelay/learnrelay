@@ -1,27 +1,13 @@
 import * as React from 'react'
-import {Parser, Node} from 'commonmark'
+import {Node} from 'commonmark'
 import Markdown from '../../components/Markdown/Markdown'
 
-const parser = new Parser()
-
 interface Props {
-  children: Element
   params: any
-}
-
-interface State {
   ast: Node
 }
 
-export default class MarkdownPage extends React.Component<Props, State> {
-
-  constructor(props: Props) {
-    super(props)
-
-    this.state = {
-      ast: parser.parse(require(`../../../content/${props.params.chapter}/${props.params.subchapter}.md`)),
-    }
-  }
+export default class MarkdownPage extends React.Component<Props, {}> {
 
   componentDidMount() {
     if (window.location.hash !== '') {
@@ -32,26 +18,10 @@ export default class MarkdownPage extends React.Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps(props) {
-    if (
-      props.params.chapter !== this.props.params.chapter ||
-      props.params.subchapter !== this.props.params.subchapter
-    ) {
-      this.setState({
-        ast: parser.parse(require(`../../../content/${props.params.chapter}/${props.params.subchapter}.md`)),
-      })
-    }
-  }
-
   render() {
     return (
-      <div
-        className='flex'
-      >
-        <Markdown
-          ast={this.state.ast}
-          documentTitle={'Some'}
-        />
+      <div>
+        <Markdown ast={this.props.ast}/>
       </div>
     )
   }

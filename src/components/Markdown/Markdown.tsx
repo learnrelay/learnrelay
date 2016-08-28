@@ -9,7 +9,6 @@ const styles: any = require('./Markdown.module.css')
 
 interface Props {
   ast: Node
-  documentTitle: string
 }
 
 function childrenToString(children): string {

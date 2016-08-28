@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Link} from 'react-router'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 
 require('./style.css')
@@ -35,13 +35,13 @@ export default class App extends React.Component<Props, State> {
   }
 
   render() {
-    const ast = chapters
-      .find((c) => c.alias === this.props.params.chapter)
-      .subchapters
-      .find((s) => s.alias === this.props.params.subchapter)
-      .ast()
+    const currentSubchapterAlias = this.props.params.subchapter
+    const ast = subchapters.find((s) => s.alias === currentSubchapterAlias).ast()
     const headings = collectHeadings(ast)
     const headingsTree = buildHeadingsTree(headings)
+
+    const nextSubchapter = neighboorSubchapter(currentSubchapterAlias, true)
+    const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
 
     return (
       <div className='flex'>
@@ -73,7 +73,7 @@ export default class App extends React.Component<Props, State> {
                 >
                   <span className='mr3 fw5 o-20 bold'>✓</span> {subchapter.title}
                   {chapter.alias === this.props.params.chapter &&
-                  subchapter.alias === this.props.params.subchapter &&
+                  subchapter.alias === currentSubchapterAlias &&
                   headingsTree.map((h) => (
                     <div key={h.title!}>{h.title}</div>
                   ))}
@@ -84,6 +84,20 @@ export default class App extends React.Component<Props, State> {
         </div>
         <div className='w-80'>
           {this.props.children}
+          {previousSubchapter &&
+            <div className='fixed bottom-0 left-0 bg-gray'>
+              <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+                {previousSubchapter.title}
+              </Link>
+            </div>
+          }
+          {nextSubchapter &&
+          <div className='fixed bottom-0 right-0 bg-accent'>
+            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+              {nextSubchapter.title}
+            </Link>
+          </div>
+          }
         </div>
         {this.state.showLayover &&
         <ServerLayover
