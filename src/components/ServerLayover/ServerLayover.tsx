@@ -34,17 +34,17 @@ class ServerLayover extends React.Component<Props, State> {
     }
 
     return (
-      <div className='fixed bottom-0 w-100 bg-gray-2' style={{ height: this.state.showData ? 350 : 550 }}>
+      <div className='fixed bottom-0 w-100 bg-gray-2' style={{ height: this.state.showData ? 350 : 550, transition: 'height 0.5s ease' }}>
         <div className='flex justify-between bg-accent' style={{ height: 70 }}>
           <div className='flex pt2'>
             <div
-              className={`h-100 f4 flex items-center ph3 mh2 ${this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
+              className={`h-100 f4 flex items-center ph3 mh2 pointer ${this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
               onClick={() => this.setState({ showData: true } as State)}
             >
               Data Browser
             </div>
             <div
-              className={`h-100 f4 flex items-center ph3 mh2 ${!this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
+              className={`h-100 f4 flex items-center ph3 mh2 pointer ${!this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
               onClick={() => this.setState({ showData: false } as State)}
             >
               GraphiQL
