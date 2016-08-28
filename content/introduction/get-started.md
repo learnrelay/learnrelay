@@ -20,7 +20,9 @@ Each chapter is divided into two main parts - **Learning concepts and Practicing
 
 * Whenever a section is called **Step x**, get yourself ready for some coding action! At the start of each step you should checkout the matching git branch using **git checkout -f step-x** and then you can start working on the tasks described in the step!
 * You can always use **git checkout -f step-x-solutions** to get a hint or two on how a solution could look like.
-* Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you! 
+* Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you!
+
+<!-- __INJECT_GRAPHQL_ENDPOINT__ -->
 
 ## Step 1: Warm up
 

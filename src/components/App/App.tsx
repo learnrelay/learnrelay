@@ -14,14 +14,24 @@ interface Props {
 
 interface State {
   showLayover: boolean
-  endpoint: string
+  endpoint: string | null
 }
 
 export default class App extends React.Component<Props, State> {
 
+  static childContextTypes = {
+    endpoint: React.PropTypes.string,
+  }
+
   state = {
     showLayover: true,
     endpoint: 'https://api.graph.cool/relay/v1/cis4fgtjc0edy0143nj3dfuj9',
+  }
+
+  getChildContext() {
+    return {
+      endpoint: this.state.endpoint,
+    }
   }
 
   render() {
@@ -35,7 +45,7 @@ export default class App extends React.Component<Props, State> {
 
     return (
       <div className='flex'>
-        <div className='w-20 pa4 flex flex-column vertical-line min-width-240'>
+        <div className='w-20 pa4 flex flex-column vertical-line min-width-270 font-small'>
           <h2 className='fw3 pb4'>
             <span className='dib mr3 mrl-1'><Icon
               src={require('../../assets/icons/logo.svg')}
@@ -61,18 +71,28 @@ export default class App extends React.Component<Props, State> {
                   to={`/${chapter.alias}/${subchapter.alias}`}
                   key={subchapter.alias}
                 >
-                  <span className='mr3 fw5 o-20 bold'>✓</span> {subchapter.title}
+                  <span className='mr3 fw5 green'>✓</span> {subchapter.title}
                   {chapter.alias === this.props.params.chapter &&
                   subchapter.alias === this.props.params.subchapter &&
                   headingsTree.map((h) => (
-                    <div key={h.title!}>{h.title}</div>
+                    <div className='flex flex-row pt2 flex-start' key={h.title!}>
+                      <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
+                      <div>{h.title}</div>
+                    </div>
                   ))}
+
+                  {
+                    //<span className='mr3 fw5 bold green'>✓</span> {subchapter.title}
+                    //<span className='ml4 mr2 fw5 bold o-20 black rotate-180 dib'>¬</span> {subchapter.title}
+                  }
+
+
                 </Link>
               ))}
             </div>
           ))}
         </div>
-        <div className='w-80'>
+        <div className='w-80 self-start'>
           {this.props.children}
         </div>
         {this.state.showLayover &&
