@@ -40,8 +40,8 @@ export const chapters: Chapter[] = [
     title: 'Brief Introduction',
     alias: 'intro',
   }, {
-    title: 'Prerequisits',
-    alias: 'prerequisits',
+    title: 'Prerequisites',
+    alias: 'prerequisites',
   }]),
   new Chapter('Introduction To Relay', 'introduction', [{
     title: 'What is Relay?',

@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters} from '../../utils/content'
+import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 
 require('./style.css')
 
@@ -19,11 +20,19 @@ interface State {
 export default class App extends React.Component<Props, State> {
 
   state = {
-    showLayover: true,
+    showLayover: false,
     endpoint: 'https://api.graph.cool/relay/v1/cis4fgtjc0edy0143nj3dfuj9',
   }
 
   render() {
+    const ast = chapters
+      .find((c) => c.alias === this.props.params.chapter)
+      .subchapters
+      .find((s) => s.alias === this.props.params.subchapter)
+      .ast()
+    const headings = collectHeadings(ast)
+    const headingsTree = buildHeadingsTree(headings)
+
     return (
       <div className='flex'>
         <div className='w-20 pa4 flex flex-column vertical-line min-width-240'>
@@ -36,13 +45,28 @@ export default class App extends React.Component<Props, State> {
             Learn Relay
           </h2>
           {chapters.map((chapter, index) => (
-            <div className='flex flex-column'>
-              <span className='fw6 pb3 black'>
+            <div
+              className='flex flex-column'
+              key={chapter.alias}
+            >
+              <Link
+                className='fw6 pb3 black'
+                to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
+              >
                 <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
-              </span>
+              </Link>
               {chapter.subchapters.map((subchapter) => (
-                <Link className='pb3 fw3 black' to={`/${chapter.alias}/${subchapter.alias}`}>
+                <Link
+                  className='pb3 fw3 black'
+                  to={`/${chapter.alias}/${subchapter.alias}`}
+                  key={subchapter.alias}
+                >
                   <span className='mr3 fw5 o-20 bold'>✓</span> {subchapter.title}
+                  {chapter.alias === this.props.params.chapter &&
+                  subchapter.alias === this.props.params.subchapter &&
+                  headingsTree.map((h) => (
+                    <div key={h.title!}>{h.title}</div>
+                  ))}
                 </Link>
               ))}
             </div>
