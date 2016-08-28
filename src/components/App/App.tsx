@@ -14,14 +14,24 @@ interface Props {
 
 interface State {
   showLayover: boolean
-  endpoint: string
+  endpoint: string | null
 }
 
 export default class App extends React.Component<Props, State> {
 
+  static childContextTypes = {
+    endpoint: React.PropTypes.string,
+  }
+
   state = {
     showLayover: false,
     endpoint: 'https://api.graph.cool/relay/v1/cis4fgtjc0edy0143nj3dfuj9',
+  }
+
+  getChildContext() {
+    return {
+      endpoint: this.state.endpoint,
+    }
   }
 
   render() {

@@ -32,7 +32,7 @@ export function collectHeadings(ast: Node): Heading[] {
   let e = walker.next() as any
   let headings: Heading[] = []
   while (e !== null) {
-    if (e.entering && e.node._type === 'Heading') {
+    if (e.entering && e.node._type === 'heading') {
       let title = ''
       let next = e.node._firstChild
       while (next !== null) {

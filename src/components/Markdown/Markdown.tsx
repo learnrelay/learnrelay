@@ -3,6 +3,7 @@ import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as slug from 'slug'
 import {PrismCode} from 'react-prism'
+import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -29,22 +30,7 @@ function childrenToString(children): string {
 
 export default class Markdown extends React.PureComponent<Props, {}> {
 
-  _openChat(message: string) {
-    analytics.track('documenation help: open chat', {message})
-
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
-
-    if (!window.localStorage.getItem('chat_initiated')) {
-      Smooch.sendMessage(`Hey! Can you help me with this part of the ${this.props.documentTitle} docs?`)
-        .then(() => Smooch.sendMessage(message.substr(0, 200) + '...'))
-        .then(() => window.localStorage.setItem('chat_initiated', 'true'))
-    }
-  }
-
   render() {
-    const context = this
     const renderers = {
       Heading (props) {
         const padding = {
@@ -69,26 +55,6 @@ export default class Markdown extends React.PureComponent<Props, {}> {
         }
         return React.createElement('h' + props.level, elProps, props.children)
       },
-      Paragraph (props) {
-        return (
-          <div className={styles.paragraph}>
-            <p>{props.children}</p>
-            <div className={styles.helpWrapper}>
-              <div className={styles.help} onClick={() => context._openChat(childrenToString(props.children))}>?</div>
-            </div>
-          </div>
-        )
-      },
-      List (props) {
-        return (
-          <div className={styles.paragraph}>
-            {ReactRenderer.renderers.List(props)}
-            <div className={styles.helpWrapper}>
-              <div className={styles.help} onClick={() => context._openChat(childrenToString(props.children))}>?</div>
-            </div>
-          </div>
-        )
-      },
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
         return (
@@ -97,6 +63,19 @@ export default class Markdown extends React.PureComponent<Props, {}> {
               {props.literal}
             </PrismCode>
           </pre>
+        )
+      },
+      HtmlBlock (props) {
+        if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
+          return (
+            <ContentEndpoint />
+          )
+        }
+
+        return (
+          <div>
+            {ReactRenderer.renderers.HtmlBlock(props)}
+          </div>
         )
       },
     }
