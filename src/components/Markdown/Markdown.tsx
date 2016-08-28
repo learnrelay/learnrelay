@@ -29,8 +29,8 @@ function childrenToString(children): string {
 
 export default class Markdown extends React.PureComponent<Props, {}> {
 
-  _openChat (message: string) {
-    analytics.track('documenation help: open chat', { message })
+  _openChat(message: string) {
+    analytics.track('documenation help: open chat', {message})
 
     if (!Smooch.isOpened()) {
       Smooch.open()

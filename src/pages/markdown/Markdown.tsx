@@ -15,7 +15,7 @@ interface State {
 
 export default class MarkdownPage extends React.Component<Props, State> {
 
-  constructor (props: Props) {
+  constructor(props: Props) {
     super(props)
 
     this.state = {
@@ -29,6 +29,17 @@ export default class MarkdownPage extends React.Component<Props, State> {
       if (el) {
         setTimeout(() => window.scrollTo(0, el.offsetTop), 100)
       }
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (
+      props.params.chapter !== this.props.params.chapter ||
+      props.params.subchapter !== this.props.params.subchapter
+    ) {
+      this.setState({
+        ast: parser.parse(require(`../../../content/${props.params.chapter}/${props.params.subchapter}.md`)),
+      })
     }
   }
 

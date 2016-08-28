@@ -12,5 +12,23 @@ a {
 }
 
 .vertical-line {
-  border-right: solid rgba(0,0,0,0.1) 1px; /* F26B00 */
+  border-right: solid rgba(0,0,0,0.1) 1px;
+}
+
+:root {
+    --color-accent: #F26B00;
+    --color-gray-2: #FAFAFA;
+}
+
+.bg-accent {
+    background: var(--color-accent);
+}
+
+
+.bg-gray-2 {
+    background: var(--color-gray-2);
+}
+
+.accent {
+    color: var(--color-accent);
 }

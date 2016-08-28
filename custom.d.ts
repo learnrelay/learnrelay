@@ -4,8 +4,11 @@ declare module 'react-router-scroll'
 declare module 'commonmark-react-renderer'
 declare module 'slug'
 declare module 'smooch'
+declare module 'graphiql'
 
 declare function require(name: string): any
+
+declare var fetch: any
 
 declare interface Window {
   analytics: any

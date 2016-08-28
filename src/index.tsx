@@ -9,32 +9,10 @@ import './polyfill'
 
 loadAnalytics()
 
-Smooch.init({appToken: __SMOOCH_TOKEN__})
-
 browserHistory.listen(({pathname}) => {
   analytics.page()
   analytics.track(`view documenation: ${pathname}`)
 })
-
-function getCookie(k): string | null {
-  return (document.cookie.match('(^|; )' + k + '=([^;]*)') || 0)[2]
-}
-
-const clientId = getCookie('graphcool_client_id')
-if (clientId) {
-  analytics.identify(
-    clientId,
-    {
-      'Product': 'Documentation',
-    },
-    {
-      integrations: {
-        'All': false,
-        'Mixpanel': true,
-      },
-    }
-  )
-}
 
 ReactDOM.render(
   (

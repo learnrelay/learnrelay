@@ -8,6 +8,8 @@
     "@types/react-dom": "^0.14.14",
     "commonmark": "^0.24.0",
     "commonmark-react-renderer": "^4.2.4",
+    "graphiql": "^0.7.5",
+    "graphql": "^0.7.0",
     "lodash": "^4.15.0",
     "react": "^15.3.0",
     "react-addons-pure-render-mixin": "^15.3.1",
@@ -15,7 +17,8 @@
     "react-prism": "^3.2.1",
     "react-router": "^2.6.1",
     "react-router-scroll": "^0.3.1",
-    "slug": "^0.9.1"
+    "slug": "^0.9.1",
+    "whatwg-fetch": "^1.0.0"
   },
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --history-api-fallback --host 0.0.0.0 --port 4300",
