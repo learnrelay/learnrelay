@@ -35,7 +35,7 @@ export default class App extends React.Component<Props, State> {
 
     return (
       <div className='flex'>
-        <div className='w-20 pa4 flex flex-column vertical-line min-width-240'>
+        <div className='w-20 pa4 flex flex-column vertical-line min-width-270 font-small'>
           <h2 className='fw3 pb4'>
             <span className='dib mr3 mrl-1'><Icon
               src={require('../../assets/icons/logo.svg')}
@@ -65,8 +65,18 @@ export default class App extends React.Component<Props, State> {
                   {chapter.alias === this.props.params.chapter &&
                   subchapter.alias === this.props.params.subchapter &&
                   headingsTree.map((h) => (
-                    <div key={h.title!}>{h.title}</div>
+                    <div key={h.title!}>
+                      <span className='ml4 mr2 fw5 bold o-20 black rotate-180 dib'>¬</span>
+                      {h.title}
+                    </div>
                   ))}
+
+                  {
+                    //<span className='mr3 fw5 bold green'>✓</span> {subchapter.title}
+                    //<span className='ml4 mr2 fw5 bold o-20 black rotate-180 dib'>¬</span> {subchapter.title}
+                  }
+
+
                 </Link>
               ))}
             </div>
