@@ -20,7 +20,6 @@ a {
     background: var(--color-accent);
 }
 
-
 .bg-gray-2 {
     background: var(--color-gray-2);
 }
@@ -30,9 +29,9 @@ a {
 }
 
 .vertical-line {
-  border-right: solid rgba(0,0,0,0.1) 1px;
+    border-right: solid rgba(0, 0, 0, 0.1) 1px;
 }
 
 .min-width-240 {
-  min-width: 240px;
+    min-width: 240px;
 }
