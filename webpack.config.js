@@ -18,16 +18,20 @@ module.exports = {
       exclude: /node_modules/,
     }],
     loaders: [{
-      test: /\.ts(x?)$/,
-      exclude: /node_modules/,
-      loader: 'ts',
-    }, {
       test: /module\.css/,
       loader: 'style!css?modules',
     }, {
       test: /\.css/,
       exclude: /module\.css/,
       loader: 'style!css',
+    }, {
+      test: /\.ts(x?)$/,
+      exclude: /node_modules/,
+      loaders: ['babel', 'ts']
+    }, {
+      test: /\.js$/,
+      loader: 'babel',
+      exclude: /node_modules/,
     }, {
       test: /\.json/,
       loader: 'json',

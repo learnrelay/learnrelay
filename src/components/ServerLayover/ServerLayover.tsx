@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as GraphiQL from 'graphiql'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import * as Relay from 'react-relay'
+import BrowserView from '../BrowserView/BrowserView'
 import Icon from '../Icon/Icon'
 
 require('graphiql/graphiql.css')
@@ -9,6 +10,7 @@ require('graphiql/graphiql.css')
 interface Props {
   endpoint: string
   close: () => void
+  viewer: any
 }
 
 interface State {
@@ -22,7 +24,6 @@ class ServerLayover extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this.props)
     const graphQLFetcher = (graphQLParams) => {
       return fetch(this.props.endpoint, {
         method: 'post',
@@ -73,7 +74,7 @@ class ServerLayover extends React.Component<Props, State> {
           </div>
         </div>
         {this.state.showData &&
-          <div>Aaaaaall the data.</div>
+          <BrowserView viewer={this.props.viewer}/>
         }
         {!this.state.showData &&
           <div style={{height: 480}}>
@@ -90,6 +91,7 @@ let LayoverContainer = Relay.createContainer(ServerLayover, {
     viewer: () => Relay.QL`
       fragment on Viewer {
         id
+        ${BrowserView.getFragment('viewer')}
       }
     `,
   }
@@ -106,16 +108,12 @@ export default class LayoverRenderer extends React.Component<Props, {}> {
   render() {
     return (
       <Relay.Renderer
-        {...this.props}
         Container={LayoverContainer}
         environment={Relay.Store}
         queryConfig={{
           name: '',
           queries: {viewer: () => Relay.QL`query { viewer }`},
-          params: {},
-        }}
-        render={({done, error, props, retry, stale}) => {
-          return <LayoverContainer {...this.props} />
+          params: {endpoint: this.props.endpoint},
         }}
       />
     )

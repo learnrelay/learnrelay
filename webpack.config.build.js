@@ -29,6 +29,14 @@ module.exports = {
       exclude: /module\.css/,
       loader: 'style!css',
     }, {
+      test: /\.ts(x?)$/,
+      loader: 'babel!ts',
+      exclude: /node_modules/,
+    }, {
+      test: /\.js$/,
+      loader: 'babel',
+      exclude: /node_modules/,
+    }, {
       test: /\.json/,
       loader: 'json',
     }, {
