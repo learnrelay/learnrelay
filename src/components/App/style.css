@@ -36,8 +36,8 @@ a {
     border-right: solid rgba(0, 0, 0, 0.1) 1px;
 }
 
-.min-width-270 {
-  min-width: 270px;
+.width-270 {
+  width: 270px;
 }
 
 .rotate-180 {
@@ -51,4 +51,8 @@ a {
 .indent-char-dimensions {
   min-width: 8px;
   max-height: 1rem;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
 }

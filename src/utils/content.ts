@@ -55,6 +55,63 @@ export const chapters: Chapter[] = [
     alias: 'what-is-a-query',
   }, {
     title: 'Containers and Fragments',
-    alias: 'containers-fragements',
+    alias: 'containers-fragments',
+  }, {
+    title: 'Creating a Relay Containers',
+    alias: 'creating-a-relay-containers',
+  }, {
+    title: 'Working with Fragments',
+    alias: 'working-with-fragments',
+  }, {
+    title: 'Variables',
+    alias: 'variables',
+  }]),
+  new Chapter('Connections', 'connections', [{
+    title: 'Terminology',
+    alias: 'terminology',
+  }, {
+    title: 'Putting it all togethers',
+    alias: 'putting-it-all-togethers',
+  }, {
+    title: 'Cursors and Paginations',
+    alias: 'cursors-pagination',
+  }]),
+  new Chapter('Routes', 'routes', [{
+    title: 'Route in Relay',
+    alias: 'route-in-relay',
+  }, {
+    title: 'React Router Relay',
+    alias: 'react-router-relay',
+  }]),
+  new Chapter('Mutations', 'mutations', [{
+    title: 'What is a Muation?',
+    alias: 'what-is-a-mutation',
+  }, {
+    title: 'Relay Store',
+    alias: 'relay-store',
+  }, {
+    title: 'Mutation Types',
+    alias: 'mutation-types',
+  }, {
+    title: 'Optimistic Updates',
+    alias: 'optimistic-update',
+  }]),
+  new Chapter('Go further', 'go-further', [{
+    title: 'Wrapup',
+    alias: 'wrapup',
   }]),
 ]
+
+export const subchapters: Subchapter[] = chapters.map((c) => c.subchapters).reduce((acc, s) => acc.concat(s), [])
+
+export function neighboorSubchapter(currentSubchapterAlias: string, forward: boolean): Subchapter | null {
+  const currentIndex = subchapters.findIndex((s) => s.alias === currentSubchapterAlias)
+
+  if (forward && currentIndex + 1 <= subchapters.length) {
+    return subchapters[currentIndex + 1]
+  } else if (!forward && currentIndex >= 1) {
+    return subchapters[currentIndex - 1]
+  }
+
+  return null
+}

@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Link} from 'react-router'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 
 require('./style.css')
@@ -35,65 +35,90 @@ export default class App extends React.Component<Props, State> {
   }
 
   render() {
-    const ast = chapters
-      .find((c) => c.alias === this.props.params.chapter)
-      .subchapters
-      .find((s) => s.alias === this.props.params.subchapter)
-      .ast()
+    const currentSubchapterAlias = this.props.params.subchapter
+    const ast = subchapters.find((s) => s.alias === currentSubchapterAlias).ast()
     const headings = collectHeadings(ast)
     const headingsTree = buildHeadingsTree(headings)
 
+    const nextSubchapter = neighboorSubchapter(currentSubchapterAlias, true)
+    const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
+
     return (
-      <div className='flex'>
-        <div className='w-20 pa4 flex flex-column vertical-line min-width-270 font-small'>
-          <h2 className='fw3 pb4'>
-            <span className='dib mr3 mrl-1'><Icon
-              src={require('../../assets/icons/logo.svg')}
-              width={22}
-              height={13}
-            /></span>
-            Learn Relay
-          </h2>
-          {chapters.map((chapter, index) => (
-            <div
-              className='flex flex-column'
-              key={chapter.alias}
-            >
-              <Link
-                className='fw6 pb3 black'
-                to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
+      <div className='flex row-reverse'>
+        <div
+          className='pa4 pb6 flex flex-column vertical-line font-small fixed left-0 h-100 overflow-y-scroll'
+          style={{ width: 270 }}
+        >
+          <div>
+            <h2 className='fw3 pb4'>
+              <span className='dib mr3 mrl-1'><Icon
+                src={require('../../assets/icons/logo.svg')}
+                width={22}
+                height={13}
+              /></span>
+              Learn Relay
+            </h2>
+            {chapters.map((chapter, index) => (
+              <div
+                className='flex flex-column'
+                key={chapter.alias}
               >
-                <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
-              </Link>
-              {chapter.subchapters.map((subchapter) => (
                 <Link
-                  className='pb3 fw3 black'
-                  to={`/${chapter.alias}/${subchapter.alias}`}
-                  key={subchapter.alias}
+                  className='fw6 pb3 black'
+                  to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
                 >
-                  <span className='mr3 fw5 green'>✓</span> {subchapter.title}
-                  {chapter.alias === this.props.params.chapter &&
-                  subchapter.alias === this.props.params.subchapter &&
-                  headingsTree.map((h) => (
-                    <div className='flex flex-row pt2 flex-start' key={h.title!}>
-                      <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
-                      <div>{h.title}</div>
-                    </div>
-                  ))}
-
-                  {
-                    //<span className='mr3 fw5 bold green'>✓</span> {subchapter.title}
-                    //<span className='ml4 mr2 fw5 bold o-20 black rotate-180 dib'>¬</span> {subchapter.title}
-                  }
-
-
+                  <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
-              ))}
-            </div>
-          ))}
+                {chapter.subchapters.map((subchapter) => (
+                  <Link
+                    className='pb3 fw3 black'
+                    to={`/${chapter.alias}/${subchapter.alias}`}
+                    key={subchapter.alias}
+                  >
+                    <span className='mr3 fw5 green'>✓</span> {subchapter.title}
+                    {chapter.alias === this.props.params.chapter &&
+                    subchapter.alias === this.props.params.subchapter &&
+                    headingsTree.map((h) => (
+                      <div className='flex flex-row pt2 flex-start' key={h.title!}>
+                        <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
+                        <div>{h.title}</div>
+                      </div>
+                    ))}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div
+            className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-white pointer'
+            style={{ width: 269, height: 90 }}
+            onClick={() => this.setState({ showLayover: true } as State)}
+          >
+            <Icon
+              src={require('../../assets/icons/graph-logo.svg')}
+              width={22}
+              height={24}
+              className='pt1'
+            />
+            <span className='accent f3 pl2'>GraphQL Server</span>
+          </div>
         </div>
-        <div className='w-80 self-start'>
+        <div className='w-80'>
           {this.props.children}
+          {previousSubchapter &&
+          <div className='fixed bottom-0 left-0 bg-gray'>
+            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+              {previousSubchapter.title}
+            </Link>
+          </div>
+          }
+          {nextSubchapter &&
+          <div className='fixed bottom-0 right-0 bg-accent'>
+            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+              {nextSubchapter.title}
+            </Link>
+          </div>
+          }
         </div>
         {this.state.showLayover &&
         <ServerLayover
