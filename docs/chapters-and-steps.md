@@ -12,7 +12,7 @@
 | Route in Relay | - | explain what a route is and is not in Relay |
 | React Router Relay | 4 | explain router. user: add routes in index.js and replace div with Link, set `to` prop of Link in ListPage and PokemonPage |
 | What is a Mutation? | - | introduce concept of mutations |
-| Relay Store | 5 | user: Create AddNewMutation/AddNew.js and set/call the click events |
+| Relay Store | 5 | user: Create CreatePokemonMutation/PokemonPage.js and set/call the click events |
 | Mutation types | 6 | explain different mutation types. user: implement DeletePokemonMutation and set/call click events |
 | Optimistic updates | 7 | explain optimist updates. user: implement UpdatePokemonMutation and set/call click events |
 | Wrap up | - | summary |
