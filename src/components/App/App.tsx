@@ -25,18 +25,24 @@ export default class App extends React.Component<Props, State> {
   render() {
     return (
       <div className='flex'>
-        <div className='w-20 pa4 flex flex-column vertical-line'>
+        <div className='w-20 pa4 flex flex-column vertical-line min-width-240'>
           <h2 className='fw3 pb4'>
-            <Icon
+            <span className='dib mr3 mrl-1'><Icon
               src={require('../../assets/icons/logo.svg')}
               width={22}
               height={13}
-            />
+            /></span>
             Learn Relay
           </h2>
-          <span className='fw6 pb3'><span className='mr3'>1</span> Overview</span>
-          <Link className='pb3 fw3' to='/overview/intro'><span className='mr3 fw5 c'>✓</span> Intro</Link>
-          <Link className='pb3 fw3' to='/overview/prerequisites'><span className='mr3 fw5'>✓</span> Prerequisites</Link>
+          <span className='fw6 pb3 black'>
+            <span className='mr3 o-20 bold'>1</span> Overview
+          </span>
+          <Link className='pb3 fw3 black' to='/overview/intro'>
+            <span className='mr3 fw5 o-20 bold'>✓</span> Intro
+          </Link>
+          <Link className='pb3 fw3 black' to='/overview/prerequisites'>
+            <span className='mr3 fw5 o-20 bold'>✓</span> Prerequisites
+          </Link>
 
           {
             // Introduction to relay

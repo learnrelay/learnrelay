@@ -11,10 +11,6 @@ a {
     text-decoration: none;
 }
 
-.vertical-line {
-  border-right: solid rgba(0,0,0,0.1) 1px;
-}
-
 :root {
     --color-accent: #F26B00;
     --color-gray-2: #FAFAFA;
@@ -31,4 +27,12 @@ a {
 
 .accent {
     color: var(--color-accent);
+}
+
+.vertical-line {
+  border-right: solid rgba(0,0,0,0.1) 1px;
+}
+
+.min-width-240 {
+  min-width: 240px;
 }

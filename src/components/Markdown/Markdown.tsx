@@ -64,7 +64,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
             paddingBottom: `${padding * 0.4}rem`,
             marginTop: `calc(${padding}rem - 100px)`,
             marginBottom: '1.6rem',
-            borderBottom: 'solid rgba(0,0,0,0.1) 1px'
+            borderBottom: 'solid rgba(0,0,0,0.1) 1px',
           },
         }
         return React.createElement('h' + props.level, elProps, props.children)
@@ -116,7 +116,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
 
     return (
       <div className={`relative pa6 ${styles.content}`}>
-        <div className='absolute right-0 gray-2 f6 tr' style={{ top: '2.3rem' }}>
+        <div className='absolute right-0 ph4 black gray-2 f6 tr' style={{ top: '2.3rem' }}>
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
