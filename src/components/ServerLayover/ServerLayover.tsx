@@ -97,7 +97,12 @@ let LayoverContainer = Relay.createContainer(ServerLayover, {
   }
 })
 
-export default class LayoverRenderer extends React.Component<Props, {}> {
+interface RendererProps {
+  endpoint: string
+  close: () => void
+}
+
+export default class LayoverRenderer extends React.Component<RendererProps, {}> {
 
   constructor(props) {
     super(props)
@@ -113,7 +118,7 @@ export default class LayoverRenderer extends React.Component<Props, {}> {
         queryConfig={{
           name: '',
           queries: {viewer: () => Relay.QL`query { viewer }`},
-          params: {endpoint: this.props.endpoint},
+          params: {endpoint: this.props.endpoint, close: this.props.close},
         }}
       />
     )

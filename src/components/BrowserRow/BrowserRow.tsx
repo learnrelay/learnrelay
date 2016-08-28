@@ -22,9 +22,21 @@ class BrowserRow extends React.Component<Props, State> {
   render() {
     return (
       <div className='w-100 flex'>
-        <input style={{minWidth: '20%'}} value={this.state.id} disabled/>
-        <input style={{minWidth: '20%'}} value={this.state.name} disabled onChange={(e: any) => this.setState({name: e.target.value} as State)}/>
-        <input style={{minWidth: '60%'}} value={this.state.url} disabled onChange={(e: any) => this.setState({url: e.target.value} as State)}/>
+        <input
+          style={{minWidth: '30%', padding: '12px', boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          value={this.state.id}
+          disabled
+        />
+        <input
+          style={{minWidth: '30%', padding: '12px', boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          value={this.state.name}
+          onChange={(e: any) => this.setState({name: e.target.value} as State)}
+        />
+        <input
+          style={{minWidth: '40%', padding: '12px', boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          value={this.state.url}
+          onChange={(e: any) => this.setState({url: e.target.value} as State)}
+        />
       </div>
     )
   }
