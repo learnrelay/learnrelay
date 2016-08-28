@@ -28,10 +28,31 @@ a {
     color: var(--color-accent);
 }
 
+.green {
+  color: #64BF00;
+}
+
 .vertical-line {
     border-right: solid rgba(0, 0, 0, 0.1) 1px;
 }
 
-.min-width-240 {
-    min-width: 240px;
+.width-270 {
+  width: 270px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.font-small {
+   font-size: 0.9rem;
+}
+
+.indent-char-dimensions {
+  min-width: 8px;
+  max-height: 1rem;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
 }
