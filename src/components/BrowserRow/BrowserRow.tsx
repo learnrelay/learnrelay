@@ -90,6 +90,6 @@ export default Relay.createContainer(BrowserRow, {
         name
         url
       }
-    `
-  }
+    `,
+  },
 })

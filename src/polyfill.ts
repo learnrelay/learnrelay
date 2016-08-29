@@ -30,10 +30,10 @@ if (!Array.prototype.find) {
 if (!Array.prototype.findIndex) {
   Array.prototype.findIndex = function (predicate) {
     if (this == null) {
-      throw new TypeError('Array.prototype.findIndex called on null or undefined');
+      throw new TypeError('Array.prototype.findIndex called on null or undefined')
     }
     if (typeof predicate !== 'function') {
-      throw new TypeError('predicate must be a function');
+      throw new TypeError('predicate must be a function')
     }
     let list = Object(this)
     let length = list.length >>> 0

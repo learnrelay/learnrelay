@@ -48,4 +48,3 @@ export default class UpdatePokemonMutation extends Relay.Mutation<Props, {}> {
     }
   }
 }
-

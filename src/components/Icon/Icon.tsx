@@ -29,15 +29,21 @@ export default class Icon extends React.Component<Props, {}> {
     delete restProps.src
     delete restProps.className
 
+    const style = Object.assign(
+      {},
+      {
+        transform: `rotate(${rotate}deg)`,
+        WebkitTransform: `rotate(${rotate}deg)`,
+        display: 'flex',
+      },
+      this.props.style
+    )
+
     return (
       <i
         {...restProps}
         className={this.props.className}
-        style={Object.assign({},{
-          transform: `rotate(${rotate}deg)`,
-          WebkitTransform: `rotate(${rotate}deg)`,
-          display: 'flex',
-        }, this.props.style)}
+        style={style}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     )

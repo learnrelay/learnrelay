@@ -42,4 +42,3 @@ export default class DeletePokemonMutation extends Relay.Mutation<Props, {}> {
     }
   }
 }
-

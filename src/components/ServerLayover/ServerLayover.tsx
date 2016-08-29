@@ -34,17 +34,26 @@ class ServerLayover extends React.Component<Props, State> {
     }
 
     return (
-      <div className='fixed bottom-0 w-100 bg-gray-2' style={{ height: this.state.showData ? 350 : 550, transition: 'height 0.5s ease' }}>
+      <div
+        className='fixed bottom-0 w-100 bg-gray-2'
+        style={{ height: this.state.showData ? 350 : 550, transition: 'height 0.5s ease' }}
+      >
         <div className='flex justify-between bg-accent' style={{ height: 70 }}>
           <div className='flex pt2'>
             <div
-              className={`h-100 f4 flex items-center ph3 mh2 pointer ${this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
+              className={`
+                h-100 f4 flex items-center ph3 mh2 pointer
+                ${this.state.showData ? 'bg-gray-2 accent' : 'white'}
+              `}
               onClick={() => this.setState({ showData: true } as State)}
             >
               Data Browser
             </div>
             <div
-              className={`h-100 f4 flex items-center ph3 mh2 pointer ${!this.state.showData ? 'bg-gray-2 accent' : 'white'} `}
+              className={`
+                h-100 f4 flex items-center ph3 mh2 pointer
+                ${!this.state.showData ? 'bg-gray-2 accent' : 'white'}
+              `}
               onClick={() => this.setState({ showData: false } as State)}
             >
               GraphiQL
@@ -55,15 +64,20 @@ class ServerLayover extends React.Component<Props, State> {
             <div className='flex items-center'>
               <CopyToClipboard text={this.props.endpoint}>
                 <Icon src={require('../../assets/icons/copy.svg')}
-                  className='dim'
-                  style={{
+                      className='dim'
+                      style={{
                     padding: '6px',
                     background: 'rgba(0,0,0,0.1)',
                     cursor: 'pointer',
                   }}
                 />
               </CopyToClipboard>
-              <div className='o-50' style={{background: 'rgba(0,0,0,0.05)', padding: '6px 12px'}}>{this.props.endpoint}</div>
+              <div
+                className='o-50'
+                style={{background: 'rgba(0,0,0,0.05)', padding: '6px 12px'}}
+              >
+                {this.props.endpoint}
+              </div>
             </div>
             <div
               className='white f2 pointer'
@@ -74,12 +88,12 @@ class ServerLayover extends React.Component<Props, State> {
           </div>
         </div>
         {this.state.showData &&
-          <BrowserView viewer={this.props.viewer}/>
+        <BrowserView viewer={this.props.viewer}/>
         }
         {!this.state.showData &&
-          <div style={{height: 480}}>
-            <GraphiQL fetcher={graphQLFetcher} />
-          </div>
+        <div style={{height: 480}}>
+          <GraphiQL fetcher={graphQLFetcher}/>
+        </div>
         }
       </div>
     )
@@ -94,7 +108,7 @@ let LayoverContainer = Relay.createContainer(ServerLayover, {
         ${BrowserView.getFragment('viewer')}
       }
     `,
-  }
+  },
 })
 
 interface RendererProps {
