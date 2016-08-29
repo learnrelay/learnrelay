@@ -1,2 +1,86 @@
 .root
-    background red
+    padding 90px
+    max-width 830px
+    margin 0 auto
+    // background red
+
+  header
+
+    border-bottom 1px solid rgba(0,0,0,0.09)
+
+    h1, h2
+      line-height 1
+
+    h1
+      font-size 70px
+      color var(--color-accent)
+      font-weight 100
+      margin 0
+      line-height 1
+
+    h2
+      font-size 40px
+      font-weight 100
+      color #7F7F7F
+      margin 30px 0 40px
+
+
+// margin 25px auto 50px
+// border-radius 3px
+// color #191919
+// font-size 20px
+// font-weight 200
+// background rgba(0,0,0,0.06)
+
+
+.contents
+  counter-reset counter
+  margin-bottom 100px
+
+  dt
+    margin-top 60px
+    line-height 1.7
+    position relative
+    padding-left 40px
+
+    h3
+      font-size 28px
+      font-weight 100
+      color var(--color-accent)
+      margin 0
+      line-height 1
+
+    p
+      margin 20px 0 0
+
+    &:before
+      position absolute
+      left 0
+      line-height 1
+      font-size 28px
+      font-weight 600
+      color rgba(0,0,0,0.15)
+      content counter(counter)
+      counter-increment counter
+
+.start
+  position fixed
+  bottom 0
+  left 270px
+  right 0
+  display flex
+  justify-content center
+  z-index 4
+  padding 40px
+  background #fff
+  box-shadow 0 10px 45px 50px #fff
+  // height 100px
+
+
+  button
+    background var(--color-accent)
+    padding 20px
+    font-size 24px
+    color #fff
+    border none
+    border-radius 3px
