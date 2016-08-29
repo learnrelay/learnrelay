@@ -4,7 +4,7 @@ import MarkdownPage from './pages/markdown/MarkdownPage'
 import LandingPage from './pages/landing/LandingPage'
 import App from './components/App/App'
 import {subchapters} from './utils/content'
-import {markAsRead} from './utils/viewtracker'
+import {markAsRead} from './utils/statestore'
 
 export default (
   <Route component={App}>

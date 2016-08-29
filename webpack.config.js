@@ -57,7 +57,8 @@ module.exports = {
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
       __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"mxShPAuQCvtbX7K1u5xcmFeqz9X7S7HN"',
-      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
+      __GITHUB_OAUTH_CLIENT_ID__: '"b4ee20bd611665a7c729"',
+      __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth_dev"',
     }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
