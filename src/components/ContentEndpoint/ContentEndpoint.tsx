@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {skipEndpoint, hasSkippedEndpoint} from '../../utils/statestore'
 
 interface Props {
 }
@@ -19,21 +20,32 @@ export default class ContentEndpoint extends React.Component<Props, State> {
   context: Context
 
   render() {
-    return (
-      <div>
-        {this.context.endpoint &&
+    if (hasSkippedEndpoint()) {
+      return (
+        <div>
+          I thought about it. It was a mistake. I want a GraphQL Endpoint...
+          <a href={`https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email`}>
+            Get GraphQL Endpoint
+          </a>
+        </div>
+      )
+    }
+
+    if (this.context.endpoint) {
+      return (
         <div>
           Congrats this is your endpoint:
           {this.context.endpoint}
         </div>
-        }
-        {!this.context.endpoint &&
-        <div>
-          <a href='https://github.com/login/oauth/authorize?client_id=dcf24b1838da72f6259e&scope=user:email'>
-            Get GraphQL Endpoint
-          </a>
-        </div>
-        }
+      )
+    }
+
+    return (
+      <div>
+        <a href={`https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email`}>
+          Get GraphQL Endpoint
+        </a>
+        <button onClick={skipEndpoint}>Read on without GraphQL endpoint (non-interactive)</button>
       </div>
     )
   }

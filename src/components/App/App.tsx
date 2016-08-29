@@ -5,7 +5,7 @@ import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
-import {hasRead} from '../../utils/viewtracker'
+import {hasRead, getEndpoint, saveEndpoint} from '../../utils/statestore'
 
 require('./style.css')
 
@@ -49,7 +49,7 @@ class App extends React.Component<Props, State> {
 
     this.state = {
       showLayover: false,
-      endpoint: window.localStorage.getItem('graphcool_endpoint'),
+      endpoint: getEndpoint(),
     }
   }
 
@@ -168,7 +168,7 @@ class App extends React.Component<Props, State> {
   }
 
   private async fetchEndpoint(code: string) {
-    const response = await fetch('https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth', {
+    const response = await fetch(__LAMBDA_AUTH__, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -187,7 +187,7 @@ class App extends React.Component<Props, State> {
 
     const {projectId} = body
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
-    window.localStorage.setItem('graphcool_endpoint', endpoint)
+    saveEndpoint(endpoint)
     this.setState({endpoint} as State)
     this.props.router.replace(window.location.pathname)
   }
