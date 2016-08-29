@@ -18,6 +18,9 @@ module.exports = {
       exclude: /node_modules/,
     }],
     loaders: [{
+      test: /module\.styl/,
+      loader: 'style!css?modules!stylus',
+    }, {
       test: /module\.css/,
       loader: 'style!css?modules',
     }, {

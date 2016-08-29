@@ -1,5 +1,5 @@
 import * as React from 'react'
-const styles: any = require('./LandingPage.module.css')
+const styles: any = require('./LandingPage.module.styl')
 
 interface Props {
   params: any

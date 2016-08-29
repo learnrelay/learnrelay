@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -18,12 +19,15 @@ module.exports = {
       exclude: /node_modules/,
     }],
     loaders: [{
+      test: /module\.styl/,
+      loader: 'style!css?modules!postcss!stylus',
+    }, {
       test: /module\.css/,
-      loader: 'style!css?modules',
+      loader: 'style!css?modules!postcss',
     }, {
       test: /\.css/,
       exclude: /module\.css/,
-      loader: 'style!css',
+      loader: 'style!css!postcss',
     }, {
       test: /\.ts(x?)$/,
       loader: 'babel!ts',
@@ -72,6 +76,19 @@ module.exports = {
         warnings: false,
       }
     }),
+  ],
+  postcss: [
+    cssnano({
+      autoprefixer: {
+        add: true,
+        remove: true,
+        browsers: ['last 2 versions'],
+      },
+      discardComments: {
+        removeAll: true,
+      },
+      safe: true,
+    })
   ],
   svgo: {
     plugins: [

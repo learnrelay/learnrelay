@@ -76,11 +76,13 @@ class App extends React.Component<Props, State> {
         >
           <div>
             <h2 className='fw3 pb4'>
-              <span className='dib mr3 mrl-1'><Icon
-                src={require('../../assets/icons/logo.svg')}
-                width={22}
-                height={13}
-              /></span>
+              <span className='dib mr3 mrl-1'>
+                <Icon
+                  src={require('../../assets/icons/logo.svg')}
+                  width={22}
+                  height={13}
+                />
+              </span>
               Learn Relay
             </h2>
             {chapters.map((chapter, index) => (
