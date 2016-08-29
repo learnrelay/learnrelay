@@ -1,24 +1,46 @@
-.next
+.sidebar
+  z-index 5
+
+.jump
   position fixed
-  right 25px
   bottom 30px
   color #fff
+  border-radius 3px
 
   a
     color inherit
+    display flex
+    align-items center
+    padding 15px
 
   &:hover
     background var(--color-accent)
-    .nextDetail
+    box-shadow 0 0 25px 25px #fff
+
+    .jumpDetail
       display block
 
-.nextDetail
+    .icon
+      svg
+        fill #fff
+
+.jumpDetail
   display none
   white-space nowrap
-  padding-right 11px + 15px
 
   span
     opacity .5
 
-.icon
-  padding 15px
+.jumpRight
+  right 25px
+
+  .jumpDetail
+    padding-right 15px
+
+.jumpLeft
+  left 270px + 25px
+
+  &:hover
+
+  .jumpDetail
+    padding-left 15px

@@ -75,7 +75,7 @@ class App extends React.Component<Props, State> {
     return (
       <div className='flex row-reverse'>
         <div
-          className='pa4 pb6 flex flex-column vertical-line font-small fixed left-0 h-100 overflow-y-scroll'
+          className={`pa4 pb6 flex flex-column vertical-line font-small fixed left-0 h-100 overflow-y-scroll ${styles.sidebar}`}
           style={{ width: 270 }}
         >
           <div>
@@ -115,10 +115,13 @@ class App extends React.Component<Props, State> {
                         />
                       </span>
                     }
-                    {this.state.storedState.hasRead[subchapter.alias] &&
-                      <span className='mr3 fw5 green dib'>
-
-                      </span>
+                    {!this.state.storedState.hasRead[subchapter.alias] &&
+                      <span className='mr3 fw5 green dib'
+                        style={{
+                          width: 8,
+                          height: 8,
+                        }}
+                      />
                     }
                     <Link
                       to={`/${chapter.alias}/${subchapter.alias}`}
@@ -158,21 +161,34 @@ class App extends React.Component<Props, State> {
             <span className='white f3 pl2'>GraphQL Server</span>
           </div>
         </div>
+        <div className='absolute right-0 ph4 o-50 black gray-2 f6 tr' style={{ top: '2.3rem' }}>
+          Last updated<br />
+          {__LAST_UPDATE__}
+        </div>
         <div className=''
           style={{ width: 'calc(100% - 270px)' }}
         >
           {this.props.children}
           {previousSubchapter &&
-          <div className='fixed bottom-2 pa3 bg-gray'>
-            <Link className='white' to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
-              {previousSubchapter.title}
+          <div className={`${styles.jump} ${styles.jumpLeft} z-0`}>
+            <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
+              <Icon
+                src={require('../../assets/icons/previous.svg')}
+                width={11}
+                height={20}
+                className={`${styles.icon}`}
+                color='#000'
+              />
+              <span className={`${styles.jumpDetail}`}>
+                <span>Previous:</span> {previousSubchapter.title}
+              </span>
             </Link>
           </div>
           }
           {nextSubchapter &&
-          <div className={`${styles.next}`}>
+          <div className={`${styles.jump} ${styles.jumpRight} z-0`}>
             <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
-              <span className={`${styles.nextDetail}`}>
+              <span className={`${styles.jumpDetail}`}>
                 <span>Next:</span> {nextSubchapter.title}
               </span>
               <Icon
