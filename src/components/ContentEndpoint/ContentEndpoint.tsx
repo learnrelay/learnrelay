@@ -1,6 +1,8 @@
 import * as React from 'react'
 import {StoredState} from '../../utils/statestore'
 
+const styles: any = require('./ContentEndpoint.module.styl')
+
 interface Props {
 }
 
@@ -29,7 +31,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
       return (
         <div>
           I thought about it. It was a mistake. I want a GraphQL Endpoint...
-          <a href={githubUrl}>
+          <a href={githubUrl} className={`pa3 bg-accent pointer ${styles.getEndpoint}`}>
             Get GraphQL Endpoint
           </a>
         </div>
@@ -38,9 +40,11 @@ export default class ContentEndpoint extends React.Component<Props, State> {
 
     if (this.context.storedState.user && this.context.storedState.user.endpoint) {
       return (
-        <div>
+        <div className='flex flex-column'>
           Congrats this is your endpoint:
-          {this.context.storedState.user.endpoint}
+          <div className={`pa3 ${styles.showEndpoint}`}>
+            {this.context.storedState.user.endpoint}
+          </div>
         </div>
       )
     }

@@ -36,7 +36,11 @@ class ServerLayover extends React.Component<Props, State> {
     return (
       <div
         className='fixed bottom-0 w-100 bg-gray-2'
-        style={{ height: this.state.showData ? 350 : 550, transition: 'height 0.5s ease' }}
+        style={{
+          height: this.state.showData ? 350 : 550,
+          transition: 'height 0.5s ease',
+          zIndex: 10
+        }}
       >
         <div className='flex justify-between bg-accent' style={{ height: 70 }}>
           <div className='flex pt2'>
@@ -80,10 +84,15 @@ class ServerLayover extends React.Component<Props, State> {
               </div>
             </div>
             <div
-              className='white f2 pointer'
+              className='f2 mh3 pointer'
               onClick={this.props.close}
             >
-              X
+              <Icon
+                src={require('../../assets/icons/close.svg')}
+                color='#fff'
+                width={19}
+                height={19}
+              />
             </div>
           </div>
         </div>
