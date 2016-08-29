@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {Link, withRouter} from 'react-router'
+import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
@@ -33,6 +34,7 @@ interface Props {
 interface State {
   showLayover: boolean
   storedState: StoredState
+  expandNavButtons: boolean
 }
 
 class App extends React.Component<Props, State> {
@@ -53,7 +55,24 @@ class App extends React.Component<Props, State> {
     this.state = {
       showLayover: false,
       storedState: getStoredState(),
+      expandNavButtons: false,
     }
+
+    this.onScroll = throttle(this.onScroll.bind(this), 100)
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, false)
+
+    this.onScroll()
+  }
+
+  componentDidUpdate() {
+    this.onScroll()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll, false)
   }
 
   getChildContext() {
@@ -106,7 +125,7 @@ class App extends React.Component<Props, State> {
                     key={subchapter.alias}
                   >
                     {this.state.storedState.hasRead[subchapter.alias] &&
-                      <span className='mr3 fw5 green dib'>
+                    <span className='mr3 fw5 green dib'>
                         <Icon
                           src={require('../../assets/icons/check_chapter.svg')}
                           width={8}
@@ -116,12 +135,12 @@ class App extends React.Component<Props, State> {
                       </span>
                     }
                     {!this.state.storedState.hasRead[subchapter.alias] &&
-                      <span className='mr3 fw5 green dib'
-                        style={{
+                    <span className='mr3 fw5 green dib'
+                          style={{
                           width: 8,
                           height: 8,
                         }}
-                      />
+                    />
                     }
                     <Link
                       to={`/${chapter.alias}/${subchapter.alias}`}
@@ -165,12 +184,15 @@ class App extends React.Component<Props, State> {
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
-        <div className=''
+        <div
+          className=''
           style={{ width: 'calc(100% - 270px)' }}
         >
           {this.props.children}
           {previousSubchapter &&
-          <div className={`${styles.jump} ${styles.jumpLeft} z-0`}>
+          <div
+            className={`${styles.jump} ${styles.jumpLeft} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
+          >
             <Link to={`/${previousSubchapter.chapter.alias}/${previousSubchapter.alias}`}>
               <Icon
                 src={require('../../assets/icons/previous.svg')}
@@ -186,7 +208,9 @@ class App extends React.Component<Props, State> {
           </div>
           }
           {nextSubchapter &&
-          <div className={`${styles.jump} ${styles.jumpRight} z-0`}>
+          <div
+            className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
+          >
             <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
               <span className={`${styles.jumpDetail}`}>
                 <span>Next:</span> {nextSubchapter.title}
@@ -234,13 +258,23 @@ class App extends React.Component<Props, State> {
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
     this.updateStoredState(['user'], {endpoint, email, resetPasswordToken})
     this.updateStoredState(['skippedAuth'], false)
-    this.props.router.replace(window.location.pathname)
+    this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {
     this.setState({
       storedState: update(keyPath, value),
     } as State)
+  }
+
+  private onScroll() {
+    const expandNavButtons = (
+      document.body.scrollHeight - 100 < document.body.scrollTop + window.innerHeight ||
+      document.body.scrollHeight > document.body.clientHeight
+    )
+    if (this.state.expandNavButtons !== expandNavButtons) {
+      this.setState({expandNavButtons} as State)
+    }
   }
 }
 

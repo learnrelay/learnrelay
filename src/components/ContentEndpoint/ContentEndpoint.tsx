@@ -22,7 +22,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
   context: Context
 
   render() {
-    const redirectUrl = window.location.href
+    const redirectUrl = `${window.location.origin}${window.location.pathname}#step-1-warm-up`
     const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email&redirect_uri=${redirectUrl}` // tslint:disable-line
 
     if (this.context.storedState.skippedAuth) {

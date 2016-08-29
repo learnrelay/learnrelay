@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {Node} from 'commonmark'
+import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
 
 interface Props {
@@ -23,10 +24,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
     this.context.updateStoredState(['hasRead', this.props.params.subchapter], true)
 
     if (window.location.hash !== '') {
-      const el = document.getElementById(window.location.hash.substr(1))
-      if (el) {
-        setTimeout(() => window.scrollTo(0, el.offsetTop), 100)
-      }
+      hashLinkScroll()
     }
   }
 
