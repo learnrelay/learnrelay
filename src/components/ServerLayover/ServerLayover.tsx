@@ -20,7 +20,7 @@ interface State {
 class ServerLayover extends React.Component<Props, State> {
 
   state = {
-    showData: false,
+    showData: true,
   }
 
   render() {
@@ -101,7 +101,10 @@ class ServerLayover extends React.Component<Props, State> {
         }
         {!this.state.showData &&
         <div style={{height: 480}}>
-          <GraphiQL fetcher={graphQLFetcher}/>
+          <GraphiQL
+            fetcher={graphQLFetcher}
+            variables={''}
+          />
         </div>
         }
       </div>
