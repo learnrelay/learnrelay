@@ -133,27 +133,27 @@ class App extends React.Component<Props, State> {
                     key={subchapter.alias}
                   >
                     {this.state.storedState.hasRead[subchapter.alias] &&
-                    <span className='mr3 fw5 green dib'>
-                      <Icon
-                        src={require('../../assets/icons/check_chapter.svg')}
-                        width={8}
-                        height={8}
-                        color={'#64BF00'}
-                      />
-                    </span>
+                      <span className='mr3 fw5 green dib'>
+                        <Icon
+                          src={require('../../assets/icons/check_chapter.svg')}
+                          width={8}
+                          height={8}
+                          color={'#64BF00'}
+                        />
+                      </span>
                     }
                     <div
                       ref={`link-${slug(subchapter.alias)}`}
-                      className={this.props.params.subchapter === subchapter.alias ? 'bg-black-10' : ''}
+                      className={this.props.params.subchapter === subchapter.alias ? 'bg-black-10 dib' : 'dib'}
                     >
                       {!this.state.storedState.hasRead[subchapter.alias] &&
-                      <span
-                        className='mr3 fw5 green dib'
-                        style={{
-                          width: 8,
-                          height: 8,
-                        }}
-                      />
+                        <span
+                          className='mr3 fw5 green dib'
+                          style={{
+                            width: 8,
+                            height: 8,
+                          }}
+                        />
                       }
                       <Link
                         to={`/${chapter.alias}/${subchapter.alias}`}
