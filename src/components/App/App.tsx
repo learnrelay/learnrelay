@@ -9,6 +9,8 @@ import {hasRead} from '../../utils/viewtracker'
 
 require('./style.css')
 
+const styles: any = require('./App.module.styl')
+
 function getParameterByName(name: string): string | null {
   name = name.replace(/[\[\]]/g, '\\$&')
   const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
@@ -101,7 +103,21 @@ class App extends React.Component<Props, State> {
                     className='pb3'
                     key={subchapter.alias}
                   >
-                    <span className='mr3 fw5 green'>{hasRead(subchapter.alias) ? '✓' : ''}</span>
+                    { hasRead(subchapter.alias) &&
+                      <span className='mr3 fw5 green dib'>
+                        <Icon
+                          src={require('../../assets/icons/check_chapter.svg')}
+                          width={8}
+                          height={8}
+                          color={'#64BF00'}
+                        />
+                      </span>
+                    }
+                    { !hasRead(subchapter.alias) &&
+                      <span className='mr3 fw5 green dib'>
+
+                      </span>
+                    }
                     <Link
                       to={`/${chapter.alias}/${subchapter.alias}`}
                       className='black fw3'
@@ -140,7 +156,9 @@ class App extends React.Component<Props, State> {
             <span className='white f3 pl2'>GraphQL Server</span>
           </div>
         </div>
-        <div className='w-80'>
+        <div className=''
+          style={{ width: 'calc(100% - 270px)' }}
+        >
           {this.props.children}
           {previousSubchapter &&
           <div className='fixed bottom-2 pa3 bg-gray'>
@@ -150,9 +168,18 @@ class App extends React.Component<Props, State> {
           </div>
           }
           {nextSubchapter &&
-          <div className='fixed bottom-2 right-2 pa3 bg-accent'>
-            <Link className='white' to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
-              {nextSubchapter.title}
+          <div className={`${styles.next}`}>
+            <Link to={`/${nextSubchapter.chapter.alias}/${nextSubchapter.alias}`}>
+              <span className={`${styles.nextDetail}`}>
+                <span>Next:</span> {nextSubchapter.title}
+              </span>
+              <Icon
+                src={require('../../assets/icons/next.svg')}
+                width={11}
+                height={20}
+                className={`${styles.icon}`}
+                color='#000'
+              />
             </Link>
           </div>
           }

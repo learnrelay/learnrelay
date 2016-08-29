@@ -37,8 +37,10 @@
 }
 
 .content {
-    max-width: 1200px;
-    overflow: hidden;
+  padding: 3rem 90px 3rem;
+  max-width: 830px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .content h2 {

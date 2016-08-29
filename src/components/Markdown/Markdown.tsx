@@ -93,7 +93,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
     })
 
     return (
-      <div className={`relative pa6 ${styles.content}`}>
+      <div className={`relative ${styles.content}`}>
         <div className='absolute right-0 ph4 black gray-2 f6 tr' style={{ top: '2.3rem' }}>
           Last updated<br />
           {__LAST_UPDATE__}

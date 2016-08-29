@@ -11,8 +11,9 @@ a {
 }
 
 :root {
-    --color-accent: #F26B00;
-    --color-gray-2: #FAFAFA;
+    --color-accent:  #F26B00;
+    --color-gray-2:  #FAFAFA;
+    --color-green:   #64BF00;
 }
 
 .bg-accent {
