@@ -112,3 +112,13 @@ export function neighboorSubchapter(currentSubchapterAlias: string, forward: boo
 
   return null
 }
+
+export function getLastSubchapterAlias(subchapterAliases: string[]): string {
+  let lastFinding = subchapterAliases[0]
+  for (let i = 0; i < subchapters.length; i++) {
+    if (subchapterAliases.includes(subchapters[i].alias)) {
+      lastFinding = subchapters[i].alias
+    }
+  }
+  return lastFinding
+}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
-import * as slug from 'slug'
+import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 
@@ -41,7 +41,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
         }[props.level]()
         const elProps = {
           key: props.nodeKey,
-          id: slug(childrenToString(props.children), {lower: true}),
+          id: slug(childrenToString(props.children)),
           style: {
             fontWeight: 300,
             color: '#F26B00',

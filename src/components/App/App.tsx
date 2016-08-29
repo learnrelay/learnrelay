@@ -1,9 +1,10 @@
 import * as React from 'react'
+import {findDOMNode} from 'react-dom'
 import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
 import ServerLayover from '../ServerLayover/ServerLayover'
-import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
+import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
@@ -35,6 +36,7 @@ interface State {
   showLayover: boolean
   storedState: StoredState
   expandNavButtons: boolean
+  progressBarHeight: number
 }
 
 class App extends React.Component<Props, State> {
@@ -56,6 +58,7 @@ class App extends React.Component<Props, State> {
       showLayover: false,
       storedState: getStoredState(),
       expandNavButtons: false,
+      progressBarHeight: 0,
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -64,11 +67,13 @@ class App extends React.Component<Props, State> {
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll, false)
 
+    this.calculateProgressBarHeight()
     this.onScroll()
   }
 
   componentDidUpdate() {
     this.onScroll()
+    this.calculateProgressBarHeight()
   }
 
   componentWillUnmount() {
@@ -94,10 +99,13 @@ class App extends React.Component<Props, State> {
     return (
       <div className='flex row-reverse'>
         <div
-          className={`pa4 pb6 flex flex-column vertical-line font-small fixed left-0 h-100 overflow-y-scroll ${styles.sidebar}`}
+          className={`
+            flex flex-column vertical-line font-small fixed left-0 h-100 overflow-x-visible
+            ${styles.sidebar}
+          `}
           style={{ width: 270 }}
         >
-          <div>
+          <div className='relative pa4 pb6 overflow-y-scroll'>
             <h2 className='fw3 pb4'>
               <span className='dib mr3 mrl-1'>
                 <Icon
@@ -126,28 +134,34 @@ class App extends React.Component<Props, State> {
                   >
                     {this.state.storedState.hasRead[subchapter.alias] &&
                     <span className='mr3 fw5 green dib'>
-                        <Icon
-                          src={require('../../assets/icons/check_chapter.svg')}
-                          width={8}
-                          height={8}
-                          color={'#64BF00'}
-                        />
-                      </span>
+                      <Icon
+                        src={require('../../assets/icons/check_chapter.svg')}
+                        width={8}
+                        height={8}
+                        color={'#64BF00'}
+                      />
+                    </span>
                     }
-                    {!this.state.storedState.hasRead[subchapter.alias] &&
-                    <span className='mr3 fw5 green dib'
-                          style={{
+                    <div
+                      ref={`link-${slug(subchapter.alias)}`}
+                      className={this.props.params.subchapter === subchapter.alias ? 'bg-black-10' : ''}
+                    >
+                      {!this.state.storedState.hasRead[subchapter.alias] &&
+                      <span
+                        className='mr3 fw5 green dib'
+                        style={{
                           width: 8,
                           height: 8,
                         }}
-                    />
-                    }
-                    <Link
-                      to={`/${chapter.alias}/${subchapter.alias}`}
-                      className='black fw3'
-                    >
-                      {subchapter.title}
-                    </Link>
+                      />
+                      }
+                      <Link
+                        to={`/${chapter.alias}/${subchapter.alias}`}
+                        className='black fw3'
+                      >
+                        {subchapter.title}
+                      </Link>
+                    </div>
                     {chapter.alias === this.props.params.chapter &&
                     subchapter.alias === this.props.params.subchapter &&
                     headingsTree.map((h) => (
@@ -164,6 +178,13 @@ class App extends React.Component<Props, State> {
                 ))}
               </div>
             ))}
+            <div
+              className='absolute top-0 right-0 bg-accent'
+              style={{
+                width: 1,
+                height: this.state.progressBarHeight,
+              }}
+            />
           </div>
           <div
             className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer'
@@ -274,6 +295,17 @@ class App extends React.Component<Props, State> {
     )
     if (this.state.expandNavButtons !== expandNavButtons) {
       this.setState({expandNavButtons} as State)
+    }
+  }
+
+  private calculateProgressBarHeight() {
+    const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
+    if (lastSubchapterAlias) {
+      const currentElement = findDOMNode(this.refs[`link-${slug(lastSubchapterAlias)}`])!
+      const progressBarHeight = currentElement.getBoundingClientRect().top
+      if (progressBarHeight !== this.state.progressBarHeight) {
+        this.setState({ progressBarHeight } as State)
+      }
     }
   }
 }
