@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {skipEndpoint, hasSkippedEndpoint} from '../../utils/statestore'
+import {StoredState} from '../../utils/statestore'
 
 interface Props {
 }
@@ -8,44 +8,51 @@ interface State {
 }
 
 interface Context {
-  endpoint: string | null
+  storedState: StoredState
+  updateStoredState: (keyPath: string[], value: any) => void
 }
 
 export default class ContentEndpoint extends React.Component<Props, State> {
 
   static contextTypes = {
-    endpoint: React.PropTypes.string,
+    storedState: React.PropTypes.object.isRequired,
+    updateStoredState: React.PropTypes.func.isRequired,
   }
 
   context: Context
 
   render() {
-    if (hasSkippedEndpoint()) {
+    const redirectUrl = window.location.href
+    const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email&redirect_uri=${redirectUrl}` // tslint:disable-line
+
+    if (this.context.storedState.skippedAuth) {
       return (
         <div>
           I thought about it. It was a mistake. I want a GraphQL Endpoint...
-          <a href={`https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email`}>
+          <a href={githubUrl}>
             Get GraphQL Endpoint
           </a>
         </div>
       )
     }
 
-    if (this.context.endpoint) {
+    if (this.context.storedState.user && this.context.storedState.user.endpoint) {
       return (
         <div>
           Congrats this is your endpoint:
-          {this.context.endpoint}
+          {this.context.storedState.user.endpoint}
         </div>
       )
     }
 
     return (
       <div>
-        <a href={`https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email`}>
+        <a href={githubUrl}>
           Get GraphQL Endpoint
         </a>
-        <button onClick={skipEndpoint}>Read on without GraphQL endpoint (non-interactive)</button>
+        <button onClick={() => this.context.updateStoredState(['skippedAuth'], true)}>
+          Read on without GraphQL endpoint (non-interactive)
+        </button>
       </div>
     )
   }

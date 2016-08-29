@@ -1,24 +1,33 @@
-export function markAsRead(subchapterAlias: string) {
-  window.localStorage.setItem(`has_read_${subchapterAlias}`, 'true')
+import * as Immutable from 'immutable'
+
+interface UserData {
+  endpoint: string
+  email: string
+  resetPasswordToken: string
 }
 
-export function hasRead(subchapterAlias: string): boolean {
-  return !!window.localStorage.getItem(`has_read_${subchapterAlias}`)
+export interface StoredState {
+  hasRead: { [key: string]: boolean }
+  user: UserData | null
+  skippedAuth: boolean
 }
 
-export function getEndpoint(): string | null {
-  return window.localStorage.getItem('graphcool_endpoint')
+const initialState: StoredState = {
+  hasRead: {},
+  user: null,
+  skippedAuth: false,
 }
 
-export function saveEndpoint(endpoint: string) {
-  window.localStorage.setItem('graphcool_endpoint', endpoint)
-  window.localStorage.removeItem('graphcool_endpoint_skipped')
+let state: StoredState = window.localStorage.hasOwnProperty('learnrelay_state')
+  ? JSON.parse(window.localStorage.getItem('learnrelay_state')!) as StoredState
+  : initialState
+
+export function getStoredState(): StoredState {
+  return state
 }
 
-export function skipEndpoint() {
-  window.localStorage.setItem('graphcool_endpoint_skipped', 'true')
-}
-
-export function hasSkippedEndpoint(): boolean {
-  return !!window.localStorage.getItem('graphcool_endpoint_skipped')
+export function update(keyPath: string[], value: any): StoredState {
+  state = Immutable.fromJS(state).setIn(keyPath, value).toJS() as StoredState
+  window.localStorage.setItem('learnrelay_state', JSON.stringify(state))
+  return state
 }

@@ -14,12 +14,16 @@ browserHistory.listen(({pathname}) => {
   analytics.track(`view documenation: ${pathname}`)
 })
 
+function shouldScrollUp (previousProps, { location }) {
+  return location.hash === '' && (previousProps === null || previousProps.location.pathname !== location.pathname)
+}
+
 ReactDOM.render(
   (
     <Router
       routes={routes}
       history={browserHistory}
-      render={applyRouterMiddleware(useScroll((props, { location }) => location.hash === ''))}
+      render={applyRouterMiddleware(useScroll(shouldScrollUp))}
     />
   ),
   document.getElementById('root')

@@ -4,7 +4,6 @@ import MarkdownPage from './pages/markdown/MarkdownPage'
 import LandingPage from './pages/landing/LandingPage'
 import App from './components/App/App'
 import {subchapters} from './utils/content'
-import {markAsRead} from './utils/statestore'
 
 export default (
   <Route component={App}>
@@ -14,7 +13,6 @@ export default (
       component={({ params }) => (
         <MarkdownPage params={params} ast={subchapters.find((s) => s.alias === params.subchapter)!.ast()} />
       )}
-      onEnter={({ params }) => markAsRead(params.subchapter)}
     />
   </Route>
 )

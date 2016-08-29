@@ -5,7 +5,7 @@ import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
-import {hasRead, getEndpoint, saveEndpoint} from '../../utils/statestore'
+import {StoredState, getStoredState, update} from '../../utils/statestore'
 
 require('./style.css')
 
@@ -32,13 +32,14 @@ interface Props {
 
 interface State {
   showLayover: boolean
-  endpoint: string | null
+  storedState: StoredState
 }
 
 class App extends React.Component<Props, State> {
 
   static childContextTypes = {
-    endpoint: React.PropTypes.string,
+    storedState: React.PropTypes.object.isRequired,
+    updateStoredState: React.PropTypes.func.isRequired,
   }
 
   constructor(props: Props) {
@@ -51,13 +52,14 @@ class App extends React.Component<Props, State> {
 
     this.state = {
       showLayover: false,
-      endpoint: getEndpoint(),
+      storedState: getStoredState(),
     }
   }
 
   getChildContext() {
     return {
-      endpoint: this.state.endpoint,
+      storedState: this.state.storedState,
+      updateStoredState: this.updateStoredState,
     }
   }
 
@@ -103,7 +105,7 @@ class App extends React.Component<Props, State> {
                     className='pb3'
                     key={subchapter.alias}
                   >
-                    { hasRead(subchapter.alias) &&
+                    {this.state.storedState.hasRead[subchapter.alias] &&
                       <span className='mr3 fw5 green dib'>
                         <Icon
                           src={require('../../assets/icons/check_chapter.svg')}
@@ -113,7 +115,7 @@ class App extends React.Component<Props, State> {
                         />
                       </span>
                     }
-                    { !hasRead(subchapter.alias) &&
+                    {this.state.storedState.hasRead[subchapter.alias] &&
                       <span className='mr3 fw5 green dib'>
 
                       </span>
@@ -184,9 +186,9 @@ class App extends React.Component<Props, State> {
           </div>
           }
         </div>
-        {this.state.showLayover && this.state.endpoint &&
+        {this.state.showLayover && this.state.storedState.user &&
         <ServerLayover
-          endpoint={this.state.endpoint}
+          endpoint={this.state.storedState.user.endpoint}
           close={() => this.setState({ showLayover: false } as State)}
         />
         }
@@ -212,11 +214,17 @@ class App extends React.Component<Props, State> {
       throw Error(response.statusText)
     }
 
-    const {projectId} = body
+    const {projectId, email, resetPasswordToken} = body
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
-    saveEndpoint(endpoint)
-    this.setState({endpoint} as State)
+    this.updateStoredState(['user'], {endpoint, email, resetPasswordToken})
+    this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(window.location.pathname)
+  }
+
+  private updateStoredState = (keyPath: string[], value: any) => {
+    this.setState({
+      storedState: update(keyPath, value),
+    } as State)
   }
 }
 
