@@ -106,16 +106,18 @@ class App extends React.Component<Props, State> {
           style={{ width: 270 }}
         >
           <div className='relative pb6 overflow-y-scroll'>
-            <h2 className='fw3 pa4 pb0'>
-              <span className='dib mr3 mrl-1'>
-                <Icon
-                  src={require('../../assets/icons/logo.svg')}
-                  width={22}
-                  height={13}
-                />
-              </span>
-              Learn Relay
-            </h2>
+            <Link to='/'>
+              <h2 className='fw3 pa4 pb0 black'>
+                <span className='dib mr3 mrl-1'>
+                  <Icon
+                    src={require('../../assets/icons/logo.svg')}
+                    width={22}
+                    height={13}
+                  />
+                </span>
+                Learn Relay
+              </h2>
+            </Link>
             {chapters.map((chapter, index) => (
               <div
                 className='flex flex-column'

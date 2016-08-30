@@ -1,4 +1,6 @@
 import * as React from 'react'
+import {Link} from 'react-router'
+import {chapters} from '../../utils/content'
 const styles: any = require('./LandingPage.module.styl')
 
 interface Props {
@@ -33,7 +35,7 @@ export default class LandingPage extends React.Component<Props, {}> {
           </dt>
         </dl>
         <div className={styles.start}>
-          <button>Start interactive tutorial</button>
+          <Link to={`/${chapters[0].alias}/${chapters[0].subchapters[0].alias}`}>Start interactive tutorial</Link>
         </div>
       </div>
     )
