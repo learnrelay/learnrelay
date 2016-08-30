@@ -105,8 +105,8 @@ class App extends React.Component<Props, State> {
           `}
           style={{ width: 270 }}
         >
-          <div className='relative pa4 pb6 overflow-y-scroll'>
-            <h2 className='fw3 pb4'>
+          <div className='relative pb6 overflow-y-scroll'>
+            <h2 className='fw3 pa4 pb0'>
               <span className='dib mr3 mrl-1'>
                 <Icon
                   src={require('../../assets/icons/logo.svg')}
@@ -122,52 +122,64 @@ class App extends React.Component<Props, State> {
                 key={chapter.alias}
               >
                 <Link
-                  className='fw6 pb3 black'
+                  className='fw6 ph4 pb3 black'
                   to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
+                  style={{
+                    paddingBottom: '0.5rem',
+                    paddingTop: '1rem',
+                  }}
                 >
                   <span className='mr3 o-20 bold'>{index + 1}</span> {chapter.title}
                 </Link>
                 {chapter.subchapters.map((subchapter) => (
                   <div
-                    className='pb3'
+                    className='pb1'
                     key={subchapter.alias}
                   >
-                    {this.state.storedState.hasRead[subchapter.alias] &&
-                      <span className='mr3 fw5 green dib'>
-                        <Icon
-                          src={require('../../assets/icons/check_chapter.svg')}
-                          width={8}
-                          height={8}
-                          color={'#64BF00'}
-                        />
-                      </span>
-                    }
                     <div
-                      ref={`link-${slug(subchapter.alias)}`}
-                      className={this.props.params.subchapter === subchapter.alias ? 'bg-black-10 dib' : 'dib'}
+                      className={this.props.params.subchapter === subchapter.alias ? 'ph4 bg-black-05' : 'ph4'}
+                      style={{
+                        paddingTop: '0.5rem',
+                        paddingBottom: '0.5rem',
+                      }}
                     >
-                      {!this.state.storedState.hasRead[subchapter.alias] &&
-                        <span
-                          className='mr3 fw5 green dib'
-                          style={{
-                            width: 8,
-                            height: 8,
-                          }}
-                        />
+                      {this.state.storedState.hasRead[subchapter.alias] &&
+                        <span className='mr3 fw5 green dib'>
+                          <Icon
+                            src={require('../../assets/icons/check_chapter.svg')}
+                            width={8}
+                            height={8}
+                            color={'#64BF00'}
+                          />
+                        </span>
                       }
-                      <Link
-                        to={`/${chapter.alias}/${subchapter.alias}`}
-                        className='black fw3'
+                      <div
+                        ref={`link-${slug(subchapter.alias)}`}
+                        className='dib'
                       >
-                        {subchapter.title}
-                      </Link>
+                        {!this.state.storedState.hasRead[subchapter.alias] &&
+                          <span
+                            className='mr3 fw5 green dib'
+                            style={{
+                              width: 8,
+                              height: 8,
+                            }}
+                          />
+                        }
+                        <Link
+                          to={`/${chapter.alias}/${subchapter.alias}`}
+                          className='black fw3'
+                        >
+                          {subchapter.title}
+                        </Link>
+                      </div>
                     </div>
                     {chapter.alias === this.props.params.chapter &&
                     subchapter.alias === this.props.params.subchapter &&
                     headingsTree.map((h) => (
                       <a
                         key={h.title!}
-                        className='flex flex-row pt2 flex-start black'
+                        className={`flex flex-row flex-start black ${styles.subchapter}`}
                         href={`#${slug(h.title!)}`}
                       >
                         <div className='ml4 mr2 fw5 bold o-20 black rotate-180 dib indent-char-dimensions'>¬</div>
@@ -179,9 +191,9 @@ class App extends React.Component<Props, State> {
               </div>
             ))}
             <div
-              className='absolute top-0 right-0 bg-accent'
+              className={`absolute top-0 right-0 ${styles.progressBar}`}
               style={{
-                width: 1,
+                width: 2,
                 height: this.state.progressBarHeight,
               }}
             />
