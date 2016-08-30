@@ -1,5 +1,19 @@
 .sidebar
   z-index 5
+  &:before
+    content ""
+    width 2px
+    height 100%
+    position absolute
+    right 0
+    background rgba(0,0,0,0.1)
+
+.subchapter
+  font-weight 100
+  padding 1rem 30px 0
+
+  &:first-of-type
+    padding-top 0.5rem
 
 .jump
   position fixed
@@ -44,3 +58,14 @@
 
   .jumpDetail
     padding-left 15px
+
+.progressBar
+  background #FAC499
+  &:after
+    content ""
+    position absolute
+    bottom -29px
+    height 32px
+    width 2px
+    background var(--color-accent)
+    border-bottom 5px solid #fff
