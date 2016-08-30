@@ -291,7 +291,7 @@ class App extends React.Component<Props, State> {
   private onScroll() {
     const expandNavButtons = (
       document.body.scrollHeight - 100 < document.body.scrollTop + window.innerHeight ||
-      document.body.scrollHeight > document.body.clientHeight
+      document.body.scrollHeight <= window.innerHeight
     )
     if (this.state.expandNavButtons !== expandNavButtons) {
       this.setState({expandNavButtons} as State)
