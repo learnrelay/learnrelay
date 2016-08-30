@@ -7,24 +7,12 @@ import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
+import {getParameterByName} from '../../utils/location'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 
 require('./style.css')
 
 const styles: any = require('./App.module.styl')
-
-function getParameterByName(name: string): string | null {
-  name = name.replace(/[\[\]]/g, '\\$&')
-  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
-  const results = regex.exec(window.location.href)
-  if (!results) {
-    return null
-  }
-  if (!results[2]) {
-    return ''
-  }
-  return decodeURIComponent(results[2].replace(/\+/g, ' '))
-}
 
 interface Props {
   children: React.ReactElement<any>
@@ -200,6 +188,7 @@ class App extends React.Component<Props, State> {
               }}
             />
           </div>
+          {this.state.storedState.user && this.state.storedState.user.endpoint &&
           <div
             className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer'
             style={{ width: 269, height: 90 }}
@@ -214,6 +203,7 @@ class App extends React.Component<Props, State> {
             />
             <span className='white f3 pl2'>GraphQL Server</span>
           </div>
+          }
         </div>
         <div className='absolute right-0 ph4 o-50 black gray-2 f6 tr' style={{ top: '2.3rem' }}>
           Last updated<br />

@@ -1,4 +1,6 @@
 import * as React from 'react'
+import Loading from '../Loading/Loading'
+import {getParameterByName} from '../../utils/location'
 import {StoredState} from '../../utils/statestore'
 
 const styles: any = require('./ContentEndpoint.module.styl')
@@ -24,8 +26,14 @@ export default class ContentEndpoint extends React.Component<Props, State> {
   context: Context
 
   render() {
-    const redirectUrl = `${window.location.origin}${window.location.pathname}#step-1-warm-up`
+    const redirectUrl = `${window.location.origin}${window.location.pathname}#graphql-endpoint`
     const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email&redirect_uri=${redirectUrl}` // tslint:disable-line
+
+    if (getParameterByName('code')) {
+      return (
+        <Loading />
+      )
+    }
 
     if (this.context.storedState.skippedAuth) {
       return (
