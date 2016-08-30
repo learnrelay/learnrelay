@@ -31,9 +31,11 @@ export default class ContentEndpoint extends React.Component<Props, State> {
       return (
         <div>
           I thought about it. It was a mistake. I want a GraphQL Endpoint...
-          <a href={githubUrl} className={`pa3 bg-accent pointer ${styles.getEndpoint}`}>
-            Get GraphQL Endpoint
-          </a>
+          <div className='tc'>
+            <a href={githubUrl} className={`pa3 pointer ${styles.getEndpoint}`}>
+              Get GraphQL Endpoint
+            </a>
+          </div>
         </div>
       )
     }
@@ -50,13 +52,13 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     }
 
     return (
-      <div>
-        <a href={githubUrl}>
+      <div className='tc'>
+        <a href={githubUrl} className={`pa3 pointer ${styles.getEndpoint}`}>
           Get GraphQL Endpoint
         </a>
-        <button onClick={() => this.context.updateStoredState(['skippedAuth'], true)}>
+        <a className='db mb4 pointer' onClick={() => this.context.updateStoredState(['skippedAuth'], true)}>
           Read on without GraphQL endpoint (non-interactive)
-        </button>
+        </a>
       </div>
     )
   }
