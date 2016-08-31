@@ -20,6 +20,7 @@
   bottom 30px
   color #fff
   border-radius 3px
+  cursor pointer
 
   a
     color inherit
@@ -54,7 +55,13 @@
 .jumpLeft
   left 270px + 25px
 
-  &:hover
+  &:hover, &.jumpActive
+    background #ededed
+    color #000
+
+    .icon
+      svg
+        fill #000
 
   .jumpDetail
     padding-left 15px
