@@ -2,6 +2,7 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
+const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
   params: any
@@ -36,8 +37,10 @@ export default class MarkdownPage extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div>
-        <Markdown ast={this.props.ast}/>
+      <div className={styles.container} >
+        <Markdown
+          ast={this.props.ast}
+        />
       </div>
     )
   }

@@ -23,6 +23,7 @@ interface State {
   showLayover: boolean
   storedState: StoredState
   expandNavButtons: boolean
+  showNav: boolean
 }
 
 class App extends React.Component<Props, State> {
@@ -44,6 +45,7 @@ class App extends React.Component<Props, State> {
       showLayover: false,
       storedState: getStoredState(),
       expandNavButtons: false,
+      showNav: false,
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -83,15 +85,30 @@ class App extends React.Component<Props, State> {
 
     return (
       <div className='flex row-reverse'>
+        <div className={styles.hamburger} onClick={this.toggleNav}>
+          <div className={styles.hamburgerWrapper}/>
+        </div>
         <div
           className={`
             flex flex-column vertical-line font-small fixed left-0 h-100 overflow-x-visible
             ${styles.sidebar}
           `}
-          style={{ width: 270 }}
+          style={{
+            width: 270,
+            display: this.state.showNav ? 'flex' : 'none',
+          }}
         >
+
           <div className='relative pb6 overflow-y-scroll' ref='sidenav'>
-            <Link to='/'>
+            <div className={styles.close} onClick={this.toggleNav}>
+              <Icon
+                src={require('../../assets/icons/close.svg')}
+                width={25}
+                height={25}
+                color='rgba(0,0,0,0.5)'
+              />
+            </div>
+            <Link to='/' onClick={this.toggleNav}>
               <h2 className='fw3 pa4 pb0 black'>
                 <span className='dib mr3 mrl-1'>
                   <Icon
@@ -111,6 +128,7 @@ class App extends React.Component<Props, State> {
                 <Link
                   className='fw6 ph4 pb3 black'
                   to={`/${chapter.alias}/${chapter.subchapters[0].alias}`}
+                  onClick={this.toggleNav}
                   style={{
                     paddingBottom: '0.5rem',
                     paddingTop: '1rem',
@@ -129,6 +147,7 @@ class App extends React.Component<Props, State> {
                       ${this.props.params.subchapter === subchapter.alias ? 'ph4 bg-black-05' : 'ph4'}
                       ${this.props.params.subchapter === subchapter.alias ? styles.currentProgressBar : ''}
                       `}
+                      onClick={this.toggleNav}
                       style={{
                         paddingTop: '0.5rem',
                         paddingBottom: '0.5rem',
@@ -163,6 +182,7 @@ class App extends React.Component<Props, State> {
                         <Link
                           to={`/${chapter.alias}/${subchapter.alias}`}
                           className='black fw3'
+                          onClick={this.toggleNav}
                         >
                           {subchapter.title}
                         </Link>
@@ -172,6 +192,7 @@ class App extends React.Component<Props, State> {
                     subchapter.alias === this.props.params.subchapter &&
                     headingsTree.map((h) => (
                       <a
+                        onClick={this.toggleNav}
                         key={h.title!}
                         className={`flex flex-row flex-start black ${styles.subchapter}`}
                         href={`#${slug(h.title!)}`}
@@ -187,7 +208,7 @@ class App extends React.Component<Props, State> {
           </div>
           {this.state.storedState.user && this.state.storedState.user.endpoint &&
           <div
-            className='fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer'
+            className={`fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}`}
             style={{ width: 269, height: 90 }}
             onClick={() => this.setState({ showLayover: true } as State)}
           >
@@ -202,14 +223,11 @@ class App extends React.Component<Props, State> {
           </div>
           }
         </div>
-        <div className='absolute right-0 ph4 o-50 black gray-2 f6 tr' style={{ top: '2.3rem' }}>
+        <div className={`absolute right-0 ph4 o-50 black gray-2 f6 tr ${styles.lastUpdated}`}>
           Last updated<br />
           {__LAST_UPDATE__}
         </div>
-        <div
-          className=''
-          style={{ width: 'calc(100% - 270px)' }}
-        >
+        <div className={styles.content}>
           {this.props.children}
           {previousSubchapter &&
           <div
@@ -297,6 +315,10 @@ class App extends React.Component<Props, State> {
     if (this.state.expandNavButtons !== expandNavButtons) {
       this.setState({expandNavButtons} as State)
     }
+  }
+
+  private toggleNav = () => {
+    this.setState({ showNav: !this.state.showNav } as State)
   }
 }
 

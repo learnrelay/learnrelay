@@ -1,5 +1,13 @@
 .sidebar
   z-index 5
+  background #fff
+
+  @media (min-width: 740px)
+    display flex !important
+
+  @media (max-width: 739px)
+    width 100% !important
+
   &:before
     content ""
     width 2px
@@ -7,6 +15,12 @@
     position absolute
     right 0
     background rgba(0,0,0,0.1)
+
+.content
+  width calc(100% - 270px)
+
+  @media (max-width: 740px)
+    width 100%
 
 .subchapter
   font-weight 100
@@ -66,6 +80,20 @@
   .jumpDetail
     padding-left 15px
 
+@media (max-width: 900px)
+  .jump
+    display none
+    &.jumpActive
+      display block
+
+@media (max-width: 740px)
+  .jumpLeft
+    left 25px
+
+@media (max-width: 560px)
+  .jumpLeft
+    display none !important
+
 .progressBar
   position absolute
   background #FAC499
@@ -92,3 +120,50 @@
     width 2px
     background var(--color-accent)
     z-index 100
+
+.serverButton
+  @media (max-width: 740px)
+    display none !important
+
+.hamburger, .close
+  position absolute
+  top 0px
+  left 0px
+  width 20px
+  height 20px
+  padding 25px
+  box-sizing content-box
+  cursor pointer
+
+.hamburgerWrapper
+  position relative
+  width 100%
+  height 2px
+  margin-top 10px
+
+  background rgba(0,0,0,0.2)
+
+  &:before, &:after
+    content ""
+    width 100%
+    height 2px
+    background rgba(0,0,0,0.2)
+    position absolute
+    left 0
+
+  &:before
+    top -10px
+
+  &:after
+    bottom -10px
+
+.lastUpdated
+  top: 2.3rem
+
+  @media (max-width 740px)
+    top 25px
+
+.close
+  z-index 99999
+  left auto
+  right 0
