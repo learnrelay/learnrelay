@@ -37,8 +37,7 @@
 }
 
 .content {
-  padding: 3rem 90px 6rem;
-  max-width: 830px;
+  max-width: 740px;
   margin: 0 auto 4rem;
   overflow: hidden;
 }
@@ -97,6 +96,7 @@
 
 .content li {
     margin: 0.2rem 0;
+    line-height: 1.7;
 }
 
 .content blockquote {

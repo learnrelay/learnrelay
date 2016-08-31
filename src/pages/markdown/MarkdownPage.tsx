@@ -36,8 +36,10 @@ export default class MarkdownPage extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div>
-        <Markdown ast={this.props.ast}/>
+      <div style={{padding: '3rem 90px 6rem'}} >
+        <Markdown
+          ast={this.props.ast}
+        />
       </div>
     )
   }
