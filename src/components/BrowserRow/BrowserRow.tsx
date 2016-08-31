@@ -4,6 +4,8 @@ import Icon from '../Icon/Icon'
 import DeletePokemonMutation from '../../mutations/DeletePokemonMutation'
 import UpdatePokemonMutation from '../../mutations/UpdatePokemonMutation'
 
+const styles: any = require('./BrowserRow.module.styl')
+
 interface Props {
   pokemon: any
   viewerId: string
@@ -30,23 +32,32 @@ class BrowserRow extends React.Component<Props, State> {
   render() {
     return (
       <div
-        className='w-100 flex relative'
+        className={`w-100 flex relative ${styles.tableRow}`}
         onMouseEnter={() => this.setState({hover: true} as State)}
         onMouseLeave={() => this.setState({hover: false} as State)}
       >
         <input
-          style={{minWidth: '30%', padding: 12, boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          style={{
+            minWidth: '30%',
+            padding: 12,
+            boxSizing: 'border-box',
+            borderLeft: '1px solid #E5E5E5',
+          }}
           value={this.state.id}
           disabled
         />
         <input
           onBlur={this.updatePokemon}
-          style={{minWidth: '30%', padding: 12, boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          style={{
+            minWidth: '30%',
+            padding: 12,
+            boxSizing: 'border-box',
+          }}
           value={this.state.name}
           onChange={(e: any) => this.setState({name: e.target.value, changesMade: true} as State)}
         />
         <input
-          style={{minWidth: '40%', padding: 12, boxSizing: 'border-box', border: '1px solid #E5E5E5'}}
+          style={{minWidth: '40%', padding: 12, boxSizing: 'border-box'}}
           value={this.state.url}
           onBlur={this.updatePokemon}
           onChange={(e: any) => this.setState({url: e.target.value, changesMade: true} as State)}
@@ -54,11 +65,13 @@ class BrowserRow extends React.Component<Props, State> {
         {this.state.hover &&
         <div
           className='flex items-center absolute bg-white'
-          style={{padding: 20, right: 0, height: 'calc(100% - 4px)', boxSizing: 'border-box', margin: 2}}
+          style={{padding: 10, right: 0, height: 'calc(100% - 4px)', boxSizing: 'border-box', margin: 2}}
         >
           <Icon
             onClick={this.removePokemon}
             className='pointer dim'
+            width={18}
+            height={18}
             src={require('../../assets/icons/delete.svg')}
           />
         </div>

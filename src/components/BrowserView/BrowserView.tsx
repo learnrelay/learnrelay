@@ -4,6 +4,8 @@ import Icon from '../Icon/Icon'
 import AddPokemonMutation from '../../mutations/AddPokemonMutation'
 import BrowserRow from '../BrowserRow/BrowserRow'
 
+const styles: any = require('./BrowserView.module.styl')
+
 interface Props {
   viewer: any
 }
@@ -22,7 +24,7 @@ class BrowserView extends React.Component<Props, State> {
 
   render() {
     return (
-      <div style={{height: 280, padding: 20}}>
+      <div style={{height: 280, padding: 20, overflow: 'auto'}}>
         <div className='flex' style={{color: 'rgba(0,0,0,0.25)'}}>
           <div className='ttu' style={{padding: '0 0 13px 13px', minWidth: '30%'}}>
             Pokemon-Id
@@ -34,54 +36,50 @@ class BrowserView extends React.Component<Props, State> {
             Image Url
           </div>
         </div>
-        <div className='overflow-scroll' style={{height: 229, paddingBottom: 20}}>
+        <div className='overflow-auto' style={{paddingBottom: 20}}>
           {this.props.viewer.allPokemons.edges.map((edge) => edge.node).map(
             (node) => <BrowserRow key={node.id} pokemon={node} viewerId={this.props.viewer.id}/>
           )}
-          <div className='w-100 flex relative'>
+          <div className={`w-100 flex relative ${styles.newRow}`}>
             <input
-              className='i bg-transparent'
+              className='i bg-transparent accent'
               style={{
                 minWidth: '30%',
                 padding: '12px',
                 boxSizing: 'border-box',
-                border: '1px solid #E5E5E5',
-                color: 'rgba(242,107,0,0.6)',
               }}
               value={'Add new Pokémon (id will be generated)'}
               disabled
             />
             <input
-              className='bg-transparent'
+              className='bg-transparent accent'
               placeholder='insert Pokemon name'
               style={{
                 minWidth: '30%',
                 padding: '12px',
                 boxSizing: 'border-box',
-                border: '1px solid #E5E5E5',
-                color: 'rgba(242,107,0,0.6)',
               }}
               value={this.state.name}
               onChange={(e: any) => this.setState({name: e.target.value} as State)}
             />
             <input
-              className='bg-transparent'
+              className='bg-transparent accent'
               placeholder='insert an image url'
               style={{
                 minWidth: '40%',
                 padding: '12px',
                 boxSizing: 'border-box',
-                border: '1px solid #E5E5E5',
-                color: 'rgba(242,107,0,0.6)',
               }}
               value={this.state.url}
               onChange={(e: any) => this.setState({url: e.target.value} as State)}
             />
             {this.state.name && this.state.url &&
-            <div className='flex items-center absolute h-100' style={{right: 20}}>
+            <div className='flex items-center absolute h-100' style={{right: 10}}>
               <Icon
                 onClick={this.addPokemon}
                 className='pointer dim'
+                width={24}
+                height={24}
                 src={require('../../assets/icons/check.svg')}
               />
             </div>
