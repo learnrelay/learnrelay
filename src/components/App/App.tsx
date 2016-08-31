@@ -229,7 +229,7 @@ class App extends React.Component<Props, State> {
             </Link>
           </div>
           }
-          {nextSubchapter &&
+          {nextSubchapter && (currentSubchapterAlias !== 'get-started' || this.state.storedState.user || this.state.storedState.skippedAuth) &&
           <div
             className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
           >

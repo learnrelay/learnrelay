@@ -2,6 +2,8 @@ import * as React from 'react'
 import Loading from '../Loading/Loading'
 import {getParameterByName} from '../../utils/location'
 import {StoredState} from '../../utils/statestore'
+import Markdown from '../Markdown/Markdown'
+import {Parser} from 'commonmark'
 
 const styles: any = require('./ContentEndpoint.module.styl')
 
@@ -15,6 +17,9 @@ interface Context {
   storedState: StoredState
   updateStoredState: (keyPath: string[], value: any) => void
 }
+
+const parser = new Parser()
+const ast = parser.parse(require('../../../content/introduction/get-started-bottom.md'))
 
 export default class ContentEndpoint extends React.Component<Props, State> {
 
@@ -44,6 +49,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
               Get GraphQL Endpoint
             </a>
           </div>
+          <Markdown ast={ast}/>
         </div>
       )
     }
@@ -55,6 +61,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
           <div className={`pa3 ${styles.showEndpoint}`}>
             {this.context.storedState.user.endpoint}
           </div>
+          <Markdown ast={ast}/>
         </div>
       )
     }

@@ -17,6 +17,8 @@ interface SubchapterData {
   alias: string
 }
 
+const parser = new Parser()
+
 class Subchapter {
   title: string
   alias: string
@@ -32,8 +34,6 @@ class Subchapter {
     return parser.parse(require(`../../content/${this.chapter.alias}/${this.alias}.md`))
   }
 }
-
-const parser = new Parser()
 
 export const chapters: Chapter[] = [
   new Chapter('Overview', 'overview', [{
