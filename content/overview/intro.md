@@ -22,4 +22,4 @@ Each chapter will be started with a short video that will give you the overview 
 
 Let's talk about our first Relay application! You might have seen a lot of Todo List applications before, let's try something new! In this tutorial, we will build a Pokedex application where you can browse and modify your existing Pokemons, or add new ones! It looks like the following image:
 
-![](https://cloud.githubusercontent.com/assets/4731916/17520053/8f21fc68-5e4e-11e6-9d53-4f86ce085225.png)
+![](../images/demo.png)
