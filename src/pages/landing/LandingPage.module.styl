@@ -1,8 +1,15 @@
 .root
-    padding 90px
-    max-width 920px
-    margin 0 auto
+  padding 90px
+  max-width 920px
+  margin 0 auto
     // background red
+
+  @media (max-width: 900px)
+    padding 90px 45px
+
+  @media (max-width: 450px)
+    padding 90px 25px
+
 
   header
 
@@ -75,7 +82,15 @@
   background #fff
   box-shadow 0 10px 45px 50px #fff
   cursor pointer
+  text-align center
   // height 100px
+
+  @media (max-width 740px)
+    left 0
+
+  @media (max-width: 450px)
+    padding 25px
+
 
   a
     background var(--color-accent)
