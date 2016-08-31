@@ -39,7 +39,7 @@ class ServerLayover extends React.Component<Props, State> {
         style={{
           height: this.state.showData ? 350 : 550,
           transition: 'height 0.5s ease',
-          zIndex: 10
+          zIndex: 10,
         }}
       >
         <div className='flex justify-between bg-accent' style={{ height: 70 }}>

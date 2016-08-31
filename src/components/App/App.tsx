@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {findDOMNode} from 'react-dom'
 import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import Icon from '../Icon/Icon'
@@ -24,7 +23,6 @@ interface State {
   showLayover: boolean
   storedState: StoredState
   expandNavButtons: boolean
-  progressBarHeight: number
 }
 
 class App extends React.Component<Props, State> {
@@ -46,7 +44,6 @@ class App extends React.Component<Props, State> {
       showLayover: false,
       storedState: getStoredState(),
       expandNavButtons: false,
-      progressBarHeight: 0,
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -55,13 +52,11 @@ class App extends React.Component<Props, State> {
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll, false)
 
-    this.calculateProgressBarHeight()
     this.onScroll()
   }
 
   componentDidUpdate() {
     this.onScroll()
-    this.calculateProgressBarHeight()
   }
 
   componentWillUnmount() {
@@ -84,6 +79,8 @@ class App extends React.Component<Props, State> {
     const nextSubchapter = neighboorSubchapter(currentSubchapterAlias, true)
     const previousSubchapter = neighboorSubchapter(currentSubchapterAlias, false)
 
+    const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
+
     return (
       <div className='flex row-reverse'>
         <div
@@ -93,7 +90,7 @@ class App extends React.Component<Props, State> {
           `}
           style={{ width: 270 }}
         >
-          <div className='relative pb6 overflow-y-scroll'>
+          <div className='relative pb6 overflow-y-scroll' ref='sidenav'>
             <Link to='/'>
               <h2 className='fw3 pa4 pb0 black'>
                 <span className='dib mr3 mrl-1'>
@@ -127,12 +124,19 @@ class App extends React.Component<Props, State> {
                     key={subchapter.alias}
                   >
                     <div
-                      className={this.props.params.subchapter === subchapter.alias ? 'ph4 bg-black-05' : 'ph4'}
+                      className={`
+                      relative
+                      ${this.props.params.subchapter === subchapter.alias ? 'ph4 bg-black-05' : 'ph4'}
+                      ${this.props.params.subchapter === subchapter.alias ? styles.currentProgressBar : ''}
+                      `}
                       style={{
                         paddingTop: '0.5rem',
                         paddingBottom: '0.5rem',
                       }}
                     >
+                      {subchapter.alias === lastSubchapterAlias &&
+                        <div className={styles.progressBar} />
+                      }
                       {this.state.storedState.hasRead[subchapter.alias] &&
                         <span className='mr3 fw5 green dib'>
                           <Icon
@@ -180,13 +184,6 @@ class App extends React.Component<Props, State> {
                 ))}
               </div>
             ))}
-            <div
-              className={`absolute top-0 right-0 ${styles.progressBar}`}
-              style={{
-                width: 2,
-                height: this.state.progressBarHeight,
-              }}
-            />
           </div>
           {this.state.storedState.user && this.state.storedState.user.endpoint &&
           <div
@@ -299,17 +296,6 @@ class App extends React.Component<Props, State> {
     )
     if (this.state.expandNavButtons !== expandNavButtons) {
       this.setState({expandNavButtons} as State)
-    }
-  }
-
-  private calculateProgressBarHeight() {
-    const lastSubchapterAlias = getLastSubchapterAlias(Object.keys(this.state.storedState.hasRead))
-    if (lastSubchapterAlias) {
-      const currentElement = findDOMNode(this.refs[`link-${slug(lastSubchapterAlias)}`])!
-      const progressBarHeight = currentElement.getBoundingClientRect().top
-      if (progressBarHeight !== this.state.progressBarHeight) {
-        this.setState({ progressBarHeight } as State)
-      }
     }
   }
 }

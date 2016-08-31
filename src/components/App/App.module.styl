@@ -60,12 +60,28 @@
     padding-left 15px
 
 .progressBar
+  position absolute
   background #FAC499
+  width 2px
+  height 4000px
+  bottom 0
+  right 0
   &:after
     content ""
     position absolute
-    bottom -29px
+    bottom -5px
+    height 5px
+    background #fff
+    right 0
+    width 2px
+
+.currentProgressBar
+  &:after
+    content ""
+    position absolute
+    bottom 0
+    right 0
     height 32px
     width 2px
     background var(--color-accent)
-    border-bottom 5px solid #fff
+    z-index 100
