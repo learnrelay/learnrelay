@@ -4,6 +4,7 @@ import * as ReactRenderer from 'commonmark-react-renderer'
 import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
+import Sharing from '../Sharing/Sharing'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -66,9 +67,11 @@ export default class Markdown extends React.PureComponent<Props, {}> {
       },
       HtmlBlock (props) {
         if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
-          return (
-            <ContentEndpoint />
-          )
+          return <ContentEndpoint />
+        }
+
+        if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
+          return <Sharing />
         }
 
         return (

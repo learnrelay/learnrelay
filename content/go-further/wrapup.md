@@ -1,3 +1,5 @@
+<!-- __INJECT_SHARING__ -->
+
 # Go further
 
 ## Help & support
