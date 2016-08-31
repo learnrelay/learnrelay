@@ -11,6 +11,9 @@ interface State {
 export default class Sharing extends React.Component<Props, State> {
 
   render() {
+    const shareTitle = 'I just learned how to develop apps with Relay and GraphQL'
+    const shareUrl = encodeURIComponent(window.location.origin)
+
     return (
       <div className='db'>
         <h1 style={{
@@ -25,11 +28,27 @@ export default class Sharing extends React.Component<Props, State> {
           You did it! Well done!
         </h1>
         <p>
-          We hope you enjoyed learning Relay. We put a lot of work into these resources and hope to reach as many developers as possible. You can help us by sharing it:
+          We hope you enjoyed learning Relay.
+          We put a lot of work into these resources and hope to reach as many developers as possible.
+          You can help us by sharing it:
         </p>
         <div className='flex justify-center'>
-          <a href="" className={styles.button} style={{background: '#3cf'}}>Share on Twitter</a>
-          <a href="" className={`ml2 ${styles.button}`} style={{background: '#3b5998'}}>Share on Facebook</a>
+          <a
+            href={`http://www.twitter.com/share?url=${shareUrl}&text=${shareTitle}`}
+            target='_blank'
+            className={styles.button}
+            style={{background: '#3cf'}}
+          >
+            Share on Twitter
+          </a>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareTitle}`}
+            target='_blank'
+            className={`ml2 ${styles.button}`}
+            style={{background: '#3b5998'}}
+          >
+            Share on Facebook
+          </a>
         </div>
       </div>
     )
