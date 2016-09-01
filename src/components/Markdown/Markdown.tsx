@@ -75,7 +75,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
         }
 
         return (
-          <div>
+          <div className='w-100'>
             {ReactRenderer.renderers.HtmlBlock(props)}
           </div>
         )
