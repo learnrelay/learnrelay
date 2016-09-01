@@ -58,8 +58,8 @@ module.exports = {
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
       __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"M96lXuD90ZxkbQEQG716aySwBLllabOn"',
-      __GITHUB_OAUTH_CLIENT_ID__: '"b4ee20bd611665a7c729"',
-      __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth_dev"',
+      __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
+      __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       },

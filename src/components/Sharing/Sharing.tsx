@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {StoredState} from '../../utils/statestore'
 
 const styles: any = require('./Sharing.module.styl')
 
@@ -6,9 +7,30 @@ interface Props {
 }
 
 interface State {
+  slackSent: boolean
+  email: string
+}
+
+interface Context {
+  storedState: StoredState
 }
 
 export default class Sharing extends React.Component<Props, State> {
+
+  static contextTypes = {
+    storedState: React.PropTypes.object.isRequired,
+  }
+
+  context: Context
+
+  constructor(props: Props, context: Context) {
+    super(props)
+
+    this.state = {
+      slackSent: false,
+      email: context.storedState.user ? context.storedState.user.email : '',
+    }
+  }
 
   render() {
     const shareTitle = 'I just learned how to develop apps with Relay and GraphQL'
@@ -60,6 +82,12 @@ export default class Sharing extends React.Component<Props, State> {
         <p>
           If you need further help with Relay or have any other questions, come and join our Slack:
         </p>
+        {this.state.slackSent &&
+        <strong>
+          Gotcha! Please check your emails and look for the #learnrelay channel after joining Slack.
+        </strong>
+        }
+        {!this.state.slackSent &&
         <div
           className='flex justify-center'
           style={{
@@ -67,15 +95,40 @@ export default class Sharing extends React.Component<Props, State> {
           }}
         >
           <input
-            value='mikehunt@gmail.com'
+            type='text'
+            value={this.state.email}
+            placeholder='you@gmail.com'
             className={styles.mail}
+            onKeyDown={this.submitOnEnter}
+            onChange={(e: any) => this.setState({ email: e.target.value } as State)}
           />
-          <button className={styles.slackButton}>
+          <button className={styles.slackButton} onClick={this.submit}>
             <img src={require('../../assets/images/slack_logo.png')}/>
             Join Slack
           </button>
         </div>
+        }
       </div>
     )
+  }
+
+  private submitOnEnter = (e: React.KeyboardEvent<any>) => {
+    if (e.keyCode === 13) {
+      this.submit()
+    }
+  }
+
+  private submit = () => {
+    fetch('https://slack.graph.cool/invite', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email: this.state.email}),
+    })
+      .then(() => {
+        this.setState({slackSent: true} as State)
+      })
   }
 }
