@@ -32,7 +32,14 @@ export default class Sharing extends React.Component<Props, State> {
           We put a lot of work into these resources and hope to reach as many developers as possible.
           You can help us by sharing it:
         </p>
-        <div className='flex justify-center'>
+        <div
+          className='flex justify-center'
+          style={{
+            borderBottom: '1px solid rgba(0, 0, 0, 0.0980392)',
+            paddingBottom: '2rem',
+            marginBottom: '2rem',
+          }}
+        >
           <a
             href={`http://www.twitter.com/share?url=${shareUrl}&text=${shareTitle}`}
             target='_blank'
@@ -49,6 +56,24 @@ export default class Sharing extends React.Component<Props, State> {
           >
             Share on Facebook
           </a>
+        </div>
+        <p>
+          If you need further help with Relay or have any other questions, come and join our Slack:
+        </p>
+        <div
+          className='flex justify-center'
+          style={{
+            marginBottom: '2rem',
+          }}
+        >
+          <input
+            value='mikehunt@gmail.com'
+            className={styles.mail}
+          />
+          <button className={styles.slackButton}>
+            <img src={require('../../assets/images/slack_logo.png')}/>
+            Join Slack
+          </button>
         </div>
       </div>
     )
