@@ -294,8 +294,14 @@ class App extends React.Component<Props, State> {
       throw Error(response.statusText)
     }
 
-    const {projectId, email, resetPasswordToken} = body
+    const {projectId, email, resetPasswordToken, name} = body
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
+
+    analytics.identify(email, {
+      name: name,
+      email: email,
+    })
+
     this.updateStoredState(['user'], {endpoint, email, resetPasswordToken})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
