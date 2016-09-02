@@ -41,11 +41,20 @@ class App extends React.Component<Props, State> {
       this.fetchEndpoint(code)
     }
 
+    const storedState = getStoredState()
+
     this.state = {
       showLayover: false,
-      storedState: getStoredState(),
+      storedState,
       expandNavButtons: false,
       showNav: false,
+    }
+
+    if (storedState.user) {
+      analytics.identify(storedState.user.email, {
+        name: storedState.user.name,
+        email: storedState.user.email,
+      })
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -302,7 +311,7 @@ class App extends React.Component<Props, State> {
       email: email,
     })
 
-    this.updateStoredState(['user'], {endpoint, email, resetPasswordToken})
+    this.updateStoredState(['user'], {endpoint, email, resetPasswordToken,name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
   }

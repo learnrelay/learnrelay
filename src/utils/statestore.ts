@@ -4,6 +4,7 @@ interface UserData {
   endpoint: string
   email: string
   resetPasswordToken: string
+  name: string
 }
 
 export interface StoredState {
