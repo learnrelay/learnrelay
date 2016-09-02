@@ -3,6 +3,7 @@ import Loading from '../Loading/Loading'
 import {getParameterByName} from '../../utils/location'
 import {StoredState} from '../../utils/statestore'
 import Markdown from '../Markdown/Markdown'
+import TrackLink from '../TrackLink/TrackLink'
 import {Parser} from 'commonmark'
 
 const styles: any = require('./ContentEndpoint.module.styl')
@@ -45,9 +46,13 @@ export default class ContentEndpoint extends React.Component<Props, State> {
         <div>
           I thought about it. It was a mistake. I want a GraphQL Endpoint...
           <div className='tc'>
-            <a href={githubUrl} className={`pa3 pointer ${styles.getEndpoint}`}>
+            <TrackLink
+              href={githubUrl}
+              className={`pa3 pointer ${styles.getEndpoint}`}
+              eventMessage='open github auth'
+            >
               Get GraphQL Endpoint
-            </a>
+            </TrackLink>
           </div>
           <Markdown ast={ast}/>
         </div>
@@ -68,9 +73,13 @@ export default class ContentEndpoint extends React.Component<Props, State> {
 
     return (
       <div className='tc'>
-        <a href={githubUrl} className={`pa3 pointer ${styles.getEndpoint}`}>
+        <TrackLink
+          href={githubUrl}
+          className={`pa3 pointer ${styles.getEndpoint}`}
+          eventMessage='open github auth'
+        >
           Get GraphQL Endpoint
-        </a>
+        </TrackLink>
         <a className='db mb4 pointer' onClick={() => this.context.updateStoredState(['skippedAuth'], true)}>
           Read on without GraphQL endpoint (non-interactive)
         </a>

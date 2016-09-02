@@ -11,7 +11,7 @@ loadAnalytics()
 
 browserHistory.listen(({pathname}) => {
   analytics.page()
-  analytics.track(`view documenation: ${pathname}`)
+  analytics.track(`view: ${pathname}`)
 })
 
 function shouldScrollUp (previousProps, { location }) {

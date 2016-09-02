@@ -119,13 +119,17 @@ export default class Sharing extends React.Component<Props, State> {
   }
 
   private submit = () => {
+    const { email } = this.state
+
+    analytics.track('join slack', { email })
+
     fetch('https://slack.graph.cool/invite', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({email: this.state.email}),
+      body: JSON.stringify({ email }),
     })
       .then(() => {
         this.setState({slackSent: true} as State)
