@@ -56,8 +56,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
-      __ENABLE_SEGMENT__: false,
-      __SEGMENT_TOKEN__: '"M96lXuD90ZxkbQEQG716aySwBLllabOn"',
+      __ENABLE_SEGMENT__: true,
+      __SEGMENT_TOKEN__: '"7Y6fdaghn7WfoaO3ICKYGDwuZHzV6C52"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
       __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
       'process.env': {
