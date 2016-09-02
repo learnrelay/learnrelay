@@ -1,5 +1,7 @@
 # Get started
 
+In this chapter, we will set up our awesome Pokedex app. The first thing we need to do is to configure our environment, tools, and GraphQL endpoint. We will also see a guideline to follow along with this tutorial.
+
 ## Environment setup
 In order to code along with the examples in this tutorial, here is the list of technologies that you need to install beforehand, if you did not install them yet, just follow the links provided below which will bring you to installation guides: 
 
