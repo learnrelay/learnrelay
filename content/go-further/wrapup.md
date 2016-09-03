@@ -1,12 +1,6 @@
 <!-- __INJECT_SHARING__ -->
 
-# Go further
-
-## Help & support
-
-Join [our Slack channel](http://slack.graph.cool/) for questions, suggestions or simply to chat with us!
-
-## Resources
+## Further Resources
 
 * https://github.com/lvarayut/relay-fullstack
 * https://sgwilym.github.io/relay-visual-learners/
