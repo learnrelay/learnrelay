@@ -64,11 +64,8 @@ export const chapters: Chapter[] = [
     alias: 'variables',
   }]),
   new Chapter('Connections', 'connections', [{
-    title: 'Terminology',
-    alias: 'terminology',
-  }, {
-    title: 'Putting it all together',
-    alias: 'putting-it-all-together',
+    title: 'What is a Connection?',
+    alias: 'what-is-a-connection',
   }, {
     title: 'Cursors and Pagination',
     alias: 'cursors-pagination',
