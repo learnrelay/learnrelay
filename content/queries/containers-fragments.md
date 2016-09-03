@@ -11,7 +11,7 @@ The way Relay handles data updates works nicely together with the way React hand
 
 ## Creating a Relay Container
 
-To expose data to your React component we can use the method `Relay.createContainer`. We can use this to wrap the React component `ListPage` like this:
+To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write this:
 
 ```javascript
 export default Relay.createContainer(
@@ -33,12 +33,9 @@ This injects the prop `viewer` to the inner component `ListPage`.
 ## Composing Queries using Fragments
 
 One of the big strengths of React is the ability to compose components in an efficient and hassle-free way.
-
 Relay applies this concept of composition to queries: you build queries by combining so called *fragments*.
 
-Remember the `viewer` object introduced in the last section? As we need it for every query that we are going to send, it makes a lot of sense to define it once and use it everywhere else.
-
-This is why we created the top-level `ViewerQueries` in `index.js` in `step-1`:
+Remember the `viewer` object introduced in the last section? As we need it for every query that we are going to send, it makes a lot of sense to define it once and use it everywhere else. This is why we created the top-level `ViewerQueries` in `index.js` in `step-01`:
 
 ```javascript
 const ViewerQueries = { viewer: () => Relay.QL`query { viewer }` }
@@ -62,15 +59,13 @@ export default Relay.createContainer(
 ```
 
 Here we are building a fragment on top of the `viewer` object defined in `ViewerQueries`.
-
 We also inserted `ViewerQueries` to all the subviews in `index.js`. Later, when we talk about routing in Relay, we will see the exact meaning of this.
 
-## Step 2: Prepare the ListPage for further action
+## Step 02: Prepare the ListPage for further action
 
-In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by already wrapping it with a Relay container now and building the fragment on top of the `viewer` objet as we seen above.
+In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by wrapping it with a Relay container now and building the fragment on top of the `viewer` object as we have seen above.
 
 To give you a headstart, we already defined `ViewerQueries` in `index.js` and exposed it to `ListPage`.
-
 For now, just modify `ListPage`, so that it queries the `id` field of the `viewer` object.
 
-> Remember: if you are stuck at any time, sneak a peek at `step-2-solutions` to get a hint or check the previous sections.
+> Remember: if you are stuck at any time, sneak a peek at `step-02-solutions` to get a hint or check the previous sections.

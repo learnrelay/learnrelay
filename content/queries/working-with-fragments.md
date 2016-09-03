@@ -26,9 +26,9 @@ export default Relay.createContainer(
 )
 ```
 
-The `Pokemon` in `fragment on Pokemon` is the model name defined by the GraphQL server. In our case, the GraphQL server exposes the `Pokemon` model, so we're good.
+`Pokemon` in `fragment on Pokemon` is the model name defined by the GraphQL server. In our case, the GraphQL server exposes the `Pokemon` model, so we're good.
 
-The name `pokemon` of the fragment is a choice of the container. `pokemon` will be exposed as a prop to the inner `Component`. It contains the subfields `id`, `name` and `url`.
+`pokemon` in `pokemon: () => Relay.QL` is the name of the fragment and can be chosen by the container. `pokemon` will be exposed as a prop to the inner `Component`. It contains the subfields `id`, `name` and `url`.
 
 ## Use other containers' fragments
 
@@ -63,7 +63,7 @@ Then we define a subselection on this fragment. In this case we select the field
 
 ## Data masking
 
-The concept of encapsulating the data requirements inside the individual containers is called data masking: a powerful concept that leads to better encapsulation and reduces the appearance of subtle errors.
+The concept of stating the data requirements inside the individual containers is called data masking: a powerful concept that leads to better encapsulation and reduces the appearance of subtle errors.
 
 > Data is only exposed to containers that explicitely stated a dependency on that data. If a child depends on certain data, its parent does not know about it and vice versa.
 

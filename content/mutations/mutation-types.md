@@ -1,17 +1,14 @@
 # Mutation Types
 
-> Explain how many types do they have, in which situation a specific type is preferred over the others
-
 As we saw in the previous section, Relay employs a client-side cache.
 Whenever we are sending a mutation to the server, Relay needs to know how to update this cache with the mutation query result.
-
 We have to add mutation types to the array `getConfigs` for a mutation to configure this behaviour.
 
 Oftentimes we will only use one of the types for one mutation, but we can combine multiple mutation types for the same mutation as well.
 
 ## RANGE_ADD
 
-If a mutation is creating a new node, we have to use `RANGE_ADD`:
+If a mutation is creating a new node, we can use `RANGE_ADD`:
 
 ```javascript
 getConfigs () {
@@ -29,7 +26,7 @@ getConfigs () {
 ```
 
 We set `parentName` to `viewer`, `connectionName` to `allPokemons` and `edgeName` to `edge`.
-Check the `CreatePokemonPayload` of the `createPokemonMutation` to find the exact names you have to use.
+Check the `CreatePokemonPayload` of the `createPokemonMutation` in the docs of our GraphQL backend inside GraphiQL to find the exact names you have to use.
 
 The `append` inside `rangeBehaviors` means that we are appending the new edge to the present edges of `allPokemons`.
 If we used `prepend`, we could prepend the edge instead.
@@ -52,9 +49,11 @@ getConfigs () {
 }
 ```
 
-We set `pokemon` in `fieldIDs` to `this.props.pokemonId`. Like this we say, that the node `pokemon` in the mutation query response denotes the data item in the Relay cache with id `this.props.pokemonId`.
+We set `pokemon` in `fieldIDs` to `this.props.pokemonId`. This way we say that the node `pokemon` in the mutation query response denotes the data item in the Relay cache with id `this.props.pokemonId`.
 
 Check the `UpdatePokemonPayload` of the `updatePokemonMutation` to find the exact names you have to use.
+
+> Note that this type can be used for more than just updates. For example, we could make Relay aware of the creation of a node with FIELDS_CHANGE, just like with RANGE_ADD. Specifying that will most of the times be easier with FIELDS_CHANGE, but will also be less performant.
 
 ## NODE_DELETE
 
@@ -74,7 +73,7 @@ getConfigs () {
 
 We set `parentName` to `viewer`, `connectionName` to `pokemon` and `edgeName` to `edge`.
 
-Note that, we could use `allPokemons` for the `connectionName` to achieve the same as well.
+Note that we could use `allPokemons` for the `connectionName` to achieve the same as well.
 Check the `DeletePokemonPayload` of the `deletePokemonMutation` to find the exact names you have to use.
 
 ## RANGE_DELETE
@@ -119,7 +118,7 @@ This type can be used to redirect to a view that depends on a newly created node
 
 Note that this type is rarely used and only applicable in very specific use cases.
 
-## Step 6: Delete a Pokemon
+## Step 06: Delete a Pokemon
 
 In every Pokemon's life, there comes a point where it has to go into its well deserved retirement. That's why we should add a delete feature to the `PokemonPage`!
 

@@ -3,11 +3,13 @@
 Oftentimes, we want to use queries that are identical on a structural level, but differ in a semantic detail.
 Imagine, for example, that the number of pokemons that we want to fetch depends on some external switch.
 
+Using *query variables* in this situation can increase code quality and performance, as string building is a quite costly operation.
+
 We will see query variables in action soon. For now, try to understand the following examples!
 
 ## Initial variables
 
-For situations like that, we can set `initialVariables` when we create a container.
+To use query variables, we can set `initialVariables` when we create a container.
 Remember the query from the previous section?
 
 ```javascript
@@ -34,20 +36,19 @@ export default Relay.createContainer(
 )
 ```
 We don't understand it completely yet, but don't worry, we'll get there in the next chapter! For now, take the query as it is.
-
-At the moment we are always querying 100000 pokemons. Let's make that more flexible:
+We can use the `orderBy` argument exposed by the GraphQL server to sort the pokemons by their id:
 
 ```javascript
 export default Relay.createContainer(
   withRouter(ListPage),
   {
     initialVariables: {
-      amount: 100000
+      sortOrder: 'id_DESC'
     },
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
-          allPokemons (first: $amount) {
+          allPokemons (first: 100000, orderBy: $sortOrder) {
             edges {
               node {
                 ${PokemonPreview.getFragment('pokemon')}
@@ -63,23 +64,40 @@ export default Relay.createContainer(
   },
 )
 ```
+
+## Set variables
+
+Components have control over query variables, by using `setVariables`. To change the sort order, we could call this method:
+
+```javascript
+_sortByName() {
+  this.props.relay.setVariables({
+    sortOrder: this.props.relay.variables.sortOrder === 'name_ASC' ? 'name_DESC' : 'name_ASC'
+  })
+}
+```
+
+`setVariables` is not executed synchronously, so after a while, when `this.props` is populated with the new variables, the query is executed with the new sort order.
 
 ## Prepare variables
 
+Let's say that we want to query 1000 pokemons when we sort by id, but 100000 otherwise.
+This can be achieved with `prepareVariables`:
+
 ```javascript
 export default Relay.createContainer(
   withRouter(ListPage),
   {
     initialVariables: {
-      amount: 100000
+      sortOrder: 'id_DESC'
     },
     prepareVariables: (prevVariables) => {
-      hugetFetch: preevVariables.amount && prevVariables.amount > 1000
+      amount: prevVariables.sortOrder.startsWith('id') ? 1000 : 100000
     },
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
-          allPokemons (first: $amount) {
+          allPokemons (first: $amount, orderBy: $sortOrder) {
             edges {
               node {
                 ${PokemonPreview.getFragment('pokemon')}
@@ -95,3 +113,4 @@ export default Relay.createContainer(
   },
 )
 ```
+initially, we sort descending by id, and therefore we only query the first 1000 pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.
