@@ -12,14 +12,14 @@ Relay.Store.commitUpdate(                      // Dispatch our mutation
     id: this.props.id,
     name: 'Pikachu'
   })
-);
+)
 ```
 
-We dispatch our `UpdatePokemonMutation` and pass the object with id and name properties to it. This object will be available in the Mutation as `this.props`.
+We dispatch our `UpdatePokemonMutation` and pass the properties id and name to it. The properties will be available in the Mutation as `this.props`.
 
 ### applyUpdate()
 
-The applyUpdate method is very similar to the `commitUpdate` method. The only different is that it doesn't commit the mutation right away, however, it returns an object that contains **commit()**, **rollback()**, **recommit()**, and other useful  methods. You can call the methods afterward.
+The `applyUpdate` method is very similar to the `commitUpdate` method. The only difference is that it doesn't commit the mutation right away. However, it returns a transaction object that contains **commit()**, **rollback()**, **recommit()**, and other useful methods. You can call these methods afterwards.
 
 ```javascript
 const transaction = Relay.Store.applyUpdate(   // Apply our mutation
@@ -27,13 +27,13 @@ const transaction = Relay.Store.applyUpdate(   // Apply our mutation
     id: this.props.id,
     name: 'Pikachu'
   })
-);
-transaction.commit();                          // Commit the mutation
+)
+transaction.commit()                           // Commit the mutation
 ```
 
-## Create a Pokemon
+## Step 05: Create a Pokemon
 
-After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However, we have not created a mutation yet. Let's do it now!
+After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However, we have not created a mutation yet. Let's do that now!
 
 ```javascript
 // src/mutations/CreatePokemonMutation.js
@@ -54,7 +54,7 @@ export default class CreatePokemonMutation extends Relay.Mutation {
 
   getFatQuery () {
     return Relay.QL`
-      fragment on CreatePokemonPayload {          // The fragment is always named as the mutation name + Payload (CreatePokemon + Payload)
+      fragment on CreatePokemonPayload {          // The fragment is always named as the mutation name + 'Payload' (CreatePokemon + Payload)
         pokemon
         edge
         viewer {
@@ -86,11 +86,11 @@ export default class CreatePokemonMutation extends Relay.Mutation {
 }
 ```
 
-We just created the mutation called **createPokemon**. In this mutation, there is a special **fragments** method that we have not talked about before. It is used to specify data needed to run this mutation. In our case, we required an id field on the Viewer fragment. 
+We just created the mutation called **createPokemon**. In this mutation, there is a special **fragments** method that we have not talked about before. It is used to specify data needed to run this mutation. In our case, we required an id field on the Viewer fragment.
 
-We then specified the data that might have changed due to the mutation in the getFatQuery method. Since the mutation is for creating a new Pokemon, we used **RANGE_ADD** config type, this will be explained in the next chapter. Last but not least, we told Relay, in getVariables, to use the name and the url properties as an input argument.
+We then specified the data that might have changed due to the mutation in the `getFatQuery` method. Since this mutation is for creating a new Pokemon, we used **RANGE_ADD** config type, which will be explained in detail in the next chapter. Last but not least, we told Relay in `getVariables` to use the name and the url properties as input arguments.
 
-Now, we will use Relay.Store to dispatch our createPokemon mutation to the remote server. Let's open `src/views/PokemonPage`:
+Now, we will use `Relay.Store` to dispatch our createPokemon mutation to the remote server. Let's open `src/views/PokemonPage`:
 
 ```javascript
 // src/views/PokemonPage.js
@@ -136,10 +136,10 @@ export default Relay.createContainer(
 )
 ```
 
-At the beginning of the file, we set up Relay.Store to dispatch our mutation, and then, bind a click event to the save button. In addition, we also used getFragment method to include our mutation fragment.
+At the beginning of the file, we set up `Relay.Store` to dispatch our mutation and then bind a click event to the save button. In addition, we also used the `getFragment` method to include our mutation fragment.
 
 It's time to test our first mutation! Go ahead and fill in some information into the form and click on the save button.
 
-> If you do not have fragments in your mutation, you do not need to getFragment to include it in the container
+> If you do not have fragments in your mutation, you do not need to use `getFragment` to include it in the container
 
 That's it for this chapter. Let's move on!

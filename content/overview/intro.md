@@ -15,11 +15,10 @@ Each chapter will be started with a short video that will give you the overview 
 - Be aware of benefits and drawbacks of Relay
 - Deeply understand fundamental concepts of Relay
 - Learn how to build a realistic Relay application
-- Access Relay resources and join community to learn further
-
+- Access Relay resources and join community to further learn
 
 ## Pokedex application
 
-Let's talk about our first Relay application! You might have seen a lot of Todo List applications before, let's try something new! In this tutorial, we will build a Pokedex application where you can browse and modify your existing Pokemons, or add new ones! It looks like the following image:
+Let's talk about our first Relay application! You might have seen a lot of Todo List applications before, let's try something new! In this tutorial, we will build a Pokedex application where you can browse and modify your existing Pokemons, or add new ones! It looks like this:
 
 ![](../images/demo.png)
