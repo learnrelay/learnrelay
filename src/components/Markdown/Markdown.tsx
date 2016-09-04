@@ -3,7 +3,7 @@ import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
-import YouTube from 'react-youtube'
+import * as YoutubePlayer from 'react-youtube-player'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
 
@@ -78,7 +78,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
         if (props.literal.indexOf('__YOUTUBE') > -1) {
           const videoId = props.literal.match(/\((.*)\)/)[1]
           return (
-            <YouTube
+            <YoutubePlayer
               videoId={videoId}
               onPlay={() => analytics.track(`watch video: ${window.location.pathname}`)}
             />
