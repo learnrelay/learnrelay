@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
-      __ENABLE_SEGMENT__: true,
+      __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"7Y6fdaghn7WfoaO3ICKYGDwuZHzV6C52"',
       __GITHUB_OAUTH_CLIENT_ID__: '"b4ee20bd611665a7c729"',
       __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth_dev"',
