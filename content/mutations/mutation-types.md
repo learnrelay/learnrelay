@@ -32,7 +32,7 @@ The `append` inside `rangeBehaviors` means that we are appending the new edge to
 If we used `prepend`, we could prepend the edge instead.
 
 Note that most of the time it is sufficient to only use one key `''` inside `rangeBehaviors`.
-If you need different behaviour depending on some other value of the connection, you can add different keys and define different behaviour like that. Check [this article](http://mgiroux.me/2016/the-mysterious-relay-range-behaviours/) for further details.
+If you need different behaviour depending on some other value of the connection, you can add different keys and define different behaviour. Check [this article](http://mgiroux.me/2016/the-mysterious-relay-range-behaviours/) for further details.
 
 ## FIELDS_CHANGE
 
@@ -73,12 +73,12 @@ getConfigs () {
 
 We set `parentName` to `viewer`, `connectionName` to `pokemon` and `edgeName` to `edge`.
 
-Note that we could use `allPokemons` for the `connectionName` to achieve the same as well.
+Note that we could use `allPokemons` for the `connectionName` to achieve a similar result.
 Check the `DeletePokemonPayload` of the `deletePokemonMutation` to find the exact names you have to use.
 
 ## RANGE_DELETE
 
-To remove one or more existing edge between two nodes, we can use `RANGE_DELETE`:
+To remove one or more existing edges between two nodes, we can use `RANGE_DELETE`:
 
 ```javascript
 getConfigs() {
@@ -92,7 +92,7 @@ getConfigs() {
 }
 ```
 
-This will effectively remove all nodes included by id in `deletedIds` from the `similarPokemons` connection of the specified `pokemon`, but the nodes themselves will still be present. This is only really useful for nested fields, that's why we included a fictitious edge `similarPokemons` that could contain all pokemons that are similar to a specific one.
+This will effectively remove all nodes included by id in `deletedIds` from the `similarPokemons` connection of the specified `pokemon`, but the nodes themselves will still be present. This is only really useful for nested fields, that's why we included a fictitious edge `similarPokemons` that could contain all Pokemons that are similar to a specific one.
 
 Note that this mutation type is not required for our Pokedex app.
 
@@ -116,7 +116,7 @@ getConfigs() {
 This will make the object `addThing` available in the `onSuccess` callback of the mutation, but will **not** write the changes to the store.
 This type can be used to redirect to a view that depends on a newly created node once it's created.
 
-Note that this type is rarely used and only applicable in very specific use cases.
+Note that this type is rarely used and is only applicable in very specific use cases.
 
 ## Step 06: Delete a Pokemon
 

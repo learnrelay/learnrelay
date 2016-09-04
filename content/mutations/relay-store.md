@@ -1,10 +1,10 @@
 # Relay Store
 
-In this chapter, we will learn how to trigger our mutation, created from the previous chapter, by using **Relay Store**. Relay Store is a class that has two static methods for dispatching a mutation to the remote server, which is very similar to calling an "Action" in [Redux](http://redux.js.org).
+In this chapter, we will learn how to trigger our mutation, created from the previous chapter, by using **Relay Store**. Relay Store is a class that has two static methods for dispatching a mutation to the remote server, similar to calling an "Action" in [Redux](http://redux.js.org).
 
 ## commitUpdate()
 
-Most of the times, this method will be used to dispatch our mutation to the server. Let's consider the following example:
+Most of the time, this method will be used to dispatch our mutation to the server. Let's consider the following example:
 
 ```javascript
 Relay.Store.commitUpdate(                      // Dispatch our mutation
@@ -19,7 +19,7 @@ We dispatch our `UpdatePokemonMutation` and pass the properties id and name to i
 
 ### applyUpdate()
 
-The `applyUpdate` method is very similar to the `commitUpdate` method. The only difference is that it doesn't commit the mutation right away. However, it returns a transaction object that contains **commit()**, **rollback()**, **recommit()**, and other useful methods. You can call these methods afterwards.
+The `applyUpdate` method is very similar to the `commitUpdate` method. The only difference is that the mutation is not committed immediately. It does however return a transaction object that contains **commit()**, **rollback()**, **recommit()** as well as some other useful methods. You can call these methods afterwards.
 
 ```javascript
 const transaction = Relay.Store.applyUpdate(   // Apply our mutation
@@ -33,7 +33,7 @@ transaction.commit()                           // Commit the mutation
 
 ## Step 05: Create a Pokemon
 
-After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However, we have not created a mutation yet. Let's do that now!
+After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However we have not created a mutation just yet. Let's do that now!
 
 ```javascript
 // src/mutations/CreatePokemonMutation.js
@@ -88,7 +88,7 @@ export default class CreatePokemonMutation extends Relay.Mutation {
 
 We just created the mutation called **createPokemon**. In this mutation, there is a special **fragments** method that we have not talked about before. It is used to specify data needed to run this mutation. In our case, we required an id field on the Viewer fragment.
 
-We then specified the data that might have changed due to the mutation in the `getFatQuery` method. Since this mutation is for creating a new Pokemon, we used **RANGE_ADD** config type, which will be explained in detail in the next chapter. Last but not least, we told Relay in `getVariables` to use the name and the url properties as input arguments.
+We then specified the data that may have changed due to the mutation in the `getFatQuery` method. Since this mutation is for creating a new Pokemon, we used the **RANGE_ADD** config type, which will be explained in the following chapter with more detail. Last but not least, we told Relay in `getVariables` to use the name and the url properties as input arguments.
 
 Now, we will use `Relay.Store` to dispatch our createPokemon mutation to the remote server. Let's open `src/views/PokemonPage`:
 
