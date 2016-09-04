@@ -2,7 +2,7 @@
 
 Sometimes we know what the server response *should* look like, if everything went well. In this instance, we can pass a fake response to the Relay.Store right after we fired the mutation instead of waiting for the actual server response, giving the impression of an instantaneous response. The expression "Optimstistic UI" is based on this idea.
 
-You may have experienced optimistic updates when using Facebook on your smartphone: you liked the comment of a friend and saw its like count increment only to check again later  to see the like count at its previous un-liked count. In this case it is likely that, maybe due to a bad connection, the like event never reached the server. Once you get better connection, the applied optimistic update was rolled back to correct the mistake.
+You may have experienced optimistic updates when using Facebook on your smartphone: you liked the comment of a friend and saw its like count increment only to check again later to see the like count at its previous un-liked count. In this case it is likely that, maybe due to a bad connection, the like event never reached the server. Once you get better connection, the applied optimistic update was rolled back to correct the mistake.
 
 The benefit of optimistic updates lies in the fact that most of time the action is successful. In practice, optimistic updates improve the user experience by providing quick positive feedback to the user for a comparatively low trade off of occasionally misinforming the user of a successful action when really some kind of error occurred.
 
