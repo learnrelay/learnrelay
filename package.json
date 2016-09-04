@@ -28,7 +28,6 @@
     "react-router": "^2.7.0",
     "react-router-relay": "^0.13.4",
     "react-router-scroll": "^0.3.2",
-    "react-youtube-player": "^0.3.3",
     "slug": "^0.9.1",
     "whatwg-fetch": "^1.0.0"
   },

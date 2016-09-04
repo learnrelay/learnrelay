@@ -3,7 +3,6 @@ import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
-import * as YoutubePlayer from 'react-youtube-player'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
 
@@ -73,16 +72,6 @@ export default class Markdown extends React.PureComponent<Props, {}> {
 
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
           return <Sharing />
-        }
-
-        if (props.literal.indexOf('__YOUTUBE') > -1) {
-          const videoId = props.literal.match(/\((.*)\)/)[1]
-          return (
-            <YoutubePlayer
-              videoId={videoId}
-              onPlay={() => analytics.track(`watch video: ${window.location.pathname}`)}
-            />
-          )
         }
 
         return ReactRenderer.renderers.HtmlBlock(props)
