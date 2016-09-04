@@ -1,7 +1,7 @@
 # Variables
 
-Oftentimes, we want to use queries that are identical on a structural level, but differ in a semantic detail.
-Imagine, for example, that the number of pokemons that we want to fetch depends on some external switch.
+Often we may want to use queries that are identical on a structural level, but differ in some semantic detail.
+Imagine, for example, that the number of Pokemons that we want to fetch depends on some external switch.
 
 Using *query variables* in this situation can increase code quality and performance, as string building is a quite costly operation.
 
@@ -36,7 +36,7 @@ export default Relay.createContainer(
 )
 ```
 We don't understand it completely yet, but don't worry, we'll get there in the next chapter! For now, take the query as it is.
-We can use the `orderBy` argument exposed by the GraphQL server to sort the pokemons by their id:
+We can use the `orderBy` argument exposed by the GraphQL server to sort the Pokemons by their id:
 
 ```javascript
 export default Relay.createContainer(
@@ -81,7 +81,7 @@ _sortByName() {
 
 ## Prepare variables
 
-Let's say that we want to query 1000 pokemons when we sort by id, but 100000 otherwise.
+Let's say that we want to query 1000 Pokemons when we sort by id, but 100000 otherwise.
 This can be achieved with `prepareVariables`:
 
 ```javascript
@@ -113,4 +113,4 @@ export default Relay.createContainer(
   },
 )
 ```
-initially, we sort descending by id, and therefore we only query the first 1000 pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.
+initially, we sort descending by id and thus only query the first 1000 Pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.

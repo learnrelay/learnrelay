@@ -14,7 +14,7 @@ Queries in Relay always start with the same non-scalar field, called the `viewer
 
 We are usually interested in queries that fetch all data or only one specific data item for a certain model, so our GraphQL backend should at least expose those queries through the `viewer` object.
 
-A query to fetch the `id`, `name` and `url` fields of all pokemons on the server could look like this:
+A query to fetch the `id`, `name` and `url` fields of all Pokemons on the server could look like this:
 
 ```graphql
 query {
@@ -30,6 +30,6 @@ query {
 }
 ```
 
-This query contains several parts that are yet unknown to us.
+This query contains several parts that are currently unknown to us.
 
-In this chapter, we will learn a lot on the different parts and how to put them all together to build flexible, composable queries.
+In this chapter, we will learn how to put these ideas together to build flexible, composable queries.

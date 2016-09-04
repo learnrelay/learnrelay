@@ -2,16 +2,16 @@
 
 To use queries in one of your React components, you have to wrap them using the higher-order Relay component `Container`.
 
-Containers come with two guarantees for the wrapped component:
+Containers provide the wrapped component with two guarantees:
 
 * The required data is available before the wrapped component is rendered.
 * The wrapped component will be updated whenever some of the required data has been updated elsewhere.
 
-The way Relay handles data updates works nicely together with the way React handles updates to props: whenever props change for one component, it is checked if it is necessary for this component to be re-rendered. The same is true for props injected by the Relay container.
+The way Relay handles data updates works nicely with the way React handles updates to props: whenever props change for one component, the component is checked for the need to re-render. The same is true for props injected by the Relay container.
 
 ## Creating a Relay Container
 
-To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write this:
+To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write the following:
 
 ```javascript
 export default Relay.createContainer(
