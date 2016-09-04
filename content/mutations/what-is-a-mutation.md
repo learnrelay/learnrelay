@@ -1,10 +1,10 @@
 # What is a Mutation?
 
-So far, we have seen how to fetch data from the remote server and store it in the **Relay Store**. The remaining question is how to modify or delete some data in the store. In Relay, this mechanism is called **Mutations**.  Mutations consist of two steps: writing data to the store and reading all changed data from the store.
+So far, we have seen how to fetch data from the remote server and store it in the **Relay Store**. The remaining question is how to modify or delete data in the store. In Relay, this mechanism is called a **Mutation**.  Mutations consist of two steps: writing data to the store and reading all changed data from the store.
 
 ## Methods
 
-**Relay.Mutation** is a class that has four abstract methods. When we create our own Mutation, we need to create a class which extends the Relay.Mutation, which means that we will need to implement all of the abstract methods. Here is the list of those abstract methods in detail:
+**Relay.Mutation** is a class that has four abstract methods. When we create our own Mutation, we need to create a class which extends Relay.Mutation meaning that we will need to implement all of the abstract methods. Here is the list of those abstract methods in detail:
 
 #### getMutation()
 
@@ -46,7 +46,7 @@ getFatQuery() {
 
 #### getConfigs()
 
-Finally, the `getConfigs` method tells Relay how to deal with the response data. There are many configurations that we could use, these will be talked in more details in [Mutation Types](mutation-types.md) chapter.
+Finally, the `getConfigs` method tells Relay how to deal with the response data. There are many configurations that we could use, these will be discussed in more detail in the [Mutation Types](mutation-types.md) chapter.
 
 ```javascript
 getConfigs() {
