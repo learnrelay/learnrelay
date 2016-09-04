@@ -4,11 +4,11 @@
 
 Relay comes with its own standard for pagination defining arguments to connection fields that provide a convenient way to realize pagination in a Relay app.
 
-This concept really shines when combined with other constraints, like sorting or filtering of a connection.
+This concept really shines when combined with other constraints, like the sorting or filtering of a connection.
 
 ## Slicing a connection
 
-When we slice a connection, we only query a (usually) small amount of consecutive nodes in the connection. We can choose at which end of the connection we want to pick nodes, so we end up with two possibilities
+When we slice a connection, we only query a (normally) small amount of consecutive nodes in the connection. We can choose at which end of the connection we want to pick nodes, so we end up with two possibilities
 
 * using the `first` argument, we can query the first few nodes of a connection
 * using the `last` argument, we can query the last few nodes of a connection
@@ -31,11 +31,11 @@ query {
 }
 ```
 
-This would query the last 10 pokemons of the `allPokemons` connection.
+This would query the last 10 Pokemons of the `allPokemons` connection.
 
 ## The cursor concept
 
-Slicing a connection all by itself is already neat! If we are only interested in a few nodes, we don't have to query all of them, which could potentially be a lot. But what would be really powerful, is being able to query the *next* few nodes after a specific one. In Relay, this is done using cursors.
+Slicing a connection by itself is already pretty neat! If we are only interested in a few nodes, we don't have to query all of them which may potentially be a lot. But what would be really powerful is to be able to query the *next* few nodes after a specific one. In Relay, this is done using cursors.
 
 A cursor can be seen as a pointer to a specific node. To obtain a cursor for a specific node, we can select the `cursor` field on `edges`:
 ```graphql
@@ -53,7 +53,7 @@ query {
 }
 ```
 
-This way, we obtain the first 10 pokemons and their cursors. Using a specific cursor, we can
+This way, we obtain the first 10 Pokemons and their cursors. Using a specific cursor, we can
 
 * query the first few nodes of a connection after this cursor using `first` and `after`
 * query the last few nodes of a connection before this cursor using `last` and `before`
@@ -90,6 +90,6 @@ query {
 }
 ```
 
-This query would again return the first 10 pokemons.
+This query would again return the first 10 Pokemons.
 
 > Mixing `first` and `after` with `last` and `before` is highly discouraged and should not be done.

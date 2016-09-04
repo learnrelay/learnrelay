@@ -1,6 +1,6 @@
 # What is a Connection?
 
-The terminology of Relay can be quite overwhelming in the beginning. Relay introduces a handful of new concepts on top of GraphQL, mainly in order to manage relationships between models or indivual data items.
+The terminology of Relay can be quite overwhelming in the beginning. Relay introduces a handful of new concepts on top of GraphQL, mainly in order to manage relationships between models or individual data items.
 
 ## Connections
 
@@ -10,7 +10,7 @@ In Relay, relations between models are called *connections*. We use models and r
 
 We call a specific data item a *node*. Each node belongs to a specific model. In our case, we will work with nodes of type Pokemon.
 
-The `viewer` object of Relay can actually be seen as a node as well. Every node that exists on our server should be reachable indirectly via the `viewer` , otherwise there's no way to query it.
+The `viewer` object of Relay can actually be seen as a node as well. Every node that exists on our server should be reachable indirectly via the `viewer`, otherwise there's no way of querying it.
 
 ## Edges
 
@@ -20,9 +20,9 @@ Whenever there is a relation between two models and two specific nodes are indee
 
 We can actually think of the `viewer` as a node in our data graph that is connected with all the different data nodes through different connections like `allPokemons` as fields on the `viewer` object - these connections consist of several edges, which we can query by selecting the `edges` field on the connection `allPokemons`. Then we can finally select which fields to query on the individual `node`.
 
-This way we can traverse our data graph by starting at the viewer, and just follow edges that we are interested in.
+This way we can traverse our data graph by starting at the viewer and following the edges we are interested in.
 
-Putting it all together like this, we can fetch all pokemons with this query:
+Putting it all together, we can fetch all pokemons with this query:
 
 ```graphql
 query {
@@ -40,14 +40,14 @@ query {
 }
 ```
 
-This will return a list of `edge`s that all contain the `id`, `name` and `url` of every pokemon `node` in the `allPokemons` connection.
+This will return a list of `edge`'s that all contain the `id`, `name` and `url` of every pokemon `node` in the `allPokemons` connection.
 
 You could then map the edges like this:
 `viewer.allPokemons.edges.map((edge) => edge.node).map((pokemon) => console.log(pokemon)`
 
-Remember that in a Relay container, the fragments are exposed as props inside the component.
+Remember that in a Relay container the fragments are exposed as props inside the component.
 
-Also note the `first: 100000` part. Having either the `first` or the `after` argument in a query like this is a requirement by Relay. For now, we are just using a huge number to be certain that we query all the Pokemons in our pokedex.
+Also note the `first: 100000` part. Having either the `first` or the `after` argument in a query like this is a requirement by Relay. For now, we are just using a huge number to be certain that we query all the Pokemons in our Pokedex.
 
 ## Step 03: Show existing Pokemons in ListPage
 
@@ -95,8 +95,8 @@ allPokemons (first: 100000) {
 }
 ```
 
-* Currently in `ListPage` we show `There are 28 Pokemons in your pokedex`. You should display the correct amount here.
+* In `ListPage` we currently show `There are 28 Pokemons in your pokedex`. You should display the correct amount here.
 
 > Remember that inside the `ListPage` component, we will have access to `viewer` that contains the `allPokemons` object which in turn contains the `edges` array.
 
-* Actually display all the pokemons by mapping over `this.props.viewer.allPokemons.edges` and fill the props `key` and `pokemon` with the `node` field of each edge.
+* Actually display all the Pokemons by mapping over `this.props.viewer.allPokemons.edges` and fill the props `key` and `pokemon` with the `node` field of each edge.
