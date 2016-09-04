@@ -19,7 +19,7 @@ We dispatch our `UpdatePokemonMutation` and pass the properties id and name to i
 
 ### applyUpdate()
 
-The `applyUpdate` method is very similar to the `commitUpdate` method. The only difference is that the mutation is not committed immediately. It doe however return a transaction object that contains **commit()**, **rollback()**, **recommit()** as well as some other useful methods. You can call these methods afterwards.
+The `applyUpdate` method is very similar to the `commitUpdate` method. The only difference is that the mutation is not committed immediately. It does however return a transaction object that contains **commit()**, **rollback()**, **recommit()** as well as some other useful methods. You can call these methods afterwards.
 
 ```javascript
 const transaction = Relay.Store.applyUpdate(   // Apply our mutation
