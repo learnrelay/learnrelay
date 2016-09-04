@@ -2,11 +2,11 @@
 
 # Brief introduction
 
-You have heard about Relay.js for a while but you are not quite sure what it really is, how it is useful, and how to start your first Relay application. If you have these questions in your mind, you have come to the right place!
+If you may have heard about Relay.js for a while but you are unsure of what it really is, how it is useful, or how to start your first Relay application, you have come to the right place!
 
-Welcome to **Learn Relay**, a comprehensive introduction to Relay.js. In this tutorial, we'll walk you step by step through the fundamental concepts of Relay along with practical examples, which will provide you with enough knowledge to create complete Relay applications.
+Welcome to **Learn Relay**, a comprehensive introduction to Relay.js. In this tutorial, we'll take you step by step through the fundamental concepts of Relay. By understanding the concepts underlying Relay through practical examples, we hope that by the end of this tutorial you will have enough knowledge to create your own Relay applications.
 
-Each chapter will be started with a short video that will give you the overview of the chapter, followed by a fully explanation of a Relay concept, and a practical example. Let's get started!
+Each chapter will start with a short video that will give you a brief overview, followed by a more complete explanation of the Relay concept and what this concept looks like in practice. Let's get started!
 
 ## Goals
 
@@ -19,6 +19,6 @@ Each chapter will be started with a short video that will give you the overview 
 
 ## Pokedex application
 
-Let's talk about our first Relay application! You might have seen a lot of Todo List applications before, let's try something new! In this tutorial, we will build a Pokedex application where you can browse and modify your existing Pokemons, or add new ones! It looks like this:
+Let's talk about our first Relay application. You might have seen a lot of Todo List applications before so let's try something new! In this tutorial we will build a Pokedex application where you can browse and modify your existing Pokemons or add new ones. It looks like this:
 
 ![](../images/demo.png)
