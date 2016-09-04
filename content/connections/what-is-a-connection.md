@@ -40,7 +40,7 @@ query {
 }
 ```
 
-This will return a list of `edge`'s that all contain the `id`, `name` and `url` of every pokemon `node` in the `allPokemons` connection.
+This will return a list of `edges` that all contain the `id`, `name` and `url` of every pokemon `node` in the `allPokemons` connection.
 
 You could then map the edges like this:
 `viewer.allPokemons.edges.map((edge) => edge.node).map((pokemon) => console.log(pokemon)`
