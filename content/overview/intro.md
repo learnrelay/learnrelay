@@ -1,4 +1,4 @@
-<iframe height="315" src="https://www.youtube.com/embed/3eDgqSk_FsI" frameborder="0" allowfullscreen></iframe>
+<!-- __YOUTUBE(3eDgqSk_FsI)__ -->
 
 # Brief introduction
 

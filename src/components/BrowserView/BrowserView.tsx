@@ -61,6 +61,7 @@ class BrowserView extends React.Component<Props, State> {
               }}
               value={this.state.name}
               onChange={(e: any) => this.setState({name: e.target.value} as State)}
+              onKeyDown={(e) => e.keyCode === 13 && this.addPokemon()}
             />
             <input
               className='bg-transparent accent'
@@ -72,6 +73,7 @@ class BrowserView extends React.Component<Props, State> {
               }}
               value={this.state.url}
               onChange={(e: any) => this.setState({url: e.target.value} as State)}
+              onKeyDown={(e) => e.keyCode === 13 && this.addPokemon()}
             />
             {this.state.name && this.state.url &&
             <div className='flex items-center absolute h-100' style={{right: 10}}>
@@ -91,6 +93,7 @@ class BrowserView extends React.Component<Props, State> {
   }
 
   private addPokemon = () => {
+    analytics.track('overlay: create pokemon')
     Relay.Store.commitUpdate(
       new AddPokemonMutation({viewer: this.props.viewer, name: this.state.name, url: this.state.url}),
       {

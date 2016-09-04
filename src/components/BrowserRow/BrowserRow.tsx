@@ -81,12 +81,14 @@ class BrowserRow extends React.Component<Props, State> {
   }
 
   private removePokemon = () => {
+    analytics.track('overlay: delete pokemon')
     Relay.Store.commitUpdate(
       new DeletePokemonMutation({viewerId: this.props.viewerId, pokemonId: this.props.pokemon.id})
     )
   }
 
   private updatePokemon = () => {
+    analytics.track('overlay: update pokemon')
     if (this.state.changesMade) {
       Relay.Store.commitUpdate(
         new UpdatePokemonMutation({pokemonId: this.props.pokemon.id, name: this.state.name, url: this.state.url})

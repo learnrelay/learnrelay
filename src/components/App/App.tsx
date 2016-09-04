@@ -41,20 +41,11 @@ class App extends React.Component<Props, State> {
       this.fetchEndpoint(code)
     }
 
-    const storedState = getStoredState()
-
     this.state = {
       showLayover: false,
-      storedState,
+      storedState: getStoredState(),
       expandNavButtons: false,
       showNav: false,
-    }
-
-    if (storedState.user) {
-      analytics.identify(storedState.user.email, {
-        name: storedState.user.name,
-        email: storedState.user.email,
-      })
     }
 
     this.onScroll = throttle(this.onScroll.bind(this), 100)
@@ -163,10 +154,10 @@ class App extends React.Component<Props, State> {
                       }}
                     >
                       {subchapter.alias === lastSubchapterAlias &&
-                        <div className={styles.progressBar} />
+                      <div className={styles.progressBar}/>
                       }
                       {this.state.storedState.hasRead[subchapter.alias] &&
-                        <span className='mr3 fw5 green dib'>
+                      <span className='mr3 fw5 green dib'>
                           <Icon
                             src={require('../../assets/icons/check_chapter.svg')}
                             width={8}
@@ -180,13 +171,13 @@ class App extends React.Component<Props, State> {
                         className='dib'
                       >
                         {!this.state.storedState.hasRead[subchapter.alias] &&
-                          <span
-                            className='mr3 fw5 green dib'
-                            style={{
+                        <span
+                          className='mr3 fw5 green dib'
+                          style={{
                               width: 8,
                               height: 8,
                             }}
-                          />
+                        />
                         }
                         <Link
                           to={`/${chapter.alias}/${subchapter.alias}`}
@@ -219,7 +210,7 @@ class App extends React.Component<Props, State> {
           <div
             className={`fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}`}
             style={{ width: 269, height: 90 }}
-            onClick={() => this.setState({ showLayover: true } as State)}
+            onClick={this.openLayover}
           >
             <Icon
               src={require('../../assets/icons/graph-logo.svg')}
@@ -278,11 +269,21 @@ class App extends React.Component<Props, State> {
         {this.state.showLayover && this.state.storedState.user &&
         <ServerLayover
           endpoint={this.state.storedState.user.endpoint}
-          close={() => this.setState({ showLayover: false } as State)}
+          close={this.closeLayover}
         />
         }
       </div>
     )
+  }
+
+  private openLayover = () => {
+    analytics.track(`overlay: open`)
+    this.setState({showLayover: true} as State)
+  }
+
+  private closeLayover = () => {
+    analytics.track(`overlay: close`)
+    this.setState({showLayover: false} as State)
   }
 
   private async fetchEndpoint(code: string) {
@@ -306,12 +307,13 @@ class App extends React.Component<Props, State> {
     const {projectId, email, resetPasswordToken, name} = body
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
 
-    analytics.identify(email, {
-      name: name,
+    analytics.alias(email)
+    analytics.identify({
+      name: name || email,
       email: email,
     })
 
-    this.updateStoredState(['user'], {endpoint, email, resetPasswordToken,name})
+    this.updateStoredState(['user'], {endpoint, email, resetPasswordToken, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
   }
@@ -333,7 +335,7 @@ class App extends React.Component<Props, State> {
   }
 
   private toggleNav = () => {
-    this.setState({ showNav: !this.state.showNav } as State)
+    this.setState({showNav: !this.state.showNav} as State)
   }
 }
 

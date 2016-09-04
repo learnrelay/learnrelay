@@ -49,7 +49,7 @@ class ServerLayover extends React.Component<Props, State> {
                 h-100 f4 flex items-center ph3 mh2 pointer
                 ${this.state.showData ? 'bg-gray-2 accent' : 'white'}
               `}
-              onClick={() => this.setState({ showData: true } as State)}
+              onClick={this.showData}
             >
               Data Browser
             </div>
@@ -58,7 +58,7 @@ class ServerLayover extends React.Component<Props, State> {
                 h-100 f4 flex items-center ph3 mh2 pointer
                 ${!this.state.showData ? 'bg-gray-2 accent' : 'white'}
               `}
-              onClick={() => this.setState({ showData: false } as State)}
+              onClick={this.showGraphiQL}
             >
               GraphiQL
             </div>
@@ -66,7 +66,10 @@ class ServerLayover extends React.Component<Props, State> {
           <div className='flex items-center p3'>
             <div className='o-30' style={{marginRight: 12}}>API Endpoint</div>
             <div className='flex items-center'>
-              <CopyToClipboard text={this.props.endpoint}>
+              <CopyToClipboard
+                text={this.props.endpoint}
+                onCopy={() => analytics.track('overlay: copied endpoint')}
+              >
                 <Icon src={require('../../assets/icons/copy.svg')}
                       className='dim'
                       style={{
@@ -110,9 +113,19 @@ class ServerLayover extends React.Component<Props, State> {
       </div>
     )
   }
+
+  private showData = () => {
+    analytics.track('overlay: show data')
+    this.setState({ showData: true } as State)
+  }
+
+  private showGraphiQL = () => {
+    analytics.track('overlay: show graphiql')
+    this.setState({ showData: false } as State)
+  }
 }
 
-let LayoverContainer = Relay.createContainer(ServerLayover, {
+const LayoverContainer = Relay.createContainer(ServerLayover, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
