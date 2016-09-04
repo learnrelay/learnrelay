@@ -4,21 +4,21 @@ In this chapter, we will set up our awesome Pokedex app. The first thing we need
 
 ## Environment setup
 
-In order to code along with the examples in this tutorial, here is the list of technologies that you need to install beforehand, if you did not install them yet, just follow the links provided below which will bring you to installation guides:
+In order to code along with the examples in this tutorial, here is the list of technologies that you need to install beforehand. If you have not installed them yet, just follow the links provided below which will take you to the relevant installation guide:
 
 #### [Git](https://git-scm.com/downloads)
 
-Git is a distributed version control system that developers use to track and share code. We will use a branch system provided by Git to follow each step in the tutorial, we will see how to use it in [How to follow along with this tutorial?](#how-to-follow-along-with-this-tutorial) section.
+Git is a distributed version control system that developers use to track and share code. We will use the branch system provided by Git to follow each step in the tutorial and we will see how to use it in the [How to follow along with this tutorial?](#how-to-follow-along-with-this-tutorial) section.
 
 #### [Node v6.0+ and NPM](https://nodejs.org/en)
 
-Node is a server-side platform built on top of [V8](https://developers.google.com/v8), we will use it to run our [Express](https://expressjs.com/) server using [Webpack dev server](https://webpack.github.io/docs/webpack-dev-server.html). On the other hands, NPM is short for Node Package Manager which is used to handle dependencies in the project.
+Node is a server-side platform built on top of [V8](https://developers.google.com/v8), we will use it to run our [Express](https://expressjs.com/) server using the [Webpack dev server](https://webpack.github.io/docs/webpack-dev-server.html). NPM is short for Node Package Manager which is used to handle the project's dependencies.
 
 ### Tools
-There are many Relay helper tools built by people from the open-source community. We will take a look at some of them which will be used in our project.
+There are many tools built by people from the open-source community that make developing applications with Relay easier. We use the ones below in our project.
 
 #### [graphql-config](https://github.com/graphcool/graphql-config) and [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay)
-Two simple plug-ins to configure a GraphQL endpoint. Basically, Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from templates string to an immediately-invoked function without calling a GraphQL server, we will see how to use the `Relay.QL` in the [Containers and Fragments](/queries/containers-fragments) chapter. However, it means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the `babel-plugin-react-relay` comes into play. It uses `graphql-config` behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
+Two simple plug-ins to configure a GraphQL endpoint. Essentially, Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from a template string into an immediately-invoked function without calling a GraphQL server. We will see how to use the `Relay.QL` in the [Containers and Fragments](/queries/containers-fragments) chapter. However this means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the `babel-plugin-react-relay` comes into play. It uses `graphql-config` behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
 
 ```json
   "graphql": {
@@ -32,13 +32,13 @@ Two simple plug-ins to configure a GraphQL endpoint. Basically, Relay requires a
 
 #### Editor integration (Optional)
 
-Most of the times, we need to work with `Relay.QL` which is a normal templated string. It doesn't support syntax highlighting, code-formatting or auto-completion out of the box. Luckily, there are some brilliant editor plug-ins providing these features.
+Most of the time, we need to work with `Relay.QL` which is a normal template string. It doesn't support syntax highlighting, code-formatting or auto-completion out of the box. Luckily, there are some brilliant editor plug-ins providing these features.
 - [js-graphql-intellij-plugin](https://github.com/jimkyndemeyer/js-graphql-intellij-plugin) - GraphQL language support for IntelliJ IDEA and WebStorm, including Relay.QL tagged templates in JavaScript and TypeScript
 - [language-graphql](https://github.com/rmosolgo/language-graphql) - GraphQL support for Atom text editor
 
 ## How to follow along with this tutorial?
 
-Each chapter is divided into two main parts - **Learning concepts** and **Practicing in a real world application**. The former part will walk you through the concepts of Relay along with examples while the latter will then let you apply your theory knowledge with our Pokedex application!
+Each chapter is divided into two main parts - **Learning concepts** and **Practicing in a real world application**. The former part will walk you through the concepts of Relay along with examples while the latter will let you apply your theoretical understanding with our Pokedex application!
 
 > This guide is sprinkled with practice parts to let you get your hands dirty:
 
@@ -48,6 +48,6 @@ Each chapter is divided into two main parts - **Learning concepts** and **Practi
 
 ## GraphQL Endpoint
 
-Normally, Relay requires you to set up a GraphQL server on your own. However, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! Therefore, you can start working on Relay without worrying about the GraphQL server.
+Normally, Relay requires you to set up a GraphQL server on your own. However, for the sake of convenience, we already prepared the GraphQL server and set it up properly for you! This means you can start working on Relay without worrying about configuring your own GraphQL server.
 
 <!-- __INJECT_GRAPHQL_ENDPOINT__ -->
