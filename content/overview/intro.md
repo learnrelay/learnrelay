@@ -2,7 +2,7 @@
 
 # Brief introduction
 
-If you may have heard about Relay.js for a while but you are unsure of what it really is, how it is useful, or how to start your first Relay application, you have come to the right place!
+If you have heard about Relay.js but are not sure of what it really is, how it is useful, or how to start your first Relay application, you have come to the right place!
 
 Welcome to **Learn Relay**, a comprehensive introduction to Relay.js. In this tutorial, we'll take you step by step through the fundamental concepts of Relay. By understanding the concepts underlying Relay through practical examples, we hope that by the end of this tutorial you will have enough knowledge to create your own Relay applications.
 
