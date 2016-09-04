@@ -44,7 +44,6 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     if (this.context.storedState.skippedAuth) {
       return (
         <div>
-          I thought about it. It was a mistake. I want a GraphQL Endpoint...
           <div className='tc'>
             <TrackLink
               href={githubUrl}
@@ -80,10 +79,15 @@ export default class ContentEndpoint extends React.Component<Props, State> {
         >
           Get GraphQL Endpoint
         </TrackLink>
-        <a className='db mb4 pointer' onClick={() => this.context.updateStoredState(['skippedAuth'], true)}>
+        <div className='db mb4 pointer accent f6' onClick={this.skipEndpoint}>
           Read on without GraphQL endpoint (non-interactive)
-        </a>
+        </div>
       </div>
     )
+  }
+
+  private skipEndpoint = () => {
+    analytics.track('skip endpoint')
+    this.context.updateStoredState(['skippedAuth'], true)
   }
 }

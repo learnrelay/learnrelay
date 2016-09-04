@@ -5,15 +5,16 @@ import {useScroll} from 'react-router-scroll'
 import * as cuid from 'cuid'
 import loadAnalytics from './utils/analytics'
 import routes from './routes'
+import * as Cookies from 'js-cookie'
 
 import './polyfill'
 
 loadAnalytics()
 
-if (!window.localStorage.hasOwnProperty('learnrelay_guestid')) {
-  window.localStorage.setItem('learnrelay_guestid', cuid())
+if (!Cookies.get('learnrelay_guestid')) {
+  Cookies.set('learnrelay_guestid', cuid())
 }
-const guestId = window.localStorage.getItem('learnrelay_guestid')
+const guestId = Cookies.get('learnrelay_guestid')
 
 analytics.identify(guestId, () => {
   browserHistory.listen(({pathname}) => {
