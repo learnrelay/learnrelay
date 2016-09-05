@@ -7,5 +7,7 @@ export default () => {
 
   return {
     routes: chapterRoutes.concat(['/']),
+    https: true,
+    hostname: 'https://learnrelay.org',
   }
 }
