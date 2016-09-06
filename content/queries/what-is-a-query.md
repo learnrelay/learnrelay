@@ -18,12 +18,14 @@ A query to fetch the `id`, `name` and `url` fields of all Pokemons on the server
 
 ```graphql
 query {
-  allPokemons (first: 100000) {
-    edges {
-      node {
-        id
-        name
-        url
+  viewer {
+    allPokemons (first: 100000) {
+      edges {
+        node {
+          id
+          name
+          url
+        }
       }
     }
   }
