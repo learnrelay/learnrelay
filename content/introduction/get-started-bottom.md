@@ -12,6 +12,6 @@ npm start                                               # Open localhost:3000
 
 Now, you should be able to visit http://localhost:3000 to see your beautiful Pokedex application, which should look like this:
 
-![](../images/pokedex.png)
+![](../images/demo.png)
 
 Great, let's move on!
