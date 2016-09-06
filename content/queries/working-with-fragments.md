@@ -46,11 +46,10 @@ export default Relay.createContainer(
               node {
                 ${PokemonPreview.getFragment('pokemon')}
                 id
-                name
-                url
               }
             }
           }
+          id
         }
       `,
     },
