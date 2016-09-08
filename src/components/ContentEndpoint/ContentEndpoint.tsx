@@ -61,7 +61,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     if (this.context.storedState.user && this.context.storedState.user.endpoint) {
       return (
         <div className='flex flex-column'>
-          Congrats this is your endpoint:
+          Congrats, this is your endpoint:
           <div className={`pa3 ${styles.showEndpoint}`}>
             {this.context.storedState.user.endpoint}
           </div>
