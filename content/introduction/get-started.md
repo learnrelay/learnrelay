@@ -19,8 +19,8 @@ Node is a server-side platform built on top of [V8](https://developers.google.co
 ### Tools
 There are many tools built by people from the open-source community that make developing applications with Relay easier. We use the ones below in our project.
 
-#### [graphql-config](https://github.com/graphcool/graphql-config) and [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay)
-Two simple plug-ins to configure a GraphQL endpoint. Essentially, Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from a template string into an immediately-invoked function without calling a GraphQL server. We will see how to use the `Relay.QL` in the [Containers and Fragments](/queries/containers-fragments) chapter. However this means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the `babel-plugin-react-relay` comes into play. It uses `graphql-config` behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
+#### Configuring the GraphQL endpoint
+Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from a template string into an immediately-invoked function without calling a GraphQL server. We will see how to use the `Relay.QL` in a later chapter. However this means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay) comes into play. It uses [graphql-config](https://github.com/graphcool/graphql-config) behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
 
 ```json
   "graphql": {
@@ -38,15 +38,17 @@ Most of the time, we need to work with `Relay.QL` which is a normal template str
 - [js-graphql-intellij-plugin](https://github.com/jimkyndemeyer/js-graphql-intellij-plugin) - GraphQL language support for IntelliJ IDEA and WebStorm, including Relay.QL tagged templates in JavaScript and TypeScript
 - [language-graphql](https://github.com/rmosolgo/language-graphql) - GraphQL support for Atom text editor
 
-## How to follow along with this tutorial?
+## Making the most of this tutorial
 
-Each chapter is divided into two main parts - **Learning concepts** and **Practicing in a real world application**. The former part will walk you through the concepts of Relay along with examples while the latter will let you apply your theoretical understanding with our Pokedex application!
+Each chapter offers both material for **learning Relay concepts** and exercises to **get practice in a real world application**. This way, you can work through the concepts of Relay along with examples and apply your theoretical understanding with our Pokedex application in alternating steps!
 
-> This guide is sprinkled with practice parts to let you get your hands dirty:
+> This guide is sprinkled with practice parts to let you get your hands dirty. Whenever a section name starts with **Exercise**, get yourself ready for some coding action! Each of these sections has an associated git branch as a starting point, and another containing the solution for this exercise. For example, to checkout the branch for exercise 3, run this command: `git checkout step-03`. When you are finished with the current exercise, you can checkout the solution with `git checkout step-03-solution` and compare your solution with ours. Of course, if you need some help, you can also checkout the solution!
 
-* Whenever a section is called **Step xy**, get yourself ready for some coding action! At the start of each step you should checkout the matching git branch using **git checkout -f step-xy** and then you can start working on the tasks described in the step!
-* You can always use **git checkout -f step-xy-solutions** to get a hint or two on how a solution could look like.
-* Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you!
+* If you want to follow the exercices closely, you should checkout the correct branch before working on a specific exercise. Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you!
+
+* In any case, you can always check the branch containing the solution for the current step to get a hint or two on how a solution could look like.
+
+* Note that you have to paste your GraphQL endpoint to `package.json` as explained in the [Environment Setup](#environment-setup) section once for every branch. Make sure to commit both this change and your actual work in the code itself before changing your branch.
 
 ## GraphQL Endpoint
 
