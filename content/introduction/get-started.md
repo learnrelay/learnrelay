@@ -48,7 +48,10 @@ Each chapter offers both material for **learning Relay concepts** and exercises 
 
 * In any case, you can always check the branch containing the solution for the current step to get a hint or two on how a solution could look like.
 
-* Note that you have to paste your GraphQL endpoint to `package.json` as explained in the [Environment Setup](#environment-setup) section once for every branch. Make sure to commit both this change and your actual work in the code itself before changing your branch.
+* Note that you have to paste your GraphQL endpoint to `package.json` as explained in the [Environment Setup](#environment-setup) section and to Relay's network layer in `index.js` once for every branch. Make sure to commit both this change and your actual work in the code itself before changing your branch.
+
+* In this guide, you will notice that sometimes you will be confronted with a lot of concepts that are yet unknown to you.
+Don't worry when you come across something you don't fully understand yet! With the practical exercises you can get a better feeling for how everything works together and usually things get a lot clearer in a following chapter. If you ever have a question or a suggestion, please feel free to join the `#learnrelay` channel in our [Slack](slack.graph.cool).
 
 ## GraphQL Endpoint
 
