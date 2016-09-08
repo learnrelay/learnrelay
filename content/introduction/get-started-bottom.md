@@ -1,4 +1,4 @@
-## Step 01: Warm up
+## Exercise 01: Warm up
 
 It's time to get started! Let's clone and initialise our project in order to get our development environment up and running.
 

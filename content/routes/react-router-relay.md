@@ -20,7 +20,7 @@ In this example, we initialized the routes in our application using the **Router
 
 > React Router Relay actually uses Relay.Renderer behind the scenes to combine a fragment with a query. It makes sure that the data is available before the component gets rendered to the screen.
 
-## Step 04: Integrating React Router Relay
+## Exercise 04: Integrating React Router Relay
 
 In this step, we will create two paths for creating and viewing a Pokemon. To start, lets first open the `src/index.js` and set our paths:
 

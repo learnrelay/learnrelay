@@ -118,7 +118,7 @@ This type can be used to redirect to a view that depends on a newly created node
 
 Note that this type is rarely used and is only applicable in very specific use cases.
 
-## Step 06: Delete a Pokemon
+## Exercise 06: Delete a Pokemon
 
 In every Pokemon's life, there comes a point where it has to go into its well deserved retirement. That's why we should add a delete feature to the `PokemonPage`!
 

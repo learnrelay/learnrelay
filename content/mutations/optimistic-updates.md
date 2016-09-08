@@ -54,7 +54,7 @@ getOptimisticResponse () {
 }
 ```
 
-## Step 07: Update a Pokemon
+## Exercise 07: Update a Pokemon
 
 We can already add new Pokemons or delete them. But what if we want to give a Pokemon a new name, or even a new look (url...)?
 We should be able to do that!

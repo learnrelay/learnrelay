@@ -61,7 +61,7 @@ export default Relay.createContainer(
 Here we are building a fragment on top of the `viewer` object defined in `ViewerQueries`.
 We also inserted `ViewerQueries` to all the subviews in `index.js`. Later, when we talk about routing in Relay, we will see the exact meaning of this.
 
-## Step 02: Prepare the ListPage for further action
+## Exercise 02: Prepare the ListPage for further action
 
 In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by wrapping it with a Relay container now and building the fragment on top of the `viewer` object as we have seen above.
 
