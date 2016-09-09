@@ -8,7 +8,7 @@ Relay is an open source framework from Facebook for building data-driven React a
 
 ## How is it different than other Flux implementations?
 
-Relay is also inspired by Flux. It, however, contains just one central store and doesn't allow you to manage the store by yourself, you need to use **Mutations** and **Queries** to mutate and to get the data from a remote server using GraphQL. In other words, you will not be able to store any data that doesn't exist on your remote server. This shortcoming is going to be fixed in an upcoming release of Relay, but in case you need to manage some state data on your own, you could also use another Flux implementation for now, such as Redux, with Relay in order to manage application state.
+Relay is also inspired by Flux. It, however, contains just one central store and doesn't allow you to manage the store by yourself, you need to use **Mutations** and **Queries** to mutate and to get the data from a remote server using GraphQL. In other words, you will not be able to store any data that doesn't exist on your remote server. These problems are going to be fixed in an upcoming release of Relay, but in case you need to manage some state data on your own, you could also use another Flux implementation for now, such as Redux, with Relay in order to manage application state.
 
 ## Relay compositions
 
