@@ -6,6 +6,7 @@ import * as cuid from 'cuid'
 import loadAnalytics from './utils/analytics'
 import routes from './routes'
 import * as Cookies from 'js-cookie'
+import {getStoredState} from './utils/statestore'
 
 import './polyfill'
 
@@ -14,9 +15,12 @@ loadAnalytics()
 if (!Cookies.get('learnrelay_guestid')) {
   Cookies.set('learnrelay_guestid', cuid())
 }
-const guestId = Cookies.get('learnrelay_guestid')
+const storedState = getStoredState()
+const id = storedState.user
+  ? storedState.user.email
+  : Cookies.get('learnrelay_guestid')
 
-analytics.identify(guestId, () => {
+analytics.identify(id, () => {
   browserHistory.listen(({pathname}) => {
     analytics.page()
     analytics.track(`view: ${pathname}`)

@@ -308,7 +308,7 @@ class App extends React.Component<Props, State> {
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
 
     analytics.alias(email)
-    analytics.identify({
+    analytics.identify(email, {
       name: name || email,
       email: email,
     })
