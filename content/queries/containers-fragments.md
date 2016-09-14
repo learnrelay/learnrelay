@@ -58,27 +58,26 @@ export default Relay.createContainer(
 )
 ```
 
-Here we are building a fragment on top of the `viewer` object defined in `ViewerQueries`.
-We also inserted `ViewerQueries` to all the subviews in `index.js`. Later, when we talk about routing in Relay, we will see the exact meaning of this.
+Here we are building a fragment on top of the `viewer` object defined in `ViewerQueries`. In the next exercise we will see how we can expose `ViewerQueries` to a subview in the router in `index.js`. Later, when we talk about routing in Relay, we will see the exact meaning of this.
 
 ## Exercise 02: Prepare the ListPage for further action
 
 In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by wrapping it with a Relay container now and building the fragment on top of the `viewer` object as we have seen above.
 
-To give you a headstart, we already defined `ViewerQueries` in `index.js` and we have to expose it now to `ListPage`.
-
-Currently, `ListPage` is setup with the path `/` in this line in `index.js`:
+To give you a headstart, we already defined `ViewerQueries` in `index.js`. Now you have to expose it to `ListPage`.
+Currently, `ListPage` is associated with the path `/` in this line in `index.js`:
 
 ```javascript
 <Route path='/' component={ListPage} />
 ```
 
-We can use the `queries` property on a Route to expose queries to a component like this:
+You can use the `queries` property on a Route to expose queries to a component:
+
 ```javascript
 <Route path='/' component={ListPage} queries={ViewerQueries} />
 ```
 
-Now we can change `ListPage` so that it queries the `id` field of the `viewer` object as seen above.
+Now we can query the `id` field of the `viewer` object in the Relay container of `ListPage` as seen above.
 To verify that we can query the viewer id, remove the content of the `div` element in the render method in `ListPage` and replace it with
 
 ```javascript
