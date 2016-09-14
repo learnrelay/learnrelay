@@ -11,7 +11,7 @@ The way Relay handles data updates works nicely with the way React handles updat
 
 ## Creating a Relay Container
 
-To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write the following:
+To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write the following right below the `ListPage` component in `ListPage.js` :
 
 ```javascript
 export default Relay.createContainer(
@@ -28,7 +28,7 @@ export default Relay.createContainer(
 )
 ```
 
-This injects the prop `viewer` to the inner component `ListPage`.
+This creates a new Relay container and injects the prop `viewer` to the inner `ListPage` component.
 
 ## Composing Queries using Fragments
 
@@ -65,7 +65,24 @@ We also inserted `ViewerQueries` to all the subviews in `index.js`. Later, when 
 
 In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by wrapping it with a Relay container now and building the fragment on top of the `viewer` object as we have seen above.
 
-To give you a headstart, we already defined `ViewerQueries` in `index.js` and exposed it to `ListPage`.
-For now, just modify `ListPage`, so that it queries the `id` field of the `viewer` object.
+To give you a headstart, we already defined `ViewerQueries` in `index.js` and we have to expose it now to `ListPage`.
+
+Currently, `ListPage` is setup with the path `/` in this line in `index.js`:
+
+```javascript
+<Route path='/' component={ListPage} />
+```
+
+We can use the `queries` property on a Route to expose queries to a component like this:
+```javascript
+<Route path='/' component={ListPage} queries={ViewerQueries} />
+```
+
+Now we can change `ListPage` so that it queries the `id` field of the `viewer` object as seen above.
+To verify that we can query the viewer id, remove the content of the `div` element in the render method in `ListPage` and replace it with
+
+```javascript
+{`Your viewer id is: ${this.props.viewer.id}`}
+```
 
 > Remember: if you are stuck at any time, sneak a peek at `step-02-solutions` to get a hint or check the previous sections.
