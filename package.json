@@ -36,7 +36,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --history-api-fallback --host 0.0.0.0 --port 4300",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
-    "deploy": "npm run build && tsc --outDir .prep prep.ts && prep -c .prep/prep.js dist && netlify deploy -p dist -s learnrelay -t $NETLIFY_TOKEN"
+    "deploy": "npm run build && tsc --outDir .prep custom.d.ts prep.ts && prep -c .prep/prep.js dist && netlify deploy -p dist -s learnrelay -t $NETLIFY_TOKEN"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
