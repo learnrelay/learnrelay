@@ -14,6 +14,8 @@ Queries in Relay always start with the same non-scalar field, called the `viewer
 
 We are usually interested in queries that fetch all data or only one specific data item for a certain model, so our GraphQL backend should at least expose those queries through the `viewer` object.
 
+> Note that the `viewer` object will most likely be removed in the upcoming Relay 2.
+
 A query to fetch the `id`, `name` and `url` fields of all Pokemons on the server could look like this:
 
 ```graphql
