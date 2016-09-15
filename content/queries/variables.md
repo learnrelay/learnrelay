@@ -3,7 +3,7 @@
 Often we may want to use queries that are identical on a structural level, but differ in some semantic detail.
 Imagine, for example, that the number of Pokemons that we want to fetch depends on some external switch.
 
-Using *query variables* in this situation can increase code quality and performance, as string building is a quite costly operation.
+Using *query variables* in this situation can increase code quality and performance, as string building is quite a costly operation.
 
 We will see query variables in action soon. For now, try to understand the following examples!
 
