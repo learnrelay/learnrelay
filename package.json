@@ -36,7 +36,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --history-api-fallback --host 0.0.0.0 --port 4300",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
-    "deploy": "npm run build && cp dist/index.html dist/200.html && tsc --outDir .prep custom.d.ts prep.ts && prep -c .prep/prep.js dist && surge dist -d learnrelay.surge.sh"
+    "deploy": "npm run build && tsc --outDir .prep prep.ts && prep -c .prep/prep.js dist && netlify deploy -p dist -s learnrelay -t $NETLIFY_TOKEN"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -62,7 +62,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
-    "surge": "^0.18.0",
+    "netlify-cli": "^1.0.2",
     "svgo-loader": "^1.1.0",
     "tachyons": "^4.1.2",
     "ts-loader": "^0.8.2",
