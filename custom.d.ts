@@ -15,9 +15,11 @@ declare var fetch: any
 
 declare interface Window {
   analytics: any
+  mixpanel: any
 }
 
 declare var analytics: any
+declare var mixpanel: any
 declare var __LAST_UPDATE__: string
 declare var __LAMBDA_AUTH__: string
 declare var __GITHUB_OAUTH_CLIENT_ID__: string

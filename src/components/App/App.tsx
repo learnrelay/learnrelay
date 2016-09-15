@@ -37,6 +37,7 @@ class App extends React.Component<Props, State> {
     super(props)
 
     const code = getParameterByName('code')
+    console.log(code);
     if (code) {
       this.fetchEndpoint(code)
     }
@@ -208,7 +209,9 @@ class App extends React.Component<Props, State> {
           </div>
           {this.state.storedState.user && this.state.storedState.user.endpoint &&
           <div
-            className={`fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}`}
+            className={`
+              fixed bottom-0 left-0 flex fw3 items-center justify-center bg-accent pointer ${styles.serverButton}
+            `}
             style={{ width: 269, height: 90 }}
             onClick={this.openLayover}
           >
@@ -287,6 +290,7 @@ class App extends React.Component<Props, State> {
   }
 
   private async fetchEndpoint(code: string) {
+    console.log('fetch code', code);
     const response = await fetch(__LAMBDA_AUTH__, {
       method: 'post',
       headers: {
@@ -308,14 +312,17 @@ class App extends React.Component<Props, State> {
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
 
     analytics.alias(email)
-    analytics.identify(email, {
-      name: name || email,
-      email: email,
-    })
+    setTimeout(() => {
+      analytics.identify(email, {
+        name: name || email,
+        email: email,
+      })
+    }, 2000)
 
     this.updateStoredState(['user'], {endpoint, email, resetPasswordToken, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
+    console.log('replaced router');
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {

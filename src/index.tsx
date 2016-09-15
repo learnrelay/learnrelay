@@ -12,19 +12,25 @@ import './polyfill'
 
 loadAnalytics()
 
-if (!Cookies.get('learnrelay_guestid')) {
-  Cookies.set('learnrelay_guestid', cuid())
-}
-const storedState = getStoredState()
-const id = storedState.user
-  ? storedState.user.email
-  : Cookies.get('learnrelay_guestid')
-
-analytics.identify(id, () => {
+function trackHistory () {
   browserHistory.listen(({pathname}) => {
-    analytics.page()
     analytics.track(`view: ${pathname}`)
+    analytics.page()
   })
+}
+
+analytics.ready(() => {
+  const storedState = getStoredState()
+  if (storedState.user) {
+    analytics.identify(storedState.user.email, trackHistory)
+  } else {
+    if (!Cookies.get('learnrelay_guestid')) {
+      Cookies.set('learnrelay_guestid', cuid())
+      analytics.alias(Cookies.get('learnrelay_guestid'), trackHistory)
+    } else {
+      analytics.identify(Cookies.get('learnrelay_guestid'), trackHistory)
+    }
+  }
 })
 
 function shouldScrollUp(previousProps, {location}) {
