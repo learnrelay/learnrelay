@@ -51,7 +51,7 @@ Relay.injectNetworkLayer(
 
 Again, make sure to copy your GraphQL endpoint from above to `package.json` and `index.js`.
 
-* All queries in Relay are wrapped by the so called `viewer` object. We can define it once and use it whenever we want to make a query:
+* Many queries in Relay are wrapped by the so called `viewer` object. We can define it once and use it whenever we want to make a query against the viewer field:
 
 ```javascript
 const ViewerQueries = { viewer: () => Relay.QL`query { viewer }` }
