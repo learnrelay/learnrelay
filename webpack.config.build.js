@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     app: ['whatwg-fetch', './src'],
-    css: 'tachyons',
   },
   output: {
     path: './dist',
