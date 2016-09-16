@@ -65,7 +65,7 @@ class PokemonPreview extends React.Component {
   ...
   render () {
     return (
-      <Link className={classes.link} to={`/view/${this.props.pokemon.id}`}>   // When it gets clicked, redirect to the "/create" path
+      <Link className={classes.link} to={`/view/${this.props.pokemon.id}`}>   // When it gets clicked, redirect to the "/view/:id" path
         ...
       </Link>
     )
