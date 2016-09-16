@@ -14,7 +14,7 @@ export default (
         <MarkdownPage
           params={params}
           ast={subchapters.find((s) => s.alias === params.subchapter)!.ast()}
-          sourceName={params.subchapter}
+          sourceName={`${params.chapter}/${params.subchapter}.md`}
         />
       )}
     />

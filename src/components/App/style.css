@@ -14,7 +14,12 @@ a {
     --color-accent:  #F26B00;
     --color-gray-1:  #ededed;
     --color-gray-2:  #FAFAFA;
+    --color-gray-3:  #CCC;
     --color-green:   #64BF00;
+}
+
+.gray-3 {
+    color: var(--color-gray-3);
 }
 
 .bg-accent {
@@ -30,7 +35,7 @@ a {
 }
 
 .green {
-  color: #64BF00;
+    color: #64BF00;
 }
 
 /*.vertical-line {
@@ -38,7 +43,7 @@ a {
 }*/
 
 .width-270 {
-  width: 270px;
+    width: 270px;
 }
 
 .rotate-180 {

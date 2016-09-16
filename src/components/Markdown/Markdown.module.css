@@ -112,3 +112,12 @@
 .content blockquote p {
     margin: 0;
 }
+
+.github {
+    opacity: 0.3;
+}
+
+.github:hover {
+    opacity: 1;
+    text-decoration: none !important;
+}
