@@ -8,13 +8,11 @@ Non-scalar fields consist of non-scalar fields or scalar fields themselves.
 *Models* from your GraphQL schema are exposed as non-scalar fields in the query.
 Queries in GraphQL are *hierarchical*, that means that if you include a non-scalar field in a query you have to define a subselection of fields on it.
 
-## The viewer object
+## The `node` and `viewer` fields
 
-Queries in Relay always start with the same non-scalar field, called the `viewer`.
+Data access typically follows one of two patterns. In some cases, your application will want to fetch an item by its unique identifier. In this case we use the `node(id: $id)` root field. In other cases, the application will need to fetch data that is accessible by the currently logged-in user (aka the "viewer"). For example, it wouldn't make sense for a generic `User` object to have a `news_feed` - that feed is private to the person viewing it. Relay recommends that these types of viewer-contextual fields be placed under the `viewer` root field. 
 
-We are usually interested in queries that fetch all data or only one specific data item for a certain model, so our GraphQL backend should at least expose those queries through the `viewer` object.
-
-> Note that the `viewer` object will most likely be removed in the upcoming Relay 2.
+We are usually interested in queries that fetch all data or only one specific data item for a certain model, so our GraphQL backend should at least expose those queries through the `viewer` field. Data that can be accessed by its unique identifier should be exposed through the `node` root field.
 
 A query to fetch the `id`, `name` and `url` fields of all Pokemons on the server could look like this:
 
