@@ -1,11 +1,11 @@
 const webpack = require('webpack')
 const cssnano = require('cssnano')
-const cssvariables = require('postcss-css-variables')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
     app: ['whatwg-fetch', './src'],
+    css: 'tachyons',
   },
   output: {
     path: './dist',
@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __LAST_UPDATE__: '"' + new Date().toLocaleDateString() + '"',
-      __ENABLE_SEGMENT__: true,
+      __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"7Y6fdaghn7WfoaO3ICKYGDwuZHzV6C52"',
       __GITHUB_OAUTH_CLIENT_ID__: JSON.stringify(process.env.GITHUB_OAUTH_CLIENT_ID.toString()),
       __LAMBDA_AUTH__: JSON.stringify(process.env.LAMBDA_AUTH.toString()),
@@ -89,8 +89,7 @@ module.exports = {
         removeAll: true,
       },
       safe: true,
-    }),
-    cssvariables()
+    })
   ],
   svgo: {
     plugins: [

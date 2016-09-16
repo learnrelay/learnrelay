@@ -1,5 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600';
-@import '~tachyons';
+/*@import '~tachyons';*/
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
