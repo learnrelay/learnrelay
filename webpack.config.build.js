@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const cssnano = require('cssnano')
+const cssvariables = require('postcss-css-variables')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -89,7 +90,8 @@ module.exports = {
         removeAll: true,
       },
       safe: true,
-    })
+    }),
+    cssvariables()
   ],
   svgo: {
     plugins: [
