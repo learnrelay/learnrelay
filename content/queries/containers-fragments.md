@@ -15,7 +15,7 @@ To expose data to your React component we can use the method `Relay.createContai
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(ListPage),
+  ListPage,
   {
     fragments: {
       viewer: () => Relay.QL`
@@ -45,7 +45,7 @@ Let's have another look at the Relay container we just built:
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(ListPage),
+  ListPage,
   {
     fragments: {
       viewer: () => Relay.QL`
