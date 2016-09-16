@@ -11,7 +11,11 @@ export default (
     <Route
       path='/:chapter/:subchapter'
       component={({ params }) => (
-        <MarkdownPage params={params} ast={subchapters.find((s) => s.alias === params.subchapter)!.ast()} />
+        <MarkdownPage
+          params={params}
+          ast={subchapters.find((s) => s.alias === params.subchapter)!.ast()}
+          sourceName={params.subchapter}
+        />
       )}
     />
   </Route>

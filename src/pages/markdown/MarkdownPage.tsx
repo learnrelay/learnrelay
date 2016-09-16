@@ -7,6 +7,7 @@ const styles: any = require('./MarkdownPage.module.styl')
 interface Props {
   params: any
   ast: Node
+  sourceName: string
 }
 
 interface Context {
@@ -40,6 +41,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
       <div className={styles.container} >
         <Markdown
           ast={this.props.ast}
+          sourceName={this.props.sourceName}
         />
       </div>
     )

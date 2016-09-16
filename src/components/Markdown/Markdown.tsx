@@ -10,6 +10,7 @@ const styles: any = require('./Markdown.module.css')
 
 interface Props {
   ast: Node
+  sourceName: string
 }
 
 function childrenToString(children): string {
@@ -28,7 +29,11 @@ function childrenToString(children): string {
     .join('')
 }
 
-export default class Markdown extends React.PureComponent<Props, {}> {
+export default class Markdown extends React.Component<Props, {}> {
+
+  shouldComponentUpdate(nextProps: Props) {
+    return nextProps.sourceName !== this.props.sourceName
+  }
 
   render() {
     const renderers = {
@@ -74,6 +79,7 @@ export default class Markdown extends React.PureComponent<Props, {}> {
           return <Sharing />
         }
 
+        console.log('render html');
         return ReactRenderer.renderers.HtmlBlock(props)
       },
     }

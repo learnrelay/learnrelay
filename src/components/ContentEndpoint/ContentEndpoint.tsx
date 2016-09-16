@@ -53,7 +53,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
               Get GraphQL Endpoint
             </TrackLink>
           </div>
-          <Markdown ast={ast}/>
+          <Markdown ast={ast} sourceName='getting-started-bottom' />
         </div>
       )
     }
@@ -65,7 +65,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
           <div className={`pa3 ${styles.showEndpoint}`}>
             {this.context.storedState.user.endpoint}
           </div>
-          <Markdown ast={ast}/>
+          <Markdown ast={ast} sourceName='getting-started-bottom' />
         </div>
       )
     }
