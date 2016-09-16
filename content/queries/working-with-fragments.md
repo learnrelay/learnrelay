@@ -57,8 +57,10 @@ export default Relay.createContainer(
 )
 ```
 
-By using `${PokemonPreview.getFragment('pokemon')}` we refer to the fragment `pokemon` of the `PokemonPreview` container.
-Then we define a subselection on this fragment. In this case we select the fields `id`, `name` and `url`.
+By using `${PokemonPreview.getFragment('pokemon')}` we refer to the fragment `pokemon` of the `PokemonPreview` container, selecting `id`, `name` and `url`. This way, we can fetch all data that is needed for the `PokemonPreview` component, without exactly knowing which data that is in the parent component `ListPage`. Additionally to the fragment, we select the `id` field explicitely, even though it is already contained in the `pokemon` fragment from the `PokemonPreview` component.
+That is because `ListPage` depends on the `id` field itself and we can't rely on the fact that `id` is already contained in the `pokemon` fragment.
+
+This mechanism is called data masking. 
 
 ## Data masking
 
