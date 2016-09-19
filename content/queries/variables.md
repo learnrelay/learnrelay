@@ -77,7 +77,7 @@ _sortByName() {
 }
 ```
 
-`setVariables` is not executed synchronously, so after a while, when `this.props` is populated with the new variables, the query is executed with the new sort order.
+After calling `setVariable`, it takes some time until the changed variables are populated to `this.props`. Only then the query is executed with the new sort order.
 
 ## Prepare variables
 
@@ -113,4 +113,4 @@ export default Relay.createContainer(
   },
 )
 ```
-initially, we sort descending by id and thus only query the first 1000 Pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.
+Initially, we sort descending by id and thus only query the first 1000 Pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.
