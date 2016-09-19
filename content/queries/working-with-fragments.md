@@ -3,7 +3,7 @@
 We use fragments in two different ways:
 
 * A container defines **its own data requirements** by creating a list of fragments.
-* A container can use fragments **defined elsewhere by other containers** when creating its own fragments. This is typically used to set the props of a child without exactly knowing all the selected fields the child defined in the fragment.
+* A container can use fragments **defined elsewhere by other containers** when creating its own fragments. This is typically used for a parent to set the props of a child without exactly knowing all the selected fields the child defined in the fragment.
 
 ## Declare data requirements
 
