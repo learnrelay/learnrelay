@@ -99,4 +99,4 @@ allPokemons (first: 100000) {
 
 > Remember that inside the `ListPage` component, we will have access to `viewer` that contains the `allPokemons` object which in turn contains the `edges` array.
 
-* Actually display all the Pokemons by mapping over `this.props.viewer.allPokemons.edges` and fill the props `key` and `pokemon` with the `node` field of each edge.
+* Actually display all the Pokemons by mapping over `this.props.viewer.allPokemons.edges`. Use the `PokemonPreview` container and fill the props `key` and `pokemon` with the `node` field of each edge.
