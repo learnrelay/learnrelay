@@ -44,17 +44,19 @@ export default class MarkdownPage extends React.Component<Props, {}> {
           ast={this.props.ast}
           sourceName={this.props.sourceName}
         />
-        <a
-          href={`https://github.com/learnrelay/learnrelay/blob/master/content/${this.props.sourceName}`}
-          target='_blank'
-          className={`pv3 flex items-center ${styles.github}`}
-        >
-          <Icon
-            src={require('../../assets/icons/github.svg')}
-            style={{ paddingRight: '6px' }}
-          />
-          <span className='black'>Edit this page</span>
-        </a>
+        <div style={{ maxWidth: 740, margin: '0 auto' }}>
+          <a
+            href={`https://github.com/learnrelay/learnrelay/blob/master/content/${this.props.sourceName}`}
+            target='_blank'
+            className={`pv3 flex items-center ${styles.github}`}
+          >
+            <Icon
+              src={require('../../assets/icons/github.svg')}
+              style={{ paddingRight: '6px' }}
+            />
+            <span className='black'>Edit this page</span>
+          </a>
+        </div>
       </div>
     )
   }

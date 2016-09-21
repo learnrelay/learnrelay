@@ -1,9 +1,11 @@
 import * as React from 'react'
+import * as CopyToClipboard from 'react-copy-to-clipboard'
 import Loading from '../Loading/Loading'
 import {getParameterByName} from '../../utils/location'
 import {StoredState} from '../../utils/statestore'
 import Markdown from '../Markdown/Markdown'
 import TrackLink from '../TrackLink/TrackLink'
+import Icon from '../Icon/Icon'
 import {Parser} from 'commonmark'
 
 const styles: any = require('./ContentEndpoint.module.styl')
@@ -62,8 +64,25 @@ export default class ContentEndpoint extends React.Component<Props, State> {
       return (
         <div className='flex flex-column'>
           Congrats, this is your endpoint:
-          <div className={`pa3 ${styles.showEndpoint}`}>
+          <div className={`pa3 flex ${styles.showEndpoint}`}>
+            <span>
             {this.context.storedState.user.endpoint}
+            </span>
+            <CopyToClipboard
+              className='ml3'
+              text={this.context.storedState.user.endpoint}
+              onCopy={() => analytics.track('overlay: copied endpoint')}
+            >
+              <Icon
+                src={require('../../assets/icons/copy.svg')}
+                className='dim'
+                style={{
+                  padding: '6px',
+                  background: 'rgba(0,0,0,0.1)',
+                  cursor: 'pointer',
+                }}
+              />
+            </CopyToClipboard>
           </div>
           <Markdown ast={ast} sourceName='getting-started-bottom' />
         </div>
