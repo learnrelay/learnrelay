@@ -2,6 +2,7 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import {hashLinkScroll} from '../../utils/dom'
 import Markdown from '../../components/Markdown/Markdown'
+import Icon from '../../components/Icon/Icon'
 const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
@@ -43,6 +44,17 @@ export default class MarkdownPage extends React.Component<Props, {}> {
           ast={this.props.ast}
           sourceName={this.props.sourceName}
         />
+        <a
+          href={`https://github.com/learnrelay/learnrelay/blob/master/content/${this.props.sourceName}`}
+          target='_blank'
+          className={`pv3 flex items-center ${styles.github}`}
+        >
+          <Icon
+            src={require('../../assets/icons/github.svg')}
+            style={{ paddingRight: '6px' }}
+          />
+          <span className='black'>Edit this page</span>
+        </a>
       </div>
     )
   }

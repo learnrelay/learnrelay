@@ -38,7 +38,7 @@
 
 .content {
   max-width: 740px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 1rem;
   overflow: hidden;
 }
 
@@ -111,13 +111,4 @@
 
 .content blockquote p {
     margin: 0;
-}
-
-.github {
-    opacity: 0.3;
-}
-
-.github:hover {
-    opacity: 1;
-    text-decoration: none !important;
 }

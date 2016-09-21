@@ -5,7 +5,6 @@ import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
-import Icon from '../Icon/Icon'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -80,7 +79,6 @@ export default class Markdown extends React.Component<Props, {}> {
           return <Sharing />
         }
 
-        console.log('render html');
         return ReactRenderer.renderers.HtmlBlock(props)
       },
     }
@@ -101,17 +99,6 @@ export default class Markdown extends React.Component<Props, {}> {
     return (
       <div className={`relative ${styles.content}`}>
         {renderer.render(this.props.ast)}
-        <a
-          href={`https://github.com/learnrelay/learnrelay/blob/master/content/${this.props.sourceName}`}
-          target='_blank'
-          className={`pv3 flex items-center ${styles.github}`}
-        >
-          <Icon
-            src={require('../../assets/icons/github.svg')}
-            style={{ paddingRight: '6px' }}
-          />
-          <span className='black'>Edit this page</span>
-        </a>
       </div>
     )
   }

@@ -9,7 +9,7 @@ declare module 'graphiql'
 declare module 'react-copy-to-clipboard'
 declare module 'cuid'
 
-declare function require(name: string): any
+//declare function require(name: string): any
 
 declare var fetch: any
 

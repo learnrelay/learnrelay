@@ -13,12 +13,12 @@ module.exports = {
     publicPath: '/',
   },
   module: {
-    preLoaders: [{
+    rules: [{
+      enforce: 'pre',
       test: /\.ts(x?)$/,
       loader: 'tslint',
       exclude: /node_modules/,
-    }],
-    loaders: [{
+    }, {
       test: /module\.styl/,
       loader: 'style!css?modules!postcss!stylus',
     }, {
@@ -30,8 +30,8 @@ module.exports = {
       loader: 'style!css!postcss',
     }, {
       test: /\.ts(x?)$/,
-      loader: 'babel!ts',
       exclude: /node_modules/,
+      loader: 'babel!awesome-typescript',
     }, {
       test: /\.js$/,
       loader: 'babel',
@@ -77,26 +77,30 @@ module.exports = {
         warnings: false,
       }
     }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          cssnano({
+            autoprefixer: {
+              add: true,
+              remove: true,
+              browsers: ['last 2 versions'],
+            },
+            discardComments: {
+              removeAll: true,
+            },
+            safe: true,
+          })
+        ],
+        svgo: {
+          plugins: [
+            {removeStyleElement: true},
+          ],
+        },
+      }
+    }),
   ],
-  postcss: [
-    cssnano({
-      autoprefixer: {
-        add: true,
-        remove: true,
-        browsers: ['last 2 versions'],
-      },
-      discardComments: {
-        removeAll: true,
-      },
-      safe: true,
-    })
-  ],
-  svgo: {
-    plugins: [
-      {removeStyleElement: true},
-    ],
-  },
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   }
 }

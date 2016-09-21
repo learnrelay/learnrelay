@@ -37,7 +37,6 @@ class App extends React.Component<Props, State> {
     super(props)
 
     const code = getParameterByName('code')
-    console.log(code);
     if (code) {
       this.fetchEndpoint(code)
     }
@@ -250,7 +249,12 @@ class App extends React.Component<Props, State> {
             </Link>
           </div>
           }
-          {nextSubchapter && (currentSubchapterAlias !== 'get-started' || this.state.storedState.user || this.state.storedState.skippedAuth) &&
+          {nextSubchapter &&
+          (
+            currentSubchapterAlias !== 'get-started' || 
+            this.state.storedState.user ||
+            this.state.storedState.skippedAuth
+          ) &&
           <div
             className={`${styles.jump} ${styles.jumpRight} ${this.state.expandNavButtons ? styles.jumpActive : ''} z-0`}
           >
@@ -290,7 +294,6 @@ class App extends React.Component<Props, State> {
   }
 
   private async fetchEndpoint(code: string) {
-    console.log('fetch code', code);
     const response = await fetch(__LAMBDA_AUTH__, {
       method: 'post',
       headers: {
@@ -322,7 +325,6 @@ class App extends React.Component<Props, State> {
     this.updateStoredState(['user'], {endpoint, email, resetPasswordToken, name})
     this.updateStoredState(['skippedAuth'], false)
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
-    console.log('replaced router');
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {

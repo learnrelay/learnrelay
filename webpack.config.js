@@ -5,18 +5,19 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: ['whatwg-fetch', './src'],
+    css: 'tachyons',
   },
   output: {
     filename: '[name].[hash].js',
     publicPath: '/',
   },
   module: {
-    preLoaders: [{
+    rules: [{
+      enforce: 'pre',
       test: /\.ts(x?)$/,
       loader: 'tslint',
       exclude: /node_modules/,
-    }],
-    loaders: [{
+    }, {
       test: /module\.styl/,
       loader: 'style!css?modules!stylus',
     }, {
@@ -29,7 +30,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loaders: ['babel', 'ts']
+      loader: 'babel!awesome-typescript',
     }, {
       test: /\.js$/,
       loader: 'babel',
@@ -63,13 +64,17 @@ module.exports = {
       favicon: 'static/favicon.png',
       template: 'src/index.html',
     }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        svgo: {
+          plugins: [
+            {removeStyleElement: true},
+          ],
+        },
+      }
+    }),
   ],
-  svgo: {
-    plugins: [
-      {removeStyleElement: true},
-    ],
-  },
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
 }
