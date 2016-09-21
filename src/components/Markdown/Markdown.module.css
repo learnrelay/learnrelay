@@ -40,6 +40,7 @@
   max-width: 740px;
   margin: 0 auto 1rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .content iframe {

@@ -63,3 +63,7 @@ a {
 .row-reverse {
   flex-direction: row-reverse;
 }
+
+pre code {
+  padding: 0 !important
+}
