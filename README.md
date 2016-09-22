@@ -1,4 +1,4 @@
-# Learn Relay
+# Learn Relay [![CircleCI](https://circleci.com/gh/learnrelay/learnrelay.svg?style=svg)](https://circleci.com/gh/learnrelay/learnrelay)
 
 ![](https://learnrelay.org/images/twitter.png)
 
