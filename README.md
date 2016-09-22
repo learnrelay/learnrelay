@@ -1,4 +1,4 @@
-# Learn Relay [![CircleCI](https://circleci.com/gh/learnrelay/learnrelay.svg?style=svg)](https://circleci.com/gh/learnrelay/learnrelay)
+# Learn Relay
 
 ![](https://learnrelay.org/images/twitter.png)
 
@@ -43,7 +43,7 @@ If you have a suggestion on how to improve Learn Relay please either [open an is
     └── route-in-relay.md
 ```
 
-## Development
+## Development [![CircleCI](https://circleci.com/gh/learnrelay/learnrelay.svg?style=svg)](https://circleci.com/gh/learnrelay/learnrelay)
 
 ```sh
 npm install
