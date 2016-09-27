@@ -1,3 +1,5 @@
+<iframe height="315" src="https://www.youtube.com/embed/iohi9fXPzAw" frameborder="0" allowfullscreen></iframe>
+
 # What is a Query?
 
 When we make a request to a GraphQL server to declare our specific data requirements, we are sending a *query*.
@@ -10,7 +12,7 @@ Queries in GraphQL are *hierarchical*, that means that if you include a non-scal
 
 ## The `node` and `viewer` fields
 
-Data access typically follows one of two patterns. In some cases, your application will want to fetch an item by its unique identifier. In this case we use the `node(id: $id)` root field. In other cases, the application will need to fetch data that is accessible by the currently logged-in user (aka the "viewer"). For example, it wouldn't make sense for a generic `User` object to have a `news_feed` - that feed is private to the person viewing it. Relay recommends that these types of viewer-contextual fields be placed under the `viewer` root field. 
+Data access typically follows one of two patterns. In some cases, your application will want to fetch an item by its unique identifier. In this case we use the `node(id: $id)` root field. In other cases, the application will need to fetch data that is accessible by the currently logged-in user (aka the "viewer"). For example, it wouldn't make sense for a generic `User` object to have a `news_feed` - that feed is private to the person viewing it. Relay recommends that these types of viewer-contextual fields be placed under the `viewer` root field.
 
 We are usually interested in queries that fetch all data or only one specific data item for a certain model, so our GraphQL backend should at least expose those queries through the `viewer` field. Data that can be accessed by its unique identifier should be exposed through the `node` root field.
 
