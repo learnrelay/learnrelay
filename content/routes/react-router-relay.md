@@ -16,9 +16,9 @@ As we have seen in the previous chapter, Relay doesn't have a built-in routing s
 </Router>
 ```
 
-In this example, we initialized the routes in our application using the **Router** component, which requires environment, render, and history arguments. We then told the routes to please aggregate a fragment defined in the HomePage container with the ViewerQueries and send it to a remote server whenever the root path is active. The returned data will be kept inside the **Relay.Store** and also available in the HomePage via `props`.
+In this example, we initialize the routes in our application using the **Router** component, which requires the environment, render, and history arguments. We combine the Relay container defined in the `HomePage` container with the `ViewerQueries`. As seen before, this injects the `viewer` field to the props of `HomePage`. The actual query defined in `HomePage` is executed whenever the root path `/` is visited. The returned data will be kept inside the **Relay.Store** and also available in the HomePage via `props`.
 
-> React Router Relay actually uses Relay.Renderer behind the scenes to combine a fragment with a query. It makes sure that the data is available before the component gets rendered to the screen.
+> React Router Relay actually uses Relay.Renderer behind the scenes to combine a container with a query. It makes sure that the data is available before the component gets rendered to the screen.
 
 ## Exercise 04: Integrating React Router Relay
 
@@ -35,7 +35,7 @@ ReactDOM.render(
 )
 ```
 
-Both paths use the `PokemonPage` container and `ViewerQueries`, React Router Relay takes care of combining them and fetching data from a remote server for us.
+Both paths use the `PokemonPage` container and the `ViewerQueries` query object. React Router Relay takes care of combining them and fetching data from a remote server for us.
 
 > Note that the route can have parameters which will be passed down to the container and get combined with its fragment.
 
