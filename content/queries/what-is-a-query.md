@@ -8,7 +8,7 @@ Scalar fields are primitive data types like `String` or `Int`.
 Non-scalar fields consist of non-scalar fields or scalar fields themselves.
 
 *Models* from your GraphQL schema are exposed as non-scalar fields in the query.
-Queries in GraphQL are *hierarchical*, that means that if you include a non-scalar field in a query you have to define a subselection of scalar fields on it.
+Queries in GraphQL are *hierarchical*, that means that if you include a non-scalar field in a query, it must always have a subselection. That subselection can be composed from scalar fields, or other non-scalar fields (at which point they in turn also need a subselection).
 
 ## The `node` and `viewer` fields
 
