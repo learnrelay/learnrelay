@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import Loading from '../Loading/Loading'
-import {getParameterByName} from '../../utils/location'
 import {StoredState} from '../../utils/statestore'
 import Markdown from '../Markdown/Markdown'
 import TrackLink from '../TrackLink/TrackLink'
@@ -11,6 +10,7 @@ import {Parser} from 'commonmark'
 const styles: any = require('./ContentEndpoint.module.styl')
 
 interface Props {
+  location: any
 }
 
 interface State {
@@ -37,7 +37,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
     const redirectUrl = `${window.location.origin}${window.location.pathname}#graphql-endpoint`
     const githubUrl = `https://github.com/login/oauth/authorize?client_id=${__GITHUB_OAUTH_CLIENT_ID__}&scope=user:email&redirect_uri=${redirectUrl}` // tslint:disable-line
 
-    if (getParameterByName('code')) {
+    if (this.props.location.query.code) {
       return (
         <Loading />
       )
@@ -55,7 +55,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
               Get GraphQL Endpoint
             </TrackLink>
           </div>
-          <Markdown ast={ast} sourceName='getting-started-bottom' />
+          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom' />
         </div>
       )
     }
@@ -84,7 +84,7 @@ export default class ContentEndpoint extends React.Component<Props, State> {
               />
             </CopyToClipboard>
           </div>
-          <Markdown ast={ast} sourceName='getting-started-bottom' />
+          <Markdown ast={ast} location={this.props.location} sourceName='getting-started-bottom' />
         </div>
       )
     }

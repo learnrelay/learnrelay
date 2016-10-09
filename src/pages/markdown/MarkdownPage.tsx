@@ -7,6 +7,7 @@ const styles: any = require('./MarkdownPage.module.styl')
 
 interface Props {
   params: any
+  location: any
   ast: Node
   sourceName: string
 }
@@ -26,7 +27,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
   componentDidMount() {
     this.context.updateStoredState(['hasRead', this.props.params.subchapter], true)
 
-    if (window.location.hash !== '') {
+    if (this.props.location.hash !== '') {
       hashLinkScroll()
     }
   }
@@ -43,6 +44,7 @@ export default class MarkdownPage extends React.Component<Props, {}> {
         <Markdown
           ast={this.props.ast}
           sourceName={this.props.sourceName}
+          location={this.props.location}
         />
         <div style={{ maxWidth: 740, margin: '0 auto' }}>
           <a

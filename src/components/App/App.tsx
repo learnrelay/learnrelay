@@ -6,7 +6,6 @@ import ServerLayover from '../ServerLayover/ServerLayover'
 import {chapters, neighboorSubchapter, subchapters, getLastSubchapterAlias} from '../../utils/content'
 import {collectHeadings, buildHeadingsTree} from '../../utils/markdown'
 import {slug} from '../../utils/string'
-import {getParameterByName} from '../../utils/location'
 import {StoredState, getStoredState, update} from '../../utils/statestore'
 
 require('./style.css')
@@ -17,6 +16,7 @@ interface Props {
   children: React.ReactElement<any>
   router: any
   params: any
+  location: any
 }
 
 interface State {
@@ -36,9 +36,8 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const code = getParameterByName('code')
-    if (code) {
-      this.fetchEndpoint(code)
+    if (props.location.query.code) {
+      this.fetchEndpoint(props.location.query.code)
     }
 
     this.state = {
@@ -324,7 +323,11 @@ class App extends React.Component<Props, State> {
 
     this.updateStoredState(['user'], {endpoint, email, resetPasswordToken, name})
     this.updateStoredState(['skippedAuth'], false)
+
     this.props.router.replace(`${window.location.pathname}${window.location.hash}`)
+    // this is needed since router.replace doesn't trigger re-render and neither does
+    // context as it's ignored in the Markdown component
+    //this.forceUpdate() 
   }
 
   private updateStoredState = (keyPath: string[], value: any) => {
