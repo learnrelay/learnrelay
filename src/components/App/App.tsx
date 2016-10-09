@@ -313,6 +313,8 @@ class App extends React.Component<Props, State> {
     const {projectId, email, resetPasswordToken, name} = body
     const endpoint = `https://api.graph.cool/relay/v1/${projectId}`
 
+    analytics.track(`github auth success`)
+
     analytics.alias(email)
     setTimeout(() => {
       analytics.identify(email, {
