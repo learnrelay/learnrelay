@@ -84,4 +84,4 @@ To verify that we can query the viewer id, remove the content of the `div` eleme
 {`Your viewer id is: ${this.props.viewer.id}`}
 ```
 
-> Remember: if you are stuck at any time, sneak a peek at `step-02-solutions` to get a hint or check the previous sections.
+> Remember: if you are stuck at any time, sneak a peek at `step-02-solution` to get a hint or check the previous sections.

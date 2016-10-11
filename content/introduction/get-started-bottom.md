@@ -41,7 +41,7 @@ import './index.css'
 `react-relay` contains the `Relay` object that we will use heavily throughout this guide.
 `react-router-relay` can be used in combination with `react-router`.
 
-* In [Environment Setup](#environment-setup), we pointed Relay to our `schema.json` file by using the `graphql-config` helper package. Additionally to the schema file, Relay also has to know the GraphQL endpoint of our backend. This is referred to as the *Network Layer*. For most applications it is enough to use the `DefaultNetworkLayer` provided by Relay:
+* In [Environment Setup](#environment-setup), we pointed Relay to our `schema.json` file by using the `graphql-config` helper package. In addition to the schema file, Relay also has to know the GraphQL endpoint of our backend. This is referred to as the *Network Layer*. For most applications it is enough to use the `DefaultNetworkLayer` provided by Relay:
 
 ```javascript
 Relay.injectNetworkLayer(

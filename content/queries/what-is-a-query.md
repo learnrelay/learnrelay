@@ -34,4 +34,4 @@ query {
 }
 ```
 
-This query contains several parts that are currently unknown to us. However at the end of this chapter, we will have a better understanding of all the different parts in this query and will be able to put them together to build flexible, composable queries.
+This query contains several parts that are currently unknown to us. However, at the end of this chapter, we will have a better understanding of all the different parts in this query and will be able to put them together to build flexible, composable queries.
