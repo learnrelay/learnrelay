@@ -35,7 +35,7 @@ export default class LandingPage extends React.Component<Props, {}> {
           </dt>
           <dt>
             <h3>Connections</h3>
-            <p>The terminology of Relay can be quite overwhelming in the beginning. That's we we take a closer look at <b>connections</b> in this chapter. We will learn what <b>nodes</b> and <b>edges</b> are, and how we can use them to traverse our <b>data graph</b>. We will get in touch with the powerful concept of <b>cursors</b> and <b>pagination</b> and instill some life in the Pokedex app by applying everything we learned so far.</p>
+            <p>The terminology of Relay can be quite overwhelming in the beginning. That's why we take a closer look at <b>connections</b> in this chapter. We will learn what <b>nodes</b> and <b>edges</b> are, and how we can use them to traverse our <b>data graph</b>. We will get in touch with the powerful concept of <b>cursors</b> and <b>pagination</b> and instill some life in the Pokedex app by applying everything we learned so far.</p>
           </dt>
           <dt>
             <h3>Routes</h3>

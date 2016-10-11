@@ -20,7 +20,7 @@ Node is a server-side platform built on top of [V8](https://developers.google.co
 There are many tools built by people from the open-source community that make developing applications with Relay easier. We use the ones below in our project.
 
 #### Configuring the GraphQL endpoint
-Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from a template string into an immediately-invoked function without calling a GraphQL server. We will see how to use the `Relay.QL` in a later chapter. However this means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay) comes into play. It uses [graphql-config](https://github.com/graphcool/graphql-config) behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
+Relay requires a cached version of a schema in the JSON format, usually called `schema.json`. This allows Relay to convert `Relay.QL` from a template string into an immediately-invoked function without calling a GraphQL server. We will see how to use the `Relay.QL` in a later chapter. However, this means that we need to set up our back-end server to regenerate the `schema.json` every time our schema changed. This is where the [babel-plugin-react-relay](https://github.com/graphcool/babel-plugin-react-relay) comes into play. It uses [graphql-config](https://github.com/graphcool/graphql-config) behind the scene allowing us to setup a GraphQL endpoint in `package.json` and we are good to go! Let's consider the following example:
 
 ```json
   "graphql": {
@@ -44,7 +44,7 @@ Each chapter offers both material for **learning Relay concepts** and exercises 
 
 > This guide is sprinkled with practice parts to let you get your hands dirty. Whenever a section name starts with **Exercise**, get yourself ready for some coding action! Each of these sections has an associated git branch as a starting point, and another containing the solution for this exercise. For example, to checkout the branch for exercise 3, run this command: `git checkout step-03`. When you are finished with the current exercise, you can checkout the solution with `git checkout step-03-solution` and compare your solution with ours. Of course, if you need some help, you can also checkout the solution!
 
-* If you want to follow the exercices closely, you should checkout the correct branch before working on a specific exercise. Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you!
+* If you want to follow the exercises closely, you should checkout the correct branch before working on a specific exercise. Of course you can also go along with your own speed and disregard the branches we prepared. Whatever works best for you!
 
 * In any case, you can always check the branch containing the solution for the current step to get a hint or two on how a solution could look like.
 

@@ -33,7 +33,7 @@ transaction.commit()                           // Commit the mutation
 
 ## Exercise 05: Create a Pokemon
 
-After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However we have not created a mutation just yet. Let's do that now!
+After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However, we have not created a mutation just yet. Let's do that now!
 
 ```javascript
 // src/mutations/CreatePokemonMutation.js
