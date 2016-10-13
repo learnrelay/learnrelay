@@ -78,7 +78,7 @@ export const chapters: Chapter[] = [
     alias: 'react-router-relay',
   }]),
   new Chapter('Mutations', 'mutations', [{
-    title: 'What is a Muation?',
+    title: 'What is a Mutation?',
     alias: 'what-is-a-mutation',
   }, {
     title: 'Relay Store',
