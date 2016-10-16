@@ -74,7 +74,7 @@ query {
 }
 ```
 
-We can combine `after` and `before` in the same manner:
+We can combine `last` and `before` in the same manner:
 ```graphql
 query {
   viewer {
