@@ -130,7 +130,7 @@ class PokemonPage extends React.Component {
 }
 
 export default Relay.createContainer(
-  withRouter(PokemonPage),
+  PokemonPage,
   {
     ...
     fragments: {

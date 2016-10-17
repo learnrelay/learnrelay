@@ -14,7 +14,7 @@ Remember the query from the previous section?
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(ListPage),
+  ListPage,
   {
     fragments: {
       viewer: () => Relay.QL`
@@ -40,7 +40,7 @@ We can use the `orderBy` argument exposed by the GraphQL server to sort the Poke
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(ListPage),
+  ListPage,
   {
     initialVariables: {
       sortOrder: 'id_DESC'
@@ -86,7 +86,7 @@ This can be achieved with `prepareVariables`:
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(ListPage),
+  ListPage,
   {
     initialVariables: {
       sortOrder: 'id_DESC'

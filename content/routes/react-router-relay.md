@@ -54,7 +54,7 @@ Next, let's modify our `AddNew` and `PokemonPreview` components to redirect to t
 ```javascript
 // src/components/AddNew.js
 
-import {withRouter, Link} from 'react-router'                // Import Link component
+import {Link} from 'react-router'                // Import Link component
 class AddNew extends React.Component {
   render () {
     return (
@@ -70,7 +70,7 @@ class AddNew extends React.Component {
 ```javascript
 // src/components/PokemonPreview.js
 
-import {withRouter, Link} from 'react-router'                                 // Import Link component
+import {Link} from 'react-router'                                 // Import Link component
 class PokemonPreview extends React.Component {
   ...
   render () {

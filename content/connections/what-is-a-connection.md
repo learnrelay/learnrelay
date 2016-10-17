@@ -72,7 +72,7 @@ The Relay container for `PokemonPreview` which we have also prepared for you loo
 
 ```javascript
 export default Relay.createContainer(
-  withRouter(PokemonPreview),
+  PokemonPreview,
   {
     fragments: {
       pokemon: () => Relay.QL`
