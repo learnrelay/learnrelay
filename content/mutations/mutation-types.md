@@ -120,6 +120,16 @@ Note that this type is rarely used and is only applicable in very specific use c
 
 ## Exercise 06: Delete a Pokemon
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-06
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 In every Pokemon's life, there comes a point where it has to go into its well deserved retirement. That's why we should add a delete feature to the `PokemonPage`!
 
 We now have the required knowledge to do so. In the branch `step-6`, we already prepared the foundation of a new `DeletePokemonMutation`. Check the list above and choose the correct mutation type to delete a single Pokemon from your Pokedex once and for all! No return back from retirement...

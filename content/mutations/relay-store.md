@@ -33,6 +33,16 @@ transaction.commit()                           // Commit the mutation
 
 ## Exercise 05: Create a Pokemon
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-05
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 After clicking the "Add New" button, the page will be redirected to the `/create` path. In this page, there is a form to create a new Pokemon! However, we have not created a mutation just yet. Let's do that now!
 
 ```javascript

@@ -56,6 +56,16 @@ getOptimisticResponse () {
 
 ## Exercise 07: Update a Pokemon
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-07
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 We can already add new Pokemons or delete them. But what if we want to give a Pokemon a new name, or even a new look (url...)?
 We should be able to do that!
 

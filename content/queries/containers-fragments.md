@@ -62,6 +62,16 @@ Here we are building a fragment on top of the `viewer` object defined in `Viewer
 
 ## Exercise 02: Prepare the ListPage for further action
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-02
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 In this step, we are adding the `ViewerQueries` to `index.js`. We are also preparing the `ListPage` component for later queries by wrapping it with a Relay container now and building the fragment on top of the `viewer` object as we have seen above.
 
 To give you a headstart, we already defined `ViewerQueries` in `index.js`. Now you have to expose it to `ListPage`.

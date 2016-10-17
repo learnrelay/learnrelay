@@ -10,7 +10,7 @@ cd pokedex
 git checkout step-01
 # copy and paste your endpoint from above to `package.json`
 npm install
-npm start  
+npm start
 # Open localhost:3000
 ```
 

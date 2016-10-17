@@ -51,6 +51,16 @@ Also note the `first: 100000` part. Having either the `first` or the `after` arg
 
 ## Exercise 03: Show existing Pokemons in ListPage
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-03
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 Back to the Pokemon app.
 
 Right now it doesn't do too much... let's change that!

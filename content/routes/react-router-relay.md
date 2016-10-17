@@ -22,6 +22,16 @@ In this example, we initialize the routes in our application using the **Router*
 
 ## Exercise 04: Integrating React Router Relay
 
+> To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
+
+```sh
+git checkout step-04
+# copy and paste your endpoint to `package.json` and index.js
+npm install
+npm start
+# Open localhost:3000
+```
+
 In this step, we will create two paths for creating and viewing a Pokemon. To start, lets first open the `src/index.js` and set our paths:
 
 ```javascript
