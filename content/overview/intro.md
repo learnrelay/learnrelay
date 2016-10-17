@@ -18,7 +18,6 @@ Each chapter will start with a short video that will give you a brief overview, 
 - Access Relay resources and join community to further learn
 
 ## Pokedex application
-
-Let's talk about our first Relay application. You might have seen a lot of Todo List applications before so let's try something new! In this tutorial we will build a Pokedex application where you can browse and modify your existing Pokemons or add new ones. It looks like this:
-
 ![](../images/pokedex.png)
+
+Let's talk about our first Relay application. You might have seen a lot of Todo List applications before so let's try something new! In this tutorial we will build a Pokedex application where you can browse and modify your existing Pokemons or add new ones. See for yourself in [this online demo](http://demo.learnrelay.org).
