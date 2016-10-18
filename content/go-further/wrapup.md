@@ -10,6 +10,6 @@
 
 ### Analytics
 
-This website is using Google Analytics and Mixpanel in order to get insights on which chapters needs to be improved.asd
+This website is using Google Analytics and Mixpanel in order to get insights on which chapters needs to be improved.
 
 ![](https://cdn.mxpnl.com/site_media/images/partner/badge_blue.png)
