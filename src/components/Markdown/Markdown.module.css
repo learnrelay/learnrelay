@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.content > div:first-child iframe {
+  margin-top: 2.6rem;
+}
+
 .content h2 {
     border-bottom: 1px solid var(--color-gray-1);
 }
@@ -31,10 +35,11 @@
 
 .content a {
     color: var(--color-accent);
+    text-decoration: underline;
 }
 
 .content a:hover {
-    text-decoration: underline;
+    opacity: 0.7;
 }
 
 .content pre {
@@ -50,7 +55,7 @@
     border-radius: 3px;
     background: var(--color-gray-1);
     font-size: 0.9em;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .content pre code {
