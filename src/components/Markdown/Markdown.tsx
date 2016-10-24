@@ -5,6 +5,7 @@ import {slug} from '../../utils/string'
 import {PrismCode} from 'react-prism'
 import ContentEndpoint from '../ContentEndpoint/ContentEndpoint'
 import Sharing from '../Sharing/Sharing'
+import ExerciseHeader from '../ExerciseHeader/ExerciseHeader'
 
 const styles: any = require('./Markdown.module.css')
 
@@ -75,6 +76,11 @@ export default class Markdown extends React.Component<Props, {}> {
       HtmlBlock (props) {
         if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
           return <ContentEndpoint location={self.props.location} />
+        }
+
+        const exerciseHeaderTitleMatches = props.literal.match(/__INJECT_EXERCISE_TITLE\((.*)\)/)
+        if (exerciseHeaderTitleMatches) {
+          return <ExerciseHeader title={exerciseHeaderTitleMatches[1]} />
         }
 
         if (props.literal.indexOf('__INJECT_SHARING__') > -1) {

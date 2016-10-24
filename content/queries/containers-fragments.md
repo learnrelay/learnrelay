@@ -60,6 +60,8 @@ export default Relay.createContainer(
 
 Here we are building a fragment on top of the `viewer` object defined in `ViewerQueries`. In the next exercise we will see how we can expose `ViewerQueries` to a subview in the router in `index.js`. Later, when we talk about routing in Relay, we will see the exact meaning of this.
 
+<!-- __INJECT_EXERCISE_TITLE(Exercise 02: Prepare the ListPage for further action)__ -->
+
 ## Exercise 02: Prepare the ListPage for further action
 
 > To start with this exercise, checkout the according branch and insert your endpoint in `package.json` and `index.js` in the pokedex application:
