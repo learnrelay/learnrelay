@@ -68,4 +68,4 @@ The concept of stating the data requirements inside the individual containers is
 
 > Data is only exposed to containers that explicitly stated a dependency on that data. If a child depends on certain data, its parent does not know about it and vice versa.
 
-This helps to prevent satisfying data requirements *by luck*, for example when a parent container forgets to state its own data requirement but the requirementis luckily satisfied by a child. If at some point in time the child does not depend on this data anymore and the data requirement is removed, we would encounter subtle errors.
+This helps to prevent satisfying data requirements *by luck* — for example when a parent container forgets to state its own data requirement, but the requirement is luckily satisfied by a child. If at some point in time the child does not depend on this data anymore and the data requirement is removed, we would encounter subtle errors.
