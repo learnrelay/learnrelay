@@ -91,9 +91,9 @@ export default Relay.createContainer(
     initialVariables: {
       sortOrder: 'id_DESC'
     },
-    prepareVariables: (prevVariables) => {
+    prepareVariables: (prevVariables) => ({
       amount: prevVariables.sortOrder.startsWith('id') ? 1000 : 100000
-    },
+    }),
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
