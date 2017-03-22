@@ -86,7 +86,8 @@ export default function () {
 
     // Insert our script next to the first script element.
     const first = document.getElementsByTagName('script')[0]
-    first.parentNode.insertBefore(script, first)
+    // parentNode! means it can be null, but we still enforce it
+    first.parentNode!.insertBefore(script, first)
   }
 
   // Add a version to keep track of what's in the wild.
