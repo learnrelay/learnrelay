@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
     css: 'tachyons',
   },
   output: {
-    path: './dist',
+    path: path.join(__dirname, 'dist'),
     filename: '[name].[hash].js',
     publicPath: '/',
   },
