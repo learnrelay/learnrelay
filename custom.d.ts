@@ -11,7 +11,7 @@ declare module 'cuid'
 
 //declare function require(name: string): any
 
-declare var fetch: any
+//declare var fetch: any
 
 declare interface Window {
   analytics: any
