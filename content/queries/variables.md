@@ -19,7 +19,7 @@ export default Relay.createContainer(
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
-          allPokemons (first: 100000) {
+          allPokemons (first: 1000) {
             edges {
               node {
                 ${PokemonPreview.getFragment('pokemon')}
@@ -48,7 +48,7 @@ export default Relay.createContainer(
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
-          allPokemons (first: 100000, orderBy: $sortOrder) {
+          allPokemons (first: 1000, orderBy: $sortOrder) {
             edges {
               node {
                 ${PokemonPreview.getFragment('pokemon')}
@@ -81,7 +81,7 @@ After calling `setVariable`, it takes some time until the changed variables are 
 
 ## Prepare variables
 
-Let's say that we want to query 1000 Pokemons when we sort by id, but 100000 otherwise.
+Let's say that we want to query 100 Pokemons when we sort by id, but 1000 otherwise.
 This can be achieved with `prepareVariables`:
 
 ```javascript
@@ -92,7 +92,7 @@ export default Relay.createContainer(
       sortOrder: 'id_DESC'
     },
     prepareVariables: (prevVariables) => ({
-      amount: prevVariables.sortOrder.startsWith('id') ? 1000 : 100000
+      amount: prevVariables.sortOrder.startsWith('id') ? 100 : 1000
     }),
     fragments: {
       viewer: () => Relay.QL`
@@ -113,4 +113,4 @@ export default Relay.createContainer(
   },
 )
 ```
-Initially, we sort descending by id and thus only query the first 1000 Pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 100000.
+Initially, we sort descending by id and thus only query the first 100 Pokemons. If however the `sortOrder` variable is changed from within the component with a call to `setVariables`, we might change that amount to 1000.

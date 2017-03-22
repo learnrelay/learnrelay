@@ -14,12 +14,12 @@ const pokemonRoute = {
     `
   },
   params: {
-    limit: '100000'
+    limit: '1000'
   },
   name: 'PokemonRoute'
 }
 ```
-In this example, the route is named `PokemonRoute`. It can be used by queries which contain the viewer fragment that has the limit parameter equal to 100000.
+In this example, the route is named `PokemonRoute`. It can be used by queries which contain the viewer fragment that has the limit parameter equal to 1000.
 
 > In the future, Relay might rename **RelayRoute** to **RelayQueryRoots** or even **RelayQueryConfig** in order to alleviate this confusion.
 

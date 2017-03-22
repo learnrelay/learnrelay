@@ -41,7 +41,7 @@ export default Relay.createContainer(
     fragments: {
       viewer: () => Relay.QL`
         fragment on Viewer {
-          allPokemons (first: 100000) {
+          allPokemons (first: 1000) {
             edges {
               node {
                 ${PokemonPreview.getFragment('pokemon')}

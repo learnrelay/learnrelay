@@ -27,7 +27,7 @@ Putting it all together, we can fetch all pokemons with this query:
 ```graphql
 query {
   viewer {
-    allPokemons (first: 100000) {
+    allPokemons (first: 1000) {
       edges {
         node {
           id
@@ -47,7 +47,7 @@ You could then map the edges like this:
 
 Remember that in a Relay container the fragments are exposed as props inside the component.
 
-Also note the `first: 100000` part. Having either the `first` or the `after` argument in a query like this is a requirement by Relay. For now, we are just using a huge number to be certain that we query all the Pokemons in our Pokedex.
+Also note the `first: 1000` part. Having either the `first` or the `after` argument in a query like this is a requirement by Relay. For now, we are just using a huge number to be certain that we query all the Pokemons in our Pokedex.
 
 ## Exercise 03: Show existing Pokemons in ListPage
 
@@ -95,7 +95,7 @@ For step 03, you should complete the following tasks:
 * Change the query of `ListPage` by replacing the `id` field of the `viewer` with this query:
 
 ```graphql
-allPokemons (first: 100000) {
+allPokemons (first: 1000) {
   edges {
     node {
       ${PokemonPreview.getFragment('pokemon')}

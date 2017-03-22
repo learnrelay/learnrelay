@@ -21,7 +21,7 @@ A query to fetch the `id`, `name` and `url` fields of all Pokemons on the server
 ```graphql
 query {
   viewer {
-    allPokemons (first: 100000) {
+    allPokemons (first: 1000) {
       edges {
         node {
           id
