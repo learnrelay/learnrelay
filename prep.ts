@@ -8,6 +8,8 @@ export default () => {
   return {
     routes: chapterRoutes.concat(['/']),
     https: true,
+    concurrency: 50,
+    timeout: 10000,
     hostname: 'https://learnrelay.org',
   }
 }
