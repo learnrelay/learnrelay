@@ -58,7 +58,7 @@ module.exports = {
       __ENABLE_SEGMENT__: false,
       __SEGMENT_TOKEN__: '"7Y6fdaghn7WfoaO3ICKYGDwuZHzV6C52"',
       __GITHUB_OAUTH_CLIENT_ID__: '"b4ee20bd611665a7c729"',
-      __LAMBDA_AUTH__: '"https://73zvpdo0k5.execute-api.eu-west-1.amazonaws.com/prod/lambda-learnrelay_auth_dev"',
+      __LAMBDA_AUTH__: '"https://56gi2jy2x0.execute-api.eu-west-1.amazonaws.com/dev/"',
     }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
