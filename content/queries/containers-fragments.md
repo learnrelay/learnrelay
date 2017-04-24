@@ -11,7 +11,7 @@ The way Relay handles data updates works nicely with the way React handles updat
 
 ## Creating a Relay Container
 
-To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can write the following right below the `ListPage` component in `ListPage.js` :
+To expose data to your React component we can use the method `Relay.createContainer`. To wrap the React component `ListPage` we can modify the export statement right below the `ListPage` component in `ListPage.js` with the following :
 
 ```javascript
 export default Relay.createContainer(
