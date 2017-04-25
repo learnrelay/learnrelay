@@ -111,7 +111,7 @@ class PokemonPage extends React.Component {
     Relay.Store.commitUpdate(      // Dispatch CreatePokemonMutation and pass the name and the url to it
       new CreatePokemonMutation({name: this.state.name, url: this.state.url, viewer: this.props.viewer}),
       {
-        onSuccess: () => this.props.router.push('/'),
+        onSuccess: () => this.context.router.push('/'),
         onFailure: (transaction) => console.log(transaction),
       },
     )
