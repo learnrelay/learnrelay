@@ -32,7 +32,7 @@ The `append` inside `rangeBehaviors` means that we are appending the new edge to
 If we used `prepend`, we could prepend the edge instead.
 
 Note that most of the time it is sufficient to only use one key `''` inside `rangeBehaviors`.
-If you need different behaviour depending on some other value of the connection, you can add different keys and define different behaviour. Check [this article](http://mgiroux.me/2016/the-mysterious-relay-range-behaviours/) for further details.
+If you need different behaviour depending on some other value of the connection, you can add different keys and define different behaviour.
 
 ## FIELDS_CHANGE
 
