@@ -8,6 +8,7 @@ It's time to get started! Let's clone and initialise our project in order to get
 git clone https://github.com/learnrelay/pokedex.git
 cd pokedex
 git checkout step-01
+cd branch-step-01
 # copy and paste your endpoint from above to `package.json`
 npm install
 npm start
