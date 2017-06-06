@@ -11,7 +11,7 @@ The benefit of optimistic updates lies in the fact that most of time the action 
 To specify the optimistic response for a mutation, you can use the `getOptimisticResponse` method.
 The optimistic response acts as a mock payload and should only contain fields that you also included in your fat query, or `viewer`.
 
-* Remember the fat query from `AddPokemonMutation`?
+* Remember the fat query from `CreatePokemonMutation`?
 
 ```javascript
 getFatQuery () {
@@ -70,7 +70,7 @@ We can already add new Pokemons or delete them. But what if we want to give a Po
 We should be able to do that!
 
 But before we will add this new feature, we will implement the `getOptimisticResponse` method for the mutations that we are already using:
-`AddPokemonMutation` and `DeletePokemonMutation`. Look above if you are unsure how to exactly set the optimistic response.
+`CreatePokemonMutation` and `DeletePokemonMutation`. Look above if you are unsure how to exactly set the optimistic response.
 
 Afterwards, you will notice the new `UpdatePokemonMutation` in branch `step-07`. Implement all the basic methods first. If you are unsure of how to go about this,
  check the previous sections on mutations. Afterwards, think about how an optimistic response would look like for the `UpdatePokemonMutation` in `getOptimisticResponse`, then implement it!
@@ -78,6 +78,6 @@ Afterwards, you will notice the new `UpdatePokemonMutation` in branch `step-07`.
 Finally, you need to call the update mutation in `PokemonPage` whenever a user updates the name or url of a Pokemon and clicks the save button.
 
 In summary, you should
-* implement `getOptimisticResponse` for `AddPokemonMutation` and `DeletePokemonMutation`
+* implement `getOptimisticResponse` for `CreatePokemonMutation` and `DeletePokemonMutation`
 * implement the basic methods of `UpdatePokemonMutation` and afterwards implement `getOptimisticResponse`
 * fire the `UpdatePokemonMutation` when the save button on the `PokemonPage` is clicked
