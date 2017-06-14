@@ -40,7 +40,7 @@ export default class UpdatePokemonMutation extends Relay.Mutation<Props, {}> {
 
   getOptimisticResponse () {
     return {
-      model: {
+      pokemon: {
         id: this.props.pokemonId,
         name: this.props.name,
         url: this.props.url,
