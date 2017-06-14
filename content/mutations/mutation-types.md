@@ -66,6 +66,7 @@ getConfigs () {
     parentName: 'viewer',
     parentID: this.props.viewerId,
     connectionName: 'pokemon',
+    edgeName: 'edge',
     deletedIDFieldName: 'deletedId',
   }]
 }
