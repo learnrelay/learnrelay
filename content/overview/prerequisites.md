@@ -4,4 +4,4 @@ Before getting started with the tutorial, we assume that you have some basic kno
 
 - JavaScript (ES2015) - [A detailed overview of ECMAScript 2015 features](https://babeljs.io/docs/learn-es2015) by Luke Hoban
 - React.js - Walk through the concepts of React by building a [Facebook comments box](https://facebook.github.io/react/docs/tutorial.html) provided by the Facebook team
-- GraphQL - Check out the official docs [GraphQL](http://graphql.org/)
+- GraphQL - Check out this [GraphQL tutorial](https://www.howtographql.com/)
