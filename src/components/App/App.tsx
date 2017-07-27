@@ -87,6 +87,11 @@ class App extends React.Component<Props, State> {
         <div className={styles.hamburger} onClick={this.toggleNav}>
           <div className={styles.hamburgerWrapper}/>
         </div>
+        <div className='absolute w-100 left0 right0 top0 o-80 z-999' style={{ background: 'rgba(208, 2, 27, 0.8)'}}>
+          <a href='https://www.howtographql.com/react-relay/0-introduction/' className='db white tc w-100 pa3'>
+            Learn Relay has been deprecated in favour of How to GraphQL. <b>Click here to continue.</b>
+          </a>
+        </div>
         <div
           className={`
             flex flex-column vertical-line font-small fixed left-0 h-100 overflow-x-visible
