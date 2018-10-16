@@ -4,6 +4,9 @@
 
 Source code for [learnrelay.org](https://learnrelay.org)
 
+:exclamation: **Moved to https://www.howtographql.com/react-relay/0-introduction/** 
+
+
 ## Contribution
 
 If you have a suggestion on how to improve Learn Relay please either [open an issue](https://github.com/learnrelay/learnrelay/issues/new) or create a pull request by changing the source files in [`content`](https://github.com/learnrelay/learnrelay/tree/master/content).
